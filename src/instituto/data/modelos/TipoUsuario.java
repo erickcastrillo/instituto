@@ -15,13 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package instituto.data;
+package instituto.data.modelos;
 
 /**
- *
+ * Enum usado para definir y restringir los tipos de usuarios que se van a usar
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public class Persona {
-
+public enum TipoUsuario {
+    ADMINISTRACION,
+    ADMINISTRADOR,
+    ENCARGADO
 }

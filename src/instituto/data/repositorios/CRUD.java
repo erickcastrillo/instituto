@@ -15,13 +15,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package instituto.data;
+package instituto.data.repositorios;
+
+import java.util.ArrayList;
 
 /**
- *
+ * Interface que se utiliza para estandarizar los metodoos para los
+ * repositorios de datos
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public class Usuario {
-
+public interface CRUD {
+    // Listar todos los objectos
+    ArrayList<Object> listar(String filtro);
+    // Crear un objecto
+    void crear(Object object);
+    // Devolver un objeto por el nombre
+    Object obtenerPorNombre(String nombre);
+    // Devolver un objeto por el id
+    Object obtenerPorId(String id);
+    // Actualizar un objeto
+    void actualizar(Object object);
+    // Borrar un objeto
+    void borrar(String id);
 }
