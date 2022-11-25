@@ -25,7 +25,29 @@ package instituto.data.modelos;
  */
 public class Encargado extends Usuario {
 
-    // TODO: Definir bien la clase basado en los tipos de acceso
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public Boolean getAcceso() {
+        return acceso;
+    }
+
+    public void setAcceso(Boolean acceso) {
+        this.acceso = acceso;
+    }
     
     // Constructor incluyendo los atributos heredados de la clase Persona
     // y la clase Usuario
@@ -38,7 +60,8 @@ public class Encargado extends Usuario {
             String identificacion, 
             String nombre, 
             String primerApellido, 
-            String segundoApellido) {
+            String segundoApellido, 
+            Boolean acceso) {
         super(tipoUsuario, 
                 telefono, 
                 clave, 
@@ -48,6 +71,7 @@ public class Encargado extends Usuario {
                 segundoApellido);
         this.correoElectronico = correoElectronico;
         this.direccion = direccion;
+        this.acceso = acceso;
     }
 
     // Constructor incluyendo los atributos heredados de la clase Usuario
@@ -56,18 +80,24 @@ public class Encargado extends Usuario {
             String direccion, 
             TipoUsuario tipoUsuario, 
             String telefono, 
-            String clave) {
+            String clave, 
+            Boolean acceso) {
         super(tipoUsuario, telefono, clave);
         this.correoElectronico = correoElectronico;
         this.direccion = direccion;
+        this.acceso = acceso;
     }
 
     // Constructor 
-    public Encargado(String correoElectronico, String direccion) {
+    public Encargado(
+            String correoElectronico, 
+            String direccion, 
+            Boolean acceso) {
         this.correoElectronico = correoElectronico;
         this.direccion = direccion;
+        this.acceso = acceso;
     }
     private String correoElectronico;
     private String direccion;
-    private Boolean puedeIniciarSesion;
+    private Boolean acceso;
 }
