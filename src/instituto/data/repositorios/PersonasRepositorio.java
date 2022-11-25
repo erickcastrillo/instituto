@@ -27,7 +27,7 @@ import java.util.ArrayList;
  */
 public class PersonasRepositorio implements CRUD {
     
-    private ArrayList<Objects> listaPersonas = new ArrayList<>();
+    private ArrayList<Object> listaPersonas = new ArrayList<>();
 
     @Override
     public ArrayList<Object> listar(String filtro) {
