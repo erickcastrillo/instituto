@@ -58,6 +58,50 @@ public class PersonasRepositorio implements CRUD {
         };
     }
 
+    @Override
+    public ArrayList<Encargado> listarEncargados() {
+        ArrayList<Encargado> encargados = new ArrayList<>();
+        for(Persona persona : this.listaPersonas){
+            if(persona.getClass().isInstance(Encargado.class)){
+                encargados.add((Encargado) persona);
+            }
+        }
+        return encargados;
+    }
+
+    @Override
+    public ArrayList<Estudiante> listarEstudiantes() {
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        for(Persona persona : this.listaPersonas){
+            if(persona.getClass().isInstance(Estudiante.class)){
+                estudiantes.add((Estudiante) persona);
+            }
+        }
+        return estudiantes;
+    }
+
+    @Override
+    public ArrayList<EstudianteIV> listarEstudiantesIV() {
+        ArrayList<EstudianteIV> estudiantesIV = new ArrayList<>();
+        for(Persona persona : this.listaPersonas){
+            if(persona.getClass().isInstance(EstudianteIV.class)){
+                estudiantesIV.add((EstudianteIV) persona);
+            }
+        }
+        return estudiantesIV;
+    }
+
+    @Override
+    public ArrayList<Usuario> listarUsuarios() {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        for(Persona persona : this.listaPersonas){
+            if(persona.getClass().isInstance(Usuario.class)){
+                usuarios.add((Usuario) persona);
+            }
+        }
+        return usuarios;
+    }
+
     /**
      * Adding a new Persona to the list of Personas.
      * @param persona Persona class to add
