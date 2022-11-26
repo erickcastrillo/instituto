@@ -17,6 +17,7 @@
 
 package instituto.data.repositorios;
 
+import instituto.data.modelos.Persona;
 import java.util.ArrayList;
 
 /**
@@ -26,16 +27,16 @@ import java.util.ArrayList;
  * 603630082EC
  */
 public interface CRUD {
-    // Listar todos los objectos
-    ArrayList<Object> listar(String filtro);
-    // Crear un objecto
-    void crear(Object object);
+    // Listar todas las personas
+    ArrayList<Persona> listar(String filtro);
+    // Crear una Persona
+    Boolean agregar(Persona persona);
     // Devolver un objeto por el nombre
-    Object obtenerPorNombre(String nombre);
+    Persona obtenerPorNombre(String nombre);
     // Devolver un objeto por el id
-    Object obtenerPorId(String id);
+    Persona obtenerPorId(String id);
     // Actualizar un objeto
-    void actualizar(Object object);
+    Boolean actualizar(Persona persona);
     // Borrar un objeto
-    void borrar(String id);
+    Boolean borrar(Persona persona);
 }

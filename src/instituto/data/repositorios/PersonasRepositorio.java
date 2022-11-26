@@ -17,7 +17,11 @@
 
 package instituto.data.repositorios;
 
+import instituto.data.modelos.*;
+
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 /**
@@ -26,37 +30,94 @@ import java.util.ArrayList;
  * 603630082EC
  */
 public class PersonasRepositorio implements CRUD {
+
+    // Creating a new ArrayList of Personas.
+    private final ArrayList<Persona> listaPersonas = new ArrayList<>();
     
-    private ArrayList<Object> listaPersonas = new ArrayList<>();
-
+    /**
+     * Returning the list of Personas.
+     * @param filtro Used to determine what kind of class to return
+     * @return ArrayList
+     */
     @Override
-    public ArrayList<Object> listar(String filtro) {
-        return this.listaPersonas;
+    public ArrayList<Persona> listar(String filtro) {
+        return switch (filtro) {
+            case "Encargado" -> (ArrayList<Persona>) listaPersonas.stream()
+                    .filter(persona -> persona.getClass().isInstance(Encargado.class))
+                    .collect(Collectors.toList());
+            case "Estudiante" -> (ArrayList<Persona>) listaPersonas.stream()
+                    .filter(persona -> persona.getClass().isInstance(Estudiante.class))
+                    .collect(Collectors.toList());
+            case "EstudianteIV" -> (ArrayList<Persona>) listaPersonas.stream()
+                    .filter(persona -> persona.getClass().isInstance(EstudianteIV.class))
+                    .collect(Collectors.toList());
+            case "Usuario" -> (ArrayList<Persona>) listaPersonas.stream()
+                    .filter(persona -> persona.getClass().isInstance(Usuario.class))
+                    .collect(Collectors.toList());
+            default -> this.listaPersonas;
+        };
     }
 
+    /**
+     * Adding a new Persona to the list of Personas.
+     * @param persona Persona class to add
+     * @return Boolean
+     */
     @Override
-    public void agregar(Object object) {
-        this.listaPersonas.add(object);
+    public Boolean agregar(Persona persona) {
+        return this.listaPersonas.add(persona);
     }
 
+    /**
+     * Returning the first Persona that matches the name.
+     * @param nombre nombre of the Persona to return
+     * @return Persona
+     */
     @Override
-    public Object obtenerPorNombre(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Persona obtenerPorNombre(String nombre) {
+        return this.listaPersonas.stream()
+                .filter(persona -> Objects.equals(persona.getNombre(), nombre))
+                .findFirst()
+                .orElse(null);
     }
 
+    /**
+     * Returning the first Persona that matches the id.
+     * @param id id of the Persona to return
+     * @return Persona
+     */
     @Override
-    public Object obtenerPorId(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Persona obtenerPorId(String id) {
+        return this.listaPersonas.stream()
+                .filter(persona -> Objects.equals(persona.getId(), id))
+                .findFirst()
+                .orElse(null);
     }
 
+    /**
+     * Updating a Persona in the list of Personas.
+     * @param persona Persona class
+     * @return Boolean
+     */
     @Override
-    public void actualizar(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Boolean actualizar(Persona persona) {
+        Persona p = this.obtenerPorId(persona.getId());
+        int index = this.listaPersonas.indexOf(p);
+        try {
+            this.listaPersonas.add(index, persona);
+            return true;
+        } catch (IndexOutOfBoundsException e){
+            return false;
+        }
     }
 
+    /**
+     * Removing the first Persona that matches the id.
+     * @param persona Persona class
+     * @return Boolean
+     */
     @Override
-    public void borrar(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Boolean borrar(Persona persona) {
+        return this.listaPersonas.removeIf(p -> Objects.equals(persona.getId(), p.getId()));
     }
-
 }

@@ -18,6 +18,7 @@
 package instituto.data.modelos;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  *  Clase usada para representar a una Persona
@@ -40,11 +41,16 @@ public class Persona implements Serializable {
     
     // Costructor en blanco
     public Persona() {}
-    
+
+    private final String id = UUID.randomUUID().toString();
     private String identificacion;
     private String nombre;
     private String primerApellido;
     private String segundoApellido;
+
+    public String getId() {
+        return id;
+    }
     
     public String getIdentificacion() {
         return identificacion;
@@ -77,4 +83,5 @@ public class Persona implements Serializable {
     public void setSegundoApellido(String segundoApellido) {
         this.segundoApellido = segundoApellido;
     }
+
 }
