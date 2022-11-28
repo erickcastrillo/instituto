@@ -26,11 +26,11 @@ import java.util.Date;
  */
 public class Estudiante extends Persona {
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -60,7 +60,7 @@ public class Estudiante extends Persona {
 
     // Constructor incluyendo los atributos heredados de la clase Persona
     public Estudiante(
-            Date fechaNacimiento, 
+            String fechaNacimiento,
             int nivel, 
             String seccion, 
             String idEncargado, 
@@ -77,7 +77,7 @@ public class Estudiante extends Persona {
 
     // Constructor incluyendo los atributos solo de esta clase
     public Estudiante(
-            Date fechaNacimiento, 
+            String fechaNacimiento,
             int nivel, 
             String seccion, 
             String idEncargado) {
@@ -90,7 +90,7 @@ public class Estudiante extends Persona {
     // Constructor vacio
     public Estudiante(){}
     
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private int nivel;
     private String seccion;
     private String idEncargado;
