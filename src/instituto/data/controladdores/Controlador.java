@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public class Controlador implements Controladorable{
+public class Controlador implements Controladorable {
     private final PersonasRepositorio repositorio = new PersonasRepositorio();
     public Controlador() {
         this.cargarData();
@@ -40,7 +40,7 @@ public class Controlador implements Controladorable{
      * @return
      */
     @Override
-    public ArrayList<Encargado> listarEncargados() {
+    public static ArrayList<Encargado> listarEncargados() {
         return null;
     }
 

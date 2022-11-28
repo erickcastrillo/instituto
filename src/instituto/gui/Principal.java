@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package GUI;
+package instituto.gui;
 
 /**
  *
@@ -126,7 +126,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarEstudianteActionPerformed
-        Estudiante ventana = new Estudiante();
+        EstudianteWindow ventana = new EstudianteWindow();
                 ventana.setVisible(true);
     }//GEN-LAST:event_mnAgregarEstudianteActionPerformed
 

@@ -32,7 +32,7 @@ import java.util.ArrayList;
  */
 public interface Controladorable {
     // Encargado
-    ArrayList<Encargado> listarEncargados();
+    static ArrayList<Encargado> listarEncargados();
     // Get
     Encargado obtenerEncargado(String id);
     // Create
@@ -79,4 +79,5 @@ public interface Controladorable {
     // Data
     Boolean cargarData();
     Boolean guardarData();
+
 }

@@ -14,20 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package GUI;
+package instituto.gui;
 
-import instituto.data.modelos.Persona;
+import instituto.data.controladdores.Controlador;
+import instituto.data.modelos.Estudiante;
 
 /**
  *
  * @author Julio
  */
-public class Estudiante extends javax.swing.JFrame {
+public class EstudianteWindow extends javax.swing.JFrame {
 
     /**
      * Creates new form Estudiante
      */
-    public Estudiante() {
+    public EstudianteWindow() {
         initComponents();
     }
 
@@ -162,8 +163,9 @@ public class Estudiante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstudianteActionPerformed
-    Estudiante estudiante = new Estudiante(){
-    };
+    Estudiante estudiante = new Estudiante();
+    estudiante.setNombre(txtNombreEstudiante.getText());
+    estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
     
     }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
 
@@ -184,20 +186,20 @@ public class Estudiante extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Estudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstudianteWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Estudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstudianteWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Estudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstudianteWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Estudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstudianteWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Estudiante().setVisible(true);
+                new EstudianteWindow().setVisible(true);
             }
         });
     }
