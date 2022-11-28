@@ -110,8 +110,10 @@ public class PersonasRepositorio implements CRUD {
     @Override
     public Boolean agregar(Persona persona) {
         Persona p = this.obtenerPorId(persona.getId());
-        if (estudiante == null) {
+        if (p == null) {
             return this.listaPersonas.add(persona);
+        } else {
+            return false;
         }
 
     }
