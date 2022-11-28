@@ -20,7 +20,7 @@ package instituto.data.modelos;
 import java.util.Date;
 
 /**
- * Clase que representa a un estudiante de IV cliclo
+ * Clase que representa a un estudiante de IV ciclo
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
@@ -36,8 +36,8 @@ public class EstudianteIV extends Estudiante {
 
     // Constructor incluyendo los atributos heredados de la clase Persona
     public EstudianteIV(
-            String especialidad, 
-            Date fechaNacimiento, 
+            String especialidad,
+            String fechaNacimiento,
             int nivel, 
             String seccion, 
             String idEncargado, 
@@ -59,8 +59,8 @@ public class EstudianteIV extends Estudiante {
 
     // Constructor incluyendo los atributos heredados de la clase Estudiante
     public EstudianteIV(
-            String especialidad, 
-            Date fechaNacimiento, 
+            String especialidad,
+            String fechaNacimiento,
             int nivel, 
             String seccion, 
             String idEncargado) {
