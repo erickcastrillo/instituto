@@ -169,7 +169,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
     estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
     estudiante.setIdentificacion(txtCedulaEstudiante.getText());
     estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
-    
+    Controlador.crearEstudiante(estudiante);
     }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
 
     /**
