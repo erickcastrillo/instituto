@@ -159,7 +159,7 @@ public class Controlador {
     }
 
     /**
-     * Crea o agrega un objeto de la clase Estudiante el repositorio
+     * Crea o agrega un objeto de la clase EstudianteIV el repositorio
      * @param estudiante a agregar
      * @return true si se agrego correctamente sino false
      */
@@ -168,7 +168,7 @@ public class Controlador {
     }
 
     /**
-     * Toma un objeto de la clase Estudiante y lo actualiza en el
+     * Toma un objeto de la clase EstudianteIV y lo actualiza en el
      * repositorio
      * @param estudiante a actualizar
      * @return true si se actualizo correctamente sino false
@@ -178,7 +178,7 @@ public class Controlador {
     }
 
     /**
-     * Toma un objeto de la clase Estudiante y lo borra del repositorio
+     * Toma un objeto de la clase EstudianteIV y lo borra del repositorio
      * @param estudiante a borrar
      * @return true si se borro correctamente sino false
      */
@@ -195,34 +195,45 @@ public class Controlador {
     }
 
     /**
-     * @param id
-     * @return
+     * Regresa una instancia de la clase Usuario usando el, id proporcionando.
+     * @param id a buscar
+     * @return encargado o null el no se puede encontrar usando el, id o no se
+     * puede castear a Estudiante
      */
     public static Usuario obtenerUsuario(String id) {
-        return null;
+        try {
+            return (Usuario) repositorio.obtenerPorId(id);
+        } catch (ClassCastException e) {
+            return null;
+        }
     }
 
     /**
-     * @param usuario
+     * Crea o agrega un objeto de la clase Usuario el repositorio
+     * @param usuario a agregar
+     * @return true si se agrego correctamente sino false
      */
-    public static void crearUsuario(Usuario usuario) {
-
+    public static Boolean crearUsuario(Usuario usuario) {
+        return repositorio.agregar(usuario);
     }
 
     /**
-     * @param usuario
-     * @return
+     * Toma un objeto de la clase Usuario y lo actualiza en el
+     * repositorio
+     * @param usuario a actualizar
+     * @return true si se actualizo correctamente sino false
      */
     public static Boolean updateUsuario(Usuario usuario) {
-        return null;
+        return repositorio.actualizar(usuario);
     }
 
     /**
-     * @param usuario
-     * @return
+     * Toma un objeto de la clase Usuario y lo borra del repositorio
+     * @param usuario a borrar
+     * @return true si se borro correctamente sino false
      */
     public static Boolean borrarUsuario(Usuario usuario) {
-        return null;
+        return repositorio.borrar(usuario);
     }
 
     /**
