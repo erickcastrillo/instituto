@@ -30,163 +30,182 @@ import java.util.ArrayList;
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public class Controlador implements Controladorable {
-    private final PersonasRepositorio repositorio = new PersonasRepositorio();
+public class Controlador {
+    private static final PersonasRepositorio repositorio = new PersonasRepositorio();
     public Controlador() {
-        this.cargarData();
+        cargarData();
     }
 
     /**
-     * @return
+     * Regresa la lista de encargados.
+     * @return lista de encargados
      */
-    @Override
     public static ArrayList<Encargado> listarEncargados() {
-        return null;
+        return repositorio.listarEncargados();
+    }
+
+    /**
+     * Regresa una instancia de la clase Encargado usando el, id proporcionando.
+     * @param id a buscar
+     * @return encargado o null el no se puede encontrar usando el id o no se
+     * puede castear a Encargado
+     */
+    public static Encargado obtenerEncargado(String id) {
+        try {
+            return (Encargado) repositorio.obtenerPorId(id);
+        } catch (ClassCastException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Crea o agrega un objeto de la clase Encargado el repositorio
+     * @param encargado a agregar
+     * @return true si se agrego correctamente sino false
+     */
+    public static Boolean crearEncargado(Encargado encargado) {
+        return repositorio.agregar(encargado);
+    }
+
+    /**
+     * Toma un objeto de la clase encargado y lo actualiza en el
+     * repositorio
+     * @param encargado a actualizar
+     * @return true si se actualizo correctamente sino false
+     */
+    public static Boolean updateEncargado(Encargado encargado) {
+        return repositorio.actualizar(encargado);
+    }
+
+    /**
+     * Toma un objeto de la clase Encargado y lo borra del repositorio
+     * @param encargado a borrar
+     * @return true si se borro correctamente sino false
+     */
+    public static Boolean borrarEncargado(Encargado encargado) {
+        return repositorio.borrar(encargado);
+    }
+
+    /**
+     * Regresa una lista de objetos de clase Estudiante
+     * @return lista de clases Estudiante
+     */
+    public static ArrayList<Estudiante> listarEstudiantes() {
+        return repositorio.listarEstudiantes();
+    }
+
+    /**
+     * Regresa una instancia de la clase Estudiante usando el, id proporcionando.
+     * @param id a buscar
+     * @return encargado o null el no se puede encontrar usando el id o no se
+     * puede castear a Estudiante
+     */
+    public static Estudiante obtenerEstudiante(String id) {
+        try {
+            return (Estudiante) repositorio.obtenerPorId(id);
+        } catch (ClassCastException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Crea o agrega un objeto de la clase Estudiante el repositorio
+     * @param estudiante a agregar
+     * @return true si se agrego correctamente sino false
+     */
+    public static Boolean crearEstudiante(Estudiante estudiante) {
+        return repositorio.agregar(estudiante);
+    }
+
+    /**
+     * Toma un objeto de la clase Estudiante y lo actualiza en el
+     * repositorio
+     * @param estudiante a actualizar
+     * @return true si se actualizo correctamente sino false
+     */
+    public static Boolean updateEstudiante(Estudiante estudiante) {
+        return repositorio.actualizar(estudiante);
+    }
+
+    /**
+     * Toma un objeto de la clase Estudiante y lo borra del repositorio
+     * @param estudiante a borrar
+     * @return true si se borro correctamente sino false
+     */
+    public static Boolean borrarEstudiante(Estudiante estudiante) {
+        return repositorio.borrar(estudiante);
+    }
+
+    /**
+     * Regresa una lista de objetos de clase EstudianteIV
+     * @return lista de clases EstudianteIV
+     */
+    public static ArrayList<EstudianteIV> listarEstudiantesIV() {
+        return repositorio.listarEstudiantesIV();
+    }
+
+    /**
+     * Regresa una instancia de la clase EstudianteIV usando el, id proporcionando.
+     * @param id a buscar
+     * @return encargado o null el no se puede encontrar usando el, id o no se
+     * puede castear a Estudiante
+     */
+    public static EstudianteIV obtenerEstudianteIV(String id) {
+        try {
+            return (EstudianteIV) repositorio.obtenerPorId(id);
+        } catch (ClassCastException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Crea o agrega un objeto de la clase Estudiante el repositorio
+     * @param estudiante a agregar
+     * @return true si se agrego correctamente sino false
+     */
+    public static Boolean crearEstudianteIV(EstudianteIV estudiante) {
+        return repositorio.agregar(estudiante);
+    }
+
+    /**
+     * Toma un objeto de la clase Estudiante y lo actualiza en el
+     * repositorio
+     * @param estudiante a actualizar
+     * @return true si se actualizo correctamente sino false
+     */
+    public static Boolean updateEstudianteIV(EstudianteIV estudiante) {
+        return repositorio.actualizar(estudiante);
+    }
+
+    /**
+     * Toma un objeto de la clase Estudiante y lo borra del repositorio
+     * @param estudiante a borrar
+     * @return true si se borro correctamente sino false
+     */
+    public static Boolean borrarEstudianteIV(EstudianteIV estudiante) {
+        return repositorio.borrar(estudiante);
+    }
+
+    /**
+     * Regresa una lista de objetos de clase Usuario
+     * @return lista de clases Usuario
+     */
+    public static ArrayList<Usuario> listarUsuarios() {
+        return repositorio.listarUsuarios();
     }
 
     /**
      * @param id
      * @return
      */
-    @Override
-    public Encargado obtenerEncargado(String id) {
-        return null;
-    }
-
-    /**
-     * @param encargado
-     */
-    @Override
-    public void crearEncargado(Encargado encargado) {
-
-    }
-
-    /**
-     * @param encargado
-     * @return
-     */
-    @Override
-    public Boolean updateEncargado(Encargado encargado) {
-        return null;
-    }
-
-    /**
-     * @param encargado
-     * @return
-     */
-    @Override
-    public Boolean borrarEncargado(Encargado encargado) {
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    @Override
-    public ArrayList<Estudiante> listarEstudiantes() {
-        return null;
-    }
-
-    /**
-     * @param id
-     * @return
-     */
-    @Override
-    public Estudiante obtenerEstudiante(String id) {
-        return null;
-    }
-
-    /**
-     * @param estudiante
-     */
-    @Override
-    public void crearEstudiante(Estudiante estudiante) {
-
-    }
-
-    /**
-     * @param estudiante
-     * @return
-     */
-    @Override
-    public Boolean updateEstudiante(Estudiante estudiante) {
-        return null;
-    }
-
-    /**
-     * @param estudiante
-     * @return
-     */
-    @Override
-    public Boolean borrarEstudiante(Estudiante estudiante) {
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    @Override
-    public ArrayList<EstudianteIV> listarEstudiantesIV() {
-        return null;
-    }
-
-    /**
-     * @param id
-     * @return
-     */
-    @Override
-    public EstudianteIV obtenerEstudianteIV(String id) {
-        return null;
-    }
-
-    /**
-     * @param estudiante
-     */
-    @Override
-    public void crearEstudianteIV(EstudianteIV estudiante) {
-
-    }
-
-    /**
-     * @param estudiante
-     * @return
-     */
-    @Override
-    public Boolean updateEstudianteIV(EstudianteIV estudiante) {
-        return null;
-    }
-
-    /**
-     * @param estudiante
-     * @return
-     */
-    @Override
-    public Boolean borrarEstudianteIV(EstudianteIV estudiante) {
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    @Override
-    public ArrayList<Usuario> listarUsuarios() {
-        return null;
-    }
-
-    /**
-     * @param id
-     * @return
-     */
-    @Override
-    public Usuario obtenerUsuario(String id) {
+    public static Usuario obtenerUsuario(String id) {
         return null;
     }
 
     /**
      * @param usuario
      */
-    @Override
-    public void crearUsuario(Usuario usuario) {
+    public static void crearUsuario(Usuario usuario) {
 
     }
 
@@ -194,8 +213,7 @@ public class Controlador implements Controladorable {
      * @param usuario
      * @return
      */
-    @Override
-    public Boolean updateUsuario(Usuario usuario) {
+    public static Boolean updateUsuario(Usuario usuario) {
         return null;
     }
 
@@ -203,24 +221,21 @@ public class Controlador implements Controladorable {
      * @param usuario
      * @return
      */
-    @Override
-    public Boolean borrarUsuario(Usuario usuario) {
+    public static Boolean borrarUsuario(Usuario usuario) {
         return null;
     }
 
     /**
      * @return
      */
-    @Override
-    public Boolean cargarData() {
+    public static Boolean cargarData() {
         return null;
     }
 
     /**
      * @return
      */
-    @Override
-    public Boolean guardarData() {
+    public static Boolean guardarData() {
         return null;
     }
 }
