@@ -48,4 +48,8 @@ public interface CRUD {
     Boolean actualizar(Persona persona);
     // Borrar un objeto
     Boolean borrar(Persona persona);
+    // Cargar datos del disco duro
+    Boolean cargarDatos();
+    // Guardar datos
+    Boolean guardarDatos();
 }

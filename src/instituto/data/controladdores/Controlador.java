@@ -22,8 +22,11 @@ import instituto.data.modelos.Estudiante;
 import instituto.data.modelos.EstudianteIV;
 import instituto.data.modelos.Usuario;
 import instituto.data.repositorios.PersonasRepositorio;
+import instituto.data.repositorios.Serializador;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -237,16 +240,27 @@ public class Controlador {
     }
 
     /**
-     * @return
+     * Carga datos serializados desde el disco duro
+     * @return true si la data se cargo o false si no.
      */
     public static Boolean cargarData() {
-        return null;
+        PersonasRepositorio repo = (PersonasRepositorio) Serializador.deserializar(
+                "PersonasRepositorio.dat"
+        );
+        return repo == null;
+
     }
 
     /**
-     * @return
+     * Guarda los datos de un objeto (en este caso el repositorio) en el
+     * disco duro
+     * @return true si se guardo el objeto y false si no.
      */
     public static Boolean guardarData() {
-        return null;
+        try {
+            return Serializador.serializar(repositorio, "PersonasRepositorio.dat");
+        } catch(NoSuchElementException e){
+            return false;
+        }
     }
 }

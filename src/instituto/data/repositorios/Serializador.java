@@ -15,13 +15,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package instituto.data.controladdores;
+package instituto.data.repositorios;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.NoSuchElementException;
 
 /**
  * Clase usada para serializar y deserializar datos y guardarlos en el disco duro.
@@ -35,25 +39,40 @@ public class Serializador {
      * @param fileName Ubicación del archivo a guardar
      * @throws IOException IOException
      */
-    public static void serializar(Object obj, String fileName) throws IOException, ClassNotFoundException {
-        FileOutputStream fos = new FileOutputStream(fileName);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(obj);
-        fos.close();
+    public static Boolean serializar(Object obj, String fileName) {
+        try{
+            ObjectOutputStream salida = new ObjectOutputStream(
+                    Files.newOutputStream(Paths.get(fileName))
+            );
+            salida.writeObject(obj);
+            salida.close();
+            return true;
+        } catch(NoSuchElementException | IOException e){
+            return false;
+        }
     }
 
     /***
      * Deserializa un archivo y lo regresa como un objeto que después se puede castear a una clase concreta
      * @param fileName Ubicación del archivo a guardar
      * @return objeto o clase
-     * @throws IOException IOException
-     * @throws ClassNotFoundException ClassNotFoundException
      */
-    public static Object deserializar(String fileName) throws IOException, ClassNotFoundException {
-        FileInputStream fis = new FileInputStream(fileName);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        Object obj = ois.readObject();
-        ois.close();
-        return obj;
+    public static Object deserializar(String fileName)  {
+
+        Path archivo = Paths.get(fileName);
+        if(Files.exists(archivo)){
+            try{
+                ObjectInputStream entrada = new ObjectInputStream(
+                        Files.newInputStream(archivo)
+                );
+                Object obj = entrada.readObject();
+                entrada.close();
+                return obj;
+            } catch(IOException | ClassNotFoundException e){
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
 }

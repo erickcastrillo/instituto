@@ -173,4 +173,20 @@ public class PersonasRepositorio implements CRUD {
     public Boolean borrar(Persona persona) {
         return this.listaPersonas.removeIf(p -> Objects.equals(persona.getId(), p.getId()));
     }
+
+    /**
+     * @return
+     */
+    @Override
+    public Boolean cargarDatos() {
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public Boolean guardarDatos() {
+        return null;
+    }
 }
