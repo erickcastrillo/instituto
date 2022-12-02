@@ -208,7 +208,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
         tblEstudiantes_Encargado.setName("tblEstudiantes_Encargado"); // NOI18N
         jScrollPane2.setViewportView(tblEstudiantes_Encargado);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, -1, 120));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, -1, 120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

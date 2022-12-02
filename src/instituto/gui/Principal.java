@@ -294,7 +294,6 @@ public class Principal extends javax.swing.JFrame {
         modelo.addColumn("Nivel");
         modelo.addColumn("Sección");
         Object[] fila = new Object[4];
-        JOptionPane.showMessageDialog(null, Controlador.listarEstudiantes());
         /*for(int i=0; i<Controlador.listarEstudiantes().size();i++){
             Estudiante estudiante = Controlador.listarEstudiantes().get(i);
             fila[0] = estudiante.getNombre();

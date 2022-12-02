@@ -249,7 +249,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudiante.setIdentificacion(txtCedulaEstudiante.getText());
             estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
             estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
-            estudiante.setNivel(String.valueOf(rdbPrimaria.isSelected()));
+            estudiante.setNivel(String.valueOf(rdbPrimaria.getSelectedObjects()));
             
             Boolean guardado = Controlador.crearEstudiante(estudiante);
             JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito");
