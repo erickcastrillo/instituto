@@ -16,6 +16,13 @@
  */
 package instituto.gui;
 
+import instituto.data.controladdores.Controlador;
+import instituto.data.modelos.Estudiante;
+import instituto.data.repositorios.PersonasRepositorio;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Julio
@@ -25,6 +32,7 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Admin
      */
+    DefaultTableModel modelo = new DefaultTableModel();
     public Principal() {
         
         initComponents();
@@ -47,7 +55,7 @@ public class Principal extends javax.swing.JFrame {
         tblPrincipal = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mnListarEstudiante = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -104,8 +112,14 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setText("Mantenimiento");
 
-        jMenuItem1.setText("Estudiantes");
-        jMenu1.add(jMenuItem1);
+        mnListarEstudiante.setText("Estudiantes");
+        mnListarEstudiante.setName("mnListarEstudiante"); // NOI18N
+        mnListarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListarEstudianteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnListarEstudiante);
 
         jMenuItem2.setText("Encargados");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -229,6 +243,11 @@ public class Principal extends javax.swing.JFrame {
 
         mnSecretariado.setText("Secretariado");
         mnSecretariado.setName("mnSecretariado"); // NOI18N
+        mnSecretariado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSecretariadoActionPerformed(evt);
+            }
+        });
         jMenu6.add(mnSecretariado);
 
         mnMecanica.setText("Mecanica");
@@ -262,6 +281,42 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void mnSecretariadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSecretariadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnSecretariadoActionPerformed
+    
+    
+    private void actualizarTablaEstudiante(){
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nivel");
+        modelo.addColumn("Sección");
+        Object[] fila = new Object[4];
+        JOptionPane.showMessageDialog(null, Controlador.listarEstudiantes());
+        /*for(int i=0; i<Controlador.listarEstudiantes().size();i++){
+            Estudiante estudiante = Controlador.listarEstudiantes().get(i);
+            fila[0] = estudiante.getNombre();
+            fila[1] = estudiante.getPrimerApellido();
+            fila[2] = estudiante.getNivel();
+            fila[3] = estudiante.getSeccion();
+            modelo.addRow(fila);*/
+        ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
+            for (Estudiante estudiante : listadeestudiantes)
+            {
+                fila[0] = estudiante.getNombre();
+                fila[1] = estudiante.getPrimerApellido();
+                fila[2] = estudiante.getNivel();
+                fila[3] = estudiante.getSeccion();
+                modelo.addRow(fila);
+            }
+        tblPrincipal.setModel(modelo);
+    }
+    private void mnListarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarEstudianteActionPerformed
+        
+       actualizarTablaEstudiante();
+    }//GEN-LAST:event_mnListarEstudianteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -308,7 +363,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem22;
@@ -320,6 +374,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem mnAdministrativos;
     private javax.swing.JMenuItem mnAgregarEstudiante;
+    private javax.swing.JMenuItem mnListarEstudiante;
     private javax.swing.JMenuItem mnMecanica;
     private javax.swing.JMenuItem mnRegistrarEncargado;
     private javax.swing.JMenuItem mnSeccion10A;

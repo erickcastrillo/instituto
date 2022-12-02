@@ -23,8 +23,6 @@ import instituto.data.modelos.EstudianteIV;
 import instituto.data.modelos.Usuario;
 import instituto.data.repositorios.PersonasRepositorio;
 import instituto.data.repositorios.Serializador;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -251,7 +249,7 @@ public class Controlador {
 
     }
 
-    /**
+    /** 
      * Guarda los datos de un objeto (en este caso el repositorio) en el
      * disco duro
      * @return true si se guardo el objeto y false si no.

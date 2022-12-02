@@ -26,7 +26,6 @@ package instituto.data.modelos;
 public class Encargado extends Usuario {
 
     public Encargado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public String getCorreoElectronico() {

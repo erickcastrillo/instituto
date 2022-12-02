@@ -75,7 +75,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("INFORMACIÓN");
+        jLabel1.setText("Datos de Encargado");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
         jLabel2.setText("Nombre:");
@@ -97,15 +97,41 @@ public class EncargadoWindow extends javax.swing.JFrame {
         getContentPane().add(txtCelularEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 260, 40));
 
         txtNombreEncargado.setName("txtNombreEncargado"); // NOI18N
+        txtNombreEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreEncargadoKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtNombreEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 260, 40));
 
         txtApellidoEncargado.setName("txtApellidoEncargado"); // NOI18N
+        txtApellidoEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellidoEncargadoKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtApellidoEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 260, 40));
 
         txtSegundoApellidoEncargado.setName("txtSegundoApellidoEncargado"); // NOI18N
+        txtSegundoApellidoEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSegundoApellidoEncargadoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSegundoApellidoEncargadoKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtSegundoApellidoEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 260, 40));
 
         txtCedulaEncargado.setName("txtCedulaEncargado"); // NOI18N
+        txtCedulaEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaEncargadoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaEncargadoKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtCedulaEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 260, 40));
 
         jLabel7.setText("Correo Electronico:");
@@ -215,6 +241,58 @@ public class EncargadoWindow extends javax.swing.JFrame {
     private void chxAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxAccesoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chxAccesoActionPerformed
+
+    private void txtNombreEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEncargadoKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtNombreEncargado.setEditable(true);
+                }else 
+                {
+                    txtNombreEncargado.setEditable(false);
+                }
+    }//GEN-LAST:event_txtNombreEncargadoKeyPressed
+
+    private void txtCedulaEncargadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEncargadoKeyTyped
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtCedulaEncargado.setEditable(false);
+                }else 
+                {
+                    txtCedulaEncargado.setEditable(true);
+                }
+    }//GEN-LAST:event_txtCedulaEncargadoKeyTyped
+
+    private void txtCedulaEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEncargadoKeyPressed
+        
+    }//GEN-LAST:event_txtCedulaEncargadoKeyPressed
+
+    private void txtApellidoEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEncargadoKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtApellidoEncargado.setEditable(true);
+                }else 
+                {
+                    txtApellidoEncargado.setEditable(false);
+                }
+    }//GEN-LAST:event_txtApellidoEncargadoKeyPressed
+
+    private void txtSegundoApellidoEncargadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEncargadoKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSegundoApellidoEncargadoKeyReleased
+
+    private void txtSegundoApellidoEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEncargadoKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtSegundoApellidoEncargado.setEditable(true);
+                }else 
+                {
+                    txtSegundoApellidoEncargado.setEditable(false);
+                }
+    }//GEN-LAST:event_txtSegundoApellidoEncargadoKeyPressed
 
     /**
      * @param args the command line arguments

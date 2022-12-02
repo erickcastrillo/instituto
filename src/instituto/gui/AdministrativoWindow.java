@@ -103,15 +103,40 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
         txtNombreAdministrativo.setName("txtNombreAdministrativo"); // NOI18N
+        txtNombreAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreAdministrativoActionPerformed(evt);
+            }
+        });
+        txtNombreAdministrativo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreAdministrativoKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtNombreAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 220, -1));
 
         txtPrimerApellidoAdministrativo.setName("txtPrimerApellidoAdministrativo"); // NOI18N
+        txtPrimerApellidoAdministrativo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPrimerApellidoAdministrativoKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtPrimerApellidoAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 220, -1));
 
         txtSegundoApellidoAdministrativo.setName("txtSegundoApellidoAdministrativo"); // NOI18N
+        txtSegundoApellidoAdministrativo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSegundoApellidoAdministrativoKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtSegundoApellidoAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 220, -1));
 
         txtTelefonoAdministrativo.setName("txtTelefonoAdministrativo"); // NOI18N
+        txtTelefonoAdministrativo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefonoAdministrativoKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtTelefonoAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 220, -1));
 
         txtClaveAdministrativo.setName("txtClaveAdministrativo"); // NOI18N
@@ -158,6 +183,11 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         txtCedulaAdministrativo.setName("txtCedulaAdministrativo"); // NOI18N
+        txtCedulaAdministrativo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaAdministrativoKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtCedulaAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 220, -1));
 
         pack();
@@ -174,6 +204,68 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         // falta agregar el tipo de usuario que es el administrativo.
         
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtNombreAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreAdministrativoKeyPressed
+         char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtNombreAdministrativo.setEditable(true);
+                }else 
+                {
+                    txtNombreAdministrativo.setEditable(false);
+                }
+    }//GEN-LAST:event_txtNombreAdministrativoKeyPressed
+
+    private void txtPrimerApellidoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrimerApellidoAdministrativoKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtPrimerApellidoAdministrativo.setEditable(true);
+                }else 
+                {
+                    txtPrimerApellidoAdministrativo.setEditable(false);
+                }
+    }//GEN-LAST:event_txtPrimerApellidoAdministrativoKeyPressed
+
+    private void txtSegundoApellidoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoAdministrativoKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtPrimerApellidoAdministrativo.setEditable(true);
+                }else 
+                {
+                    txtPrimerApellidoAdministrativo.setEditable(false);
+                }
+    }//GEN-LAST:event_txtSegundoApellidoAdministrativoKeyPressed
+
+    private void txtCedulaAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaAdministrativoKeyPressed
+         char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtCedulaAdministrativo.setEditable(false);
+                }else 
+                {
+                    txtCedulaAdministrativo.setEditable(true);
+                }
+    }//GEN-LAST:event_txtCedulaAdministrativoKeyPressed
+
+    private void txtTelefonoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoAdministrativoKeyPressed
+         char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtTelefonoAdministrativo.setEditable(false);
+                } else if (Character.isSpaceChar(c))
+                {
+                    txtTelefonoAdministrativo.setEditable(false);            
+                }else 
+                {
+                    txtTelefonoAdministrativo.setEditable(true);
+                }
+    }//GEN-LAST:event_txtTelefonoAdministrativoKeyPressed
+
+    private void txtNombreAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreAdministrativoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreAdministrativoActionPerformed
 
     /**
      * @param args the command line arguments
