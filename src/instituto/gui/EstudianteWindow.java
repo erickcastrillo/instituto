@@ -251,7 +251,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
             estudiante.setNivel(String.valueOf(rdbPrimaria.isSelected()));
             
-            Controlador.crearEstudiante(estudiante);
+            Boolean guardado = Controlador.crearEstudiante(estudiante);
             JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito");
             dispose();
         }else if (rdbTercerCiclo.isSelected())

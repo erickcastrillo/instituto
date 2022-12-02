@@ -73,7 +73,7 @@ public class PersonasRepositorio implements CRUD {
     public ArrayList<Estudiante> listarEstudiantes() {
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
-            if(persona.getClass().isInstance(Estudiante.class)){
+            if(persona instanceof Estudiante){
                 estudiantes.add((Estudiante) persona);
             }
         }
