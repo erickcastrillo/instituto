@@ -173,6 +173,23 @@ public class PersonasRepositorio implements CRUD {
     public Boolean borrar(Persona persona) {
         return this.listaPersonas.removeIf(p -> Objects.equals(persona.getId(), p.getId()));
     }
+    
+    /**
+     * Returns a list of Estudiantes from a given Encargado Id
+     * @param encargadoId
+     * @return 
+     */
+    public ArrayList<Estudiante> estudiantesPorEncargado(String encargadoId){
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        for(Persona persona : this.listaPersonas){
+            if(persona instanceof Estudiante || persona instanceof EstudianteIV){
+                Estudiante estudiante = (Estudiante) persona;
+                if (estudiante.getIdEncargado() == encargadoId) {
+                    estudiantes.add(estudiante);
+                }
+            }
+        }
+    }
 
     /**
      * @return
