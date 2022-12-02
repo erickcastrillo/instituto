@@ -38,7 +38,7 @@ public class EstudianteIV extends Estudiante {
     public EstudianteIV(
             String especialidad,
             String fechaNacimiento,
-            int nivel, 
+            String nivel,
             String seccion, 
             String idEncargado, 
             String identificacion, 
@@ -61,7 +61,7 @@ public class EstudianteIV extends Estudiante {
     public EstudianteIV(
             String especialidad,
             String fechaNacimiento,
-            int nivel, 
+            String nivel,
             String seccion, 
             String idEncargado) {
         super(fechaNacimiento, nivel, seccion, idEncargado);

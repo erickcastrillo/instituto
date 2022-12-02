@@ -18,6 +18,8 @@ package instituto.gui;
 
 import instituto.data.controladdores.Controlador;
 import instituto.data.modelos.Estudiante;
+import instituto.data.modelos.EstudianteIV;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,10 +28,16 @@ import instituto.data.modelos.Estudiante;
 public class EstudianteWindow extends javax.swing.JFrame {
 
     /**
-     * Creates new form Estudiante
+     * Creates new form EstudianteWindow
      */
     public EstudianteWindow() {
         initComponents();
+        lblSeccion.setVisible(false);
+        cbxPrimaria.setVisible(false);
+        cbxTercerCiclo.setVisible(false);
+        cbxCuartoCiclo.setVisible(false);
+        cbxEspecialidad.setVisible(false);
+        lblEspecialidad.setVisible(false);
     }
 
     /**
@@ -41,6 +49,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -52,24 +61,23 @@ public class EstudianteWindow extends javax.swing.JFrame {
         txtSegundoApellidoEstudiante = new javax.swing.JTextField();
         txtCedulaEstudiante = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        btnAgregarEstudiante = new javax.swing.JButton();
+        lblEspecialidad = new javax.swing.JLabel();
+        btnGuardarEstudiante = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        rdbCuartoCiclo = new javax.swing.JRadioButton();
+        rdbPrimaria = new javax.swing.JRadioButton();
+        rdbTercerCiclo = new javax.swing.JRadioButton();
+        lblSeccion = new javax.swing.JLabel();
+        cbxTercerCiclo = new javax.swing.JComboBox<>();
+        cbxEspecialidad = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         btnAgregarEncargado = new javax.swing.JButton();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        cbxPrimaria = new javax.swing.JComboBox<>();
+        cbxCuartoCiclo = new javax.swing.JComboBox<>();
         btnMostrarEncargado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setName("btnMostrarEncargado"); // NOI18N
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Nombre:");
@@ -88,15 +96,35 @@ public class EstudianteWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
         txtFechaNacimiento.setName("txtFechaNacimiento"); // NOI18N
+        txtFechaNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtFechaNacimientoKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 260, 40));
 
         txtNombreEstudiante.setName("txtNombreEstudiante"); // NOI18N
+        txtNombreEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreEstudianteKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtNombreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 260, 40));
 
         txtApellidoEstudiante.setName("txtApellidoEstudiante"); // NOI18N
+        txtApellidoEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellidoEstudianteKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtApellidoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 260, 40));
 
         txtSegundoApellidoEstudiante.setName("txtSegundoApellidoEstudiante"); // NOI18N
+        txtSegundoApellidoEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSegundoApellidoEstudianteKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtSegundoApellidoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 260, 40));
 
         txtCedulaEstudiante.setName("txtCedulaEstudiante"); // NOI18N
@@ -105,72 +133,257 @@ public class EstudianteWindow extends javax.swing.JFrame {
         jLabel7.setText("Nivel");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
 
-        jLabel8.setText("Especialidad");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, -1, -1));
+        lblEspecialidad.setText("Especialidad");
+        lblEspecialidad.setName("lblEspecialidad"); // NOI18N
+        getContentPane().add(lblEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, -1, -1));
 
-        btnAgregarEstudiante.setText("Agregar estudiante");
-        btnAgregarEstudiante.setName("btnAgregarEstudiante"); // NOI18N
-        btnAgregarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarEstudiante.setText("Guardar estudiante");
+        btnGuardarEstudiante.setName("btnGuardarEstudiante"); // NOI18N
+        btnGuardarEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarEstudianteActionPerformed(evt);
+                btnGuardarEstudianteActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, -1, -1));
+        getContentPane().add(btnGuardarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, -1, -1));
 
         btnBorrar.setText("Borrar");
         btnBorrar.setName("btnBorrar"); // NOI18N
-        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 540, -1, -1));
+        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, -1, -1));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.setName("btnActualizar"); // NOI18N
-        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 610, -1, -1));
 
-        jRadioButton1.setText("Cuarto Ciclo");
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, -1, -1));
+        buttonGroup1.add(rdbCuartoCiclo);
+        rdbCuartoCiclo.setText("Cuarto Ciclo");
+        rdbCuartoCiclo.setName("rdbCuartoCiclo"); // NOI18N
+        rdbCuartoCiclo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbCuartoCicloActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rdbCuartoCiclo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, -1, -1));
 
-        jRadioButton2.setText("Primaria");
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
+        buttonGroup1.add(rdbPrimaria);
+        rdbPrimaria.setText("Primaria");
+        rdbPrimaria.setName("rdbPrimaria"); // NOI18N
+        rdbPrimaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbPrimariaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rdbPrimaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
 
-        jRadioButton3.setText("Tercer Ciclo");
-        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, -1));
+        buttonGroup1.add(rdbTercerCiclo);
+        rdbTercerCiclo.setText("Tercer Ciclo");
+        rdbTercerCiclo.setName("rdbTercerCiclo"); // NOI18N
+        rdbTercerCiclo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbTercerCicloActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rdbTercerCiclo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, -1));
 
-        jLabel9.setText("Sección");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, -1, -1));
+        lblSeccion.setText("Sección");
+        lblSeccion.setName("lblSeccion"); // NOI18N
+        getContentPane().add(lblSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, -1, -1));
+        cbxTercerCiclo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "7-A", "8-A", "9-A" }));
+        cbxTercerCiclo.setName("cbxTercerCiclo"); // NOI18N
+        cbxTercerCiclo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTercerCicloActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbxTercerCiclo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, -1, -1));
+        cbxEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Mecánica", "Secretariado" }));
+        cbxEspecialidad.setName("cbxEspecialidad"); // NOI18N
+        getContentPane().add(cbxEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, -1, -1));
 
-        jLabel1.setText("Datos");
+        jLabel1.setText("Datos de estudiante");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
         btnAgregarEncargado.setText("Agregar encargado");
         btnAgregarEncargado.setName("btnAgregarEncargado"); // NOI18N
-        getContentPane().add(btnAgregarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 540, -1, -1));
+        btnAgregarEncargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarEncargadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAgregarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 610, -1, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, -1));
+        cbxPrimaria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1-A", "2-A", "3-A", "4-A", "5-A", "6-A" }));
+        cbxPrimaria.setName("cbxPrimaria"); // NOI18N
+        cbxPrimaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxPrimariaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbxPrimaria, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, -1, -1));
+        cbxCuartoCiclo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "10-A", "11-A", "12-A" }));
+        cbxCuartoCiclo.setName("cbxCuartoCiclo"); // NOI18N
+        getContentPane().add(cbxCuartoCiclo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
 
         btnMostrarEncargado.setText("Mostrar encargado");
-        getContentPane().add(btnMostrarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 540, -1, -1));
+        btnMostrarEncargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarEncargadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMostrarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 610, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstudianteActionPerformed
-    Estudiante estudiante = new Estudiante();
-    estudiante.setNombre(txtNombreEstudiante.getText());
-    estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
-    estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
-    estudiante.setIdentificacion(txtCedulaEstudiante.getText());
-    estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
-    Controlador.crearEstudiante(estudiante);
-    }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
+    private void btnGuardarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEstudianteActionPerformed
+        
+        if(rdbPrimaria.isSelected())
+        {
+            Estudiante estudiante = new Estudiante();
+        
+            estudiante.setNombre(txtNombreEstudiante.getText());
+            estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
+            estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
+            estudiante.setIdentificacion(txtCedulaEstudiante.getText());
+            estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
+            estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
+            estudiante.setNivel(String.valueOf(rdbPrimaria.isSelected()));
+            
+            Boolean guardado = Controlador.crearEstudiante(estudiante);
+            JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito");
+            dispose();
+        }else if (rdbTercerCiclo.isSelected())
+        {
+            Estudiante estudiante = new Estudiante();
+        
+            estudiante.setNombre(txtNombreEstudiante.getText());
+            estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
+            estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
+            estudiante.setIdentificacion(txtCedulaEstudiante.getText());
+            estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
+            
+            estudiante.setSeccion(String.valueOf(cbxTercerCiclo.getSelectedItem()));
+            estudiante.setNivel(String.valueOf(rdbTercerCiclo.isSelected()));
+            
+            Controlador.crearEstudiante(estudiante);
+            
+        }else if (rdbCuartoCiclo.isSelected())
+        {
+            
+            EstudianteIV estudianteiv = new EstudianteIV();
+            
+            estudianteiv.setNombre(txtNombreEstudiante.getText());
+            estudianteiv.setPrimerApellido(txtApellidoEstudiante.getText());
+            estudianteiv.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
+            estudianteiv.setIdentificacion(txtCedulaEstudiante.getText());
+            estudianteiv.setFechaNacimiento(txtFechaNacimiento.getText());
+            estudianteiv.setNivel(String.valueOf(rdbCuartoCiclo.isSelected()));
+            estudianteiv.setEspecialidad(String.valueOf(cbxEspecialidad.getSelectedItem()));
+            
+              Controlador.crearEstudianteIV(estudianteiv);
+        }
+    }//GEN-LAST:event_btnGuardarEstudianteActionPerformed
+
+    private void rdbCuartoCicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbCuartoCicloActionPerformed
+        if (rdbCuartoCiclo.isSelected())
+        {
+            cbxPrimaria.setVisible(false);
+            cbxTercerCiclo.setVisible(false);
+            cbxCuartoCiclo.setVisible(true);
+            cbxEspecialidad.setVisible(true);
+            lblEspecialidad.setVisible(true);
+            lblSeccion.setVisible(true);
+        }
+    }//GEN-LAST:event_rdbCuartoCicloActionPerformed
+
+    private void rdbPrimariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbPrimariaActionPerformed
+        if (rdbPrimaria.isSelected())
+        {
+            cbxPrimaria.setVisible(true);
+            cbxTercerCiclo.setVisible(false);
+            cbxCuartoCiclo.setVisible(false);
+            cbxEspecialidad.setVisible(false);
+            lblEspecialidad.setVisible(false);
+            lblSeccion.setVisible(true);
+        }
+
+    }//GEN-LAST:event_rdbPrimariaActionPerformed
+
+    private void rdbTercerCicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbTercerCicloActionPerformed
+        if (rdbTercerCiclo.isSelected())
+        {
+            cbxPrimaria.setVisible(false);
+            cbxTercerCiclo.setVisible(true);
+            cbxCuartoCiclo.setVisible(false);
+            cbxEspecialidad.setVisible(false);
+            lblEspecialidad.setVisible(false);
+            lblSeccion.setVisible(true);
+        }
+    }//GEN-LAST:event_rdbTercerCicloActionPerformed
+
+    private void cbxTercerCicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTercerCicloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxTercerCicloActionPerformed
+
+    private void cbxPrimariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPrimariaActionPerformed
+
+    }//GEN-LAST:event_cbxPrimariaActionPerformed
+
+    private void btnAgregarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEncargadoActionPerformed
+        EncargadoWindow ventana =new EncargadoWindow();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnAgregarEncargadoActionPerformed
+
+    private void btnMostrarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarEncargadoActionPerformed
+        EncargadoWindow ventana =new EncargadoWindow();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnMostrarEncargadoActionPerformed
+
+    private void txtNombreEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEstudianteKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtNombreEstudiante.setEditable(true);
+                }else 
+                {
+                    txtNombreEstudiante.setEditable(false);
+                }
+    }//GEN-LAST:event_txtNombreEstudianteKeyPressed
+
+    private void txtApellidoEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEstudianteKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtApellidoEstudiante.setEditable(true);
+                }else 
+                {
+                    txtApellidoEstudiante.setEditable(false);
+                }
+    }//GEN-LAST:event_txtApellidoEstudianteKeyPressed
+
+    private void txtSegundoApellidoEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEstudianteKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtSegundoApellidoEstudiante.setEditable(true);
+                }else 
+                {
+                    txtSegundoApellidoEstudiante.setEditable(false);
+                }
+    }//GEN-LAST:event_txtSegundoApellidoEstudianteKeyPressed
+
+    private void txtFechaNacimientoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaNacimientoKeyPressed
+       char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtFechaNacimiento.setEditable(false);
+                }else 
+                {
+                    txtFechaNacimiento.setEditable(true);
+                }
+    }//GEN-LAST:event_txtFechaNacimientoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -210,13 +423,14 @@ public class EstudianteWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregarEncargado;
-    private javax.swing.JButton btnAgregarEstudiante;
     private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnGuardarEstudiante;
     private javax.swing.JButton btnMostrarEncargado;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbxCuartoCiclo;
+    private javax.swing.JComboBox<String> cbxEspecialidad;
+    private javax.swing.JComboBox<String> cbxPrimaria;
+    private javax.swing.JComboBox<String> cbxTercerCiclo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -224,11 +438,11 @@ public class EstudianteWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JLabel lblEspecialidad;
+    private javax.swing.JLabel lblSeccion;
+    private javax.swing.JRadioButton rdbCuartoCiclo;
+    private javax.swing.JRadioButton rdbPrimaria;
+    private javax.swing.JRadioButton rdbTercerCiclo;
     private javax.swing.JTextField txtApellidoEstudiante;
     private javax.swing.JTextField txtCedulaEstudiante;
     private javax.swing.JTextField txtFechaNacimiento;

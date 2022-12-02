@@ -16,6 +16,13 @@
  */
 package instituto.gui;
 
+import instituto.data.controladdores.Controlador;
+import instituto.data.modelos.Estudiante;
+import instituto.data.repositorios.PersonasRepositorio;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Julio
@@ -25,8 +32,11 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Admin
      */
+    DefaultTableModel modelo = new DefaultTableModel();
     public Principal() {
+        
         initComponents();
+        
     }
 
     /**
@@ -38,27 +48,53 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPrincipal = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mnListarEstudiante = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnAgregarEstudiante = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        mnRegistrarEncargado = new javax.swing.JMenuItem();
+        mnAdministrativos = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        mnSeccion1A = new javax.swing.JMenuItem();
+        mnSeccion2A = new javax.swing.JMenuItem();
+        mnSeccion3A = new javax.swing.JMenuItem();
+        mnSeccion4A = new javax.swing.JMenuItem();
+        mnSeccion5A = new javax.swing.JMenuItem();
+        mnSeccion6A = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        mnSeccion7A = new javax.swing.JMenuItem();
+        mnSeccion8A = new javax.swing.JMenuItem();
+        mnSeccion9A = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        mnSeccion10A = new javax.swing.JMenuItem();
+        mnSeccion11A = new javax.swing.JMenuItem();
+        mnSeccion12A = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        mnSecretariado = new javax.swing.JMenuItem();
+        mnMecanica = new javax.swing.JMenuItem();
+
+        jMenuItem8.setText("jMenuItem8");
+
+        jMenuItem19.setText("jMenuItem19");
+
+        jMenuItem22.setText("jMenuItem22");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -69,16 +105,28 @@ public class Principal extends javax.swing.JFrame {
                 "Nombre", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblPrincipal.setName("tblPrincipal"); // NOI18N
+        jScrollPane1.setViewportView(tblPrincipal);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 500, 148));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 500, 148));
 
         jMenu1.setText("Mantenimiento");
 
-        jMenuItem1.setText("Estudiantes");
-        jMenu1.add(jMenuItem1);
+        mnListarEstudiante.setText("Estudiantes");
+        mnListarEstudiante.setName("mnListarEstudiante"); // NOI18N
+        mnListarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListarEstudianteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnListarEstudiante);
 
         jMenuItem2.setText("Encargados");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Primaria");
@@ -89,9 +137,6 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem5.setText("Cuarto Ciclo");
         jMenu1.add(jMenuItem5);
-
-        jMenuItem11.setText("Especialidades");
-        jMenu1.add(jMenuItem11);
 
         jMenuItem6.setText("Administrativos");
         jMenu1.add(jMenuItem6);
@@ -109,26 +154,169 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu2.add(mnAgregarEstudiante);
 
-        jMenuItem7.setText("Encargados");
-        jMenu2.add(jMenuItem7);
+        mnRegistrarEncargado.setText("Encargados");
+        mnRegistrarEncargado.setName("mnRegistrarEncargado"); // NOI18N
+        mnRegistrarEncargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRegistrarEncargadoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnRegistrarEncargado);
 
-        jMenuItem8.setText("Administrativos");
-        jMenu2.add(jMenuItem8);
-
-        jMenuItem9.setText("Especialidades");
-        jMenu2.add(jMenuItem9);
+        mnAdministrativos.setText("Administrativos");
+        mnAdministrativos.setName("mnAdministrativos"); // NOI18N
+        mnAdministrativos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnAdministrativosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnAdministrativos);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Secciones");
+
+        jMenu4.setText("Secciones de Primaria");
+
+        mnSeccion1A.setText("Sección 1-A");
+        mnSeccion1A.setName("mnSeccion1A"); // NOI18N
+        jMenu4.add(mnSeccion1A);
+
+        mnSeccion2A.setText("Sección 2-A");
+        mnSeccion2A.setName("mnSeccion2A"); // NOI18N
+        jMenu4.add(mnSeccion2A);
+
+        mnSeccion3A.setText("Sección 3-A");
+        mnSeccion3A.setName("mnSeccion3A"); // NOI18N
+        jMenu4.add(mnSeccion3A);
+
+        mnSeccion4A.setText("Sección 4-A");
+        mnSeccion4A.setName("mnSeccion4A"); // NOI18N
+        jMenu4.add(mnSeccion4A);
+
+        mnSeccion5A.setText("Sección 5-A");
+        mnSeccion5A.setName("mnSeccion5A"); // NOI18N
+        jMenu4.add(mnSeccion5A);
+
+        mnSeccion6A.setText("Sección 6-A");
+        mnSeccion6A.setName("mnSeccion6A"); // NOI18N
+        jMenu4.add(mnSeccion6A);
+
+        jMenu3.add(jMenu4);
+
+        jMenu5.setText("Secciones de Tercer Ciclo");
+
+        mnSeccion7A.setText("Sección 7-A");
+        mnSeccion7A.setName("mnSeccion7A"); // NOI18N
+        jMenu5.add(mnSeccion7A);
+
+        mnSeccion8A.setText("Sección 8-A");
+        mnSeccion8A.setName("mnSeccion8A"); // NOI18N
+        jMenu5.add(mnSeccion8A);
+
+        mnSeccion9A.setText("Sección 9-A");
+        mnSeccion9A.setName("mnSeccion9A"); // NOI18N
+        jMenu5.add(mnSeccion9A);
+
+        jMenu3.add(jMenu5);
+
+        jMenu7.setText("Secciones de Cuarto Ciclo");
+
+        mnSeccion10A.setText("Sección 10-A");
+        mnSeccion10A.setInheritsPopupMenu(true);
+        mnSeccion10A.setName("mnSeccion10A"); // NOI18N
+        jMenu7.add(mnSeccion10A);
+
+        mnSeccion11A.setText("Sección 11-A");
+        mnSeccion11A.setName("mnSeccion11A"); // NOI18N
+        jMenu7.add(mnSeccion11A);
+
+        mnSeccion12A.setText("Sección 12-A");
+        mnSeccion12A.setName("mnSeccion12A"); // NOI18N
+        jMenu7.add(mnSeccion12A);
+
+        jMenu3.add(jMenu7);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu6.setText("Especialidades");
+
+        mnSecretariado.setText("Secretariado");
+        mnSecretariado.setName("mnSecretariado"); // NOI18N
+        mnSecretariado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSecretariadoActionPerformed(evt);
+            }
+        });
+        jMenu6.add(mnSecretariado);
+
+        mnMecanica.setText("Mecanica");
+        mnMecanica.setName("mnMecanica"); // NOI18N
+        jMenu6.add(mnMecanica);
+
+        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mnAdministrativosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAdministrativosActionPerformed
+        AdministrativoWindow ventana = new AdministrativoWindow();
+        ventana.setVisible(true);
+        
+    }//GEN-LAST:event_mnAdministrativosActionPerformed
+
+    private void mnRegistrarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRegistrarEncargadoActionPerformed
+        EncargadoWindow ventana = new EncargadoWindow();
+        ventana.setVisible(true);
+        
+    }//GEN-LAST:event_mnRegistrarEncargadoActionPerformed
+
     private void mnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarEstudianteActionPerformed
         EstudianteWindow ventana = new EstudianteWindow();
-                ventana.setVisible(true);
+        ventana.setVisible(true);
     }//GEN-LAST:event_mnAgregarEstudianteActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void mnSecretariadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSecretariadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnSecretariadoActionPerformed
+    
+    
+    private void actualizarTablaEstudiante(){
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nivel");
+        modelo.addColumn("Sección");
+        Object[] fila = new Object[4];
+        JOptionPane.showMessageDialog(null, Controlador.listarEstudiantes());
+        /*for(int i=0; i<Controlador.listarEstudiantes().size();i++){
+            Estudiante estudiante = Controlador.listarEstudiantes().get(i);
+            fila[0] = estudiante.getNombre();
+            fila[1] = estudiante.getPrimerApellido();
+            fila[2] = estudiante.getNivel();
+            fila[3] = estudiante.getSeccion();
+            modelo.addRow(fila);*/
+        ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
+            for (Estudiante estudiante : listadeestudiantes)
+            {
+                fila[0] = estudiante.getNombre();
+                fila[1] = estudiante.getPrimerApellido();
+                fila[2] = estudiante.getNivel();
+                fila[3] = estudiante.getSeccion();
+                modelo.addRow(fila);
+            }
+        tblPrincipal.setModel(modelo);
+    }
+    private void mnListarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarEstudianteActionPerformed
+        
+       actualizarTablaEstudiante();
+    }//GEN-LAST:event_mnListarEstudianteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,19 +357,39 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JMenuItem mnAdministrativos;
     private javax.swing.JMenuItem mnAgregarEstudiante;
+    private javax.swing.JMenuItem mnListarEstudiante;
+    private javax.swing.JMenuItem mnMecanica;
+    private javax.swing.JMenuItem mnRegistrarEncargado;
+    private javax.swing.JMenuItem mnSeccion10A;
+    private javax.swing.JMenuItem mnSeccion11A;
+    private javax.swing.JMenuItem mnSeccion12A;
+    private javax.swing.JMenuItem mnSeccion1A;
+    private javax.swing.JMenuItem mnSeccion2A;
+    private javax.swing.JMenuItem mnSeccion3A;
+    private javax.swing.JMenuItem mnSeccion4A;
+    private javax.swing.JMenuItem mnSeccion5A;
+    private javax.swing.JMenuItem mnSeccion6A;
+    private javax.swing.JMenuItem mnSeccion7A;
+    private javax.swing.JMenuItem mnSeccion8A;
+    private javax.swing.JMenuItem mnSeccion9A;
+    private javax.swing.JMenuItem mnSecretariado;
+    private javax.swing.JTable tblPrincipal;
     // End of variables declaration//GEN-END:variables
 }

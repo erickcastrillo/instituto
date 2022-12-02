@@ -34,11 +34,11 @@ public class Estudiante extends Persona {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int getNivel() {
+    public String getNivel() {
         return nivel;
     }
 
-    public void setNivel(int nivel) {
+    public void setNivel(String nivel) {
         this.nivel = nivel;
     }
 
@@ -61,7 +61,7 @@ public class Estudiante extends Persona {
     // Constructor incluyendo los atributos heredados de la clase Persona
     public Estudiante(
             String fechaNacimiento,
-            int nivel, 
+            String nivel,
             String seccion, 
             String idEncargado, 
             String identificacion, 
@@ -78,7 +78,7 @@ public class Estudiante extends Persona {
     // Constructor incluyendo los atributos solo de esta clase
     public Estudiante(
             String fechaNacimiento,
-            int nivel, 
+            String nivel,
             String seccion, 
             String idEncargado) {
         this.fechaNacimiento = fechaNacimiento;
@@ -91,7 +91,7 @@ public class Estudiante extends Persona {
     public Estudiante(){}
     
     private String fechaNacimiento;
-    private int nivel;
+    private String nivel;
     private String seccion;
     private String idEncargado;
 }

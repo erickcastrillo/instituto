@@ -16,6 +16,9 @@
  */
 package instituto.gui;
 
+import instituto.data.controladdores.Controlador;
+import instituto.data.modelos.Encargado;
+
 /**
  *
  * @author Julio
@@ -27,6 +30,10 @@ public class EncargadoWindow extends javax.swing.JFrame {
      */
     public EncargadoWindow() {
         initComponents();
+        btnActualizar.setVisible(false);
+        btnBorrar.setVisible(false);
+        btnAgregarEstudiante.setVisible(false);
+        tblEstudiantes_Encargado.setVisible(false);
     }
 
     /**
@@ -44,27 +51,31 @@ public class EncargadoWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtCelular = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
-        txtSegundoApellido = new javax.swing.JTextField();
-        txtCedula = new javax.swing.JTextField();
+        txtCelularEncargado = new javax.swing.JTextField();
+        txtNombreEncargado = new javax.swing.JTextField();
+        txtApellidoEncargado = new javax.swing.JTextField();
+        txtSegundoApellidoEncargado = new javax.swing.JTextField();
+        txtCedulaEncargado = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        txtCorreo = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
+        btnAgregarEstudiante = new javax.swing.JButton();
+        txtCorreoEncargado = new javax.swing.JTextField();
+        txtDireccionEncargado = new javax.swing.JTextField();
         btnBorrar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
-        txtActualizarClave = new javax.swing.JTextField();
+        txtClave = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        btnGuardarEncargado = new javax.swing.JButton();
+        chxAcceso = new javax.swing.JCheckBox();
+        btnSalir = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblEstudiantes_Encargado = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("INFORMACIÓN");
+        jLabel1.setText("Datos de Encargado");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
         jLabel2.setText("Nombre:");
@@ -82,20 +93,46 @@ public class EncargadoWindow extends javax.swing.JFrame {
         jLabel6.setText("Celular:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
-        txtCelular.setName("txtCelular"); // NOI18N
-        getContentPane().add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 260, 40));
+        txtCelularEncargado.setName("txtCelularEncargado"); // NOI18N
+        getContentPane().add(txtCelularEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 260, 40));
 
-        txtNombre.setName("txtNombre"); // NOI18N
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 260, 40));
+        txtNombreEncargado.setName("txtNombreEncargado"); // NOI18N
+        txtNombreEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreEncargadoKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtNombreEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 260, 40));
 
-        txtApellido.setName("txtApellido"); // NOI18N
-        getContentPane().add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 260, 40));
+        txtApellidoEncargado.setName("txtApellidoEncargado"); // NOI18N
+        txtApellidoEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtApellidoEncargadoKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtApellidoEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 260, 40));
 
-        txtSegundoApellido.setName("txtSegundoApellido"); // NOI18N
-        getContentPane().add(txtSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 260, 40));
+        txtSegundoApellidoEncargado.setName("txtSegundoApellidoEncargado"); // NOI18N
+        txtSegundoApellidoEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSegundoApellidoEncargadoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSegundoApellidoEncargadoKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSegundoApellidoEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 260, 40));
 
-        txtCedula.setName("txtCedula"); // NOI18N
-        getContentPane().add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 260, 40));
+        txtCedulaEncargado.setName("txtCedulaEncargado"); // NOI18N
+        txtCedulaEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaEncargadoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaEncargadoKeyTyped(evt);
+            }
+        });
+        getContentPane().add(txtCedulaEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 260, 40));
 
         jLabel7.setText("Correo Electronico:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
@@ -103,29 +140,61 @@ public class EncargadoWindow extends javax.swing.JFrame {
         jLabel8.setText("Dirección:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, -1, -1));
 
-        jButton1.setText("Agregar estudiante");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarEstudiante.setText("Agregar estudiante");
+        btnAgregarEstudiante.setName("btnAgregarEstudiante"); // NOI18N
+        btnAgregarEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAgregarEstudianteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, -1, -1));
+        getContentPane().add(btnAgregarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, -1, -1));
 
-        txtCorreo.setName("txtCorreo"); // NOI18N
-        getContentPane().add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 260, 50));
+        txtCorreoEncargado.setName("txtCorreoEncargado"); // NOI18N
+        getContentPane().add(txtCorreoEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 260, 50));
 
-        txtDireccion.setName("txtDireccion"); // NOI18N
-        getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 260, 40));
+        txtDireccionEncargado.setName("txtDireccionEncargado"); // NOI18N
+        getContentPane().add(txtDireccionEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 260, 40));
 
         btnBorrar.setText("Eliminar datos");
         btnBorrar.setName("btnBorrar"); // NOI18N
-        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 510, -1, -1));
+        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, -1, -1));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.setName("btnActualizar"); // NOI18N
-        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, -1, -1));
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel9.setText("Clave:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
+
+        txtClave.setName("txtClave"); // NOI18N
+        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 260, 40));
+
+        jButton2.setText("Nuevo");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
+
+        btnGuardarEncargado.setText("Guardar");
+        btnGuardarEncargado.setName("btnGuardarEncargado"); // NOI18N
+        btnGuardarEncargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarEncargadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuardarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
+
+        chxAcceso.setText("Brindar Acceso");
+        chxAcceso.setName("chxAcceso"); // NOI18N
+        chxAcceso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chxAccesoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(chxAcceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, -1, -1));
+
+        btnSalir.setText("Salir");
+        btnSalir.setName("btnSalir"); // NOI18N
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));
+
+        tblEstudiantes_Encargado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -136,22 +205,94 @@ public class EncargadoWindow extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblEstudiantes_Encargado.setName("tblEstudiantes_Encargado"); // NOI18N
+        jScrollPane2.setViewportView(tblEstudiantes_Encargado);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 550, -1, 160));
-
-        jLabel9.setText("Contraseña");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
-
-        txtActualizarClave.setName("txtActualizarClave"); // NOI18N
-        getContentPane().add(txtActualizarClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 260, 40));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, -1, 120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstudianteActionPerformed
+        EstudianteWindow ventana = new EstudianteWindow();
+        ventana.setVisible(true);
+        tblEstudiantes_Encargado.setVisible(true);
+        
+    }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
+
+    private void btnGuardarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEncargadoActionPerformed
+        Encargado encargado = new Encargado();
+        encargado.setNombre(txtNombreEncargado.getText());
+        encargado.setPrimerApellido(txtApellidoEncargado.getText());
+        encargado.setSegundoApellido(txtSegundoApellidoEncargado.getText());
+        encargado.setIdentificacion(txtCedulaEncargado.getText());
+        encargado.setCorreoElectronico(txtCorreoEncargado.getText());
+        encargado.setDireccion(txtDireccionEncargado.getText());
+        encargado.setTelefono(txtCelularEncargado.getText());
+        encargado.setClave(txtClave.getText());
+        encargado.setAcceso(chxAcceso.isSelected());
+        
+        Controlador.crearEncargado(encargado);
+        btnActualizar.setVisible(true);
+        btnActualizar.setVisible(true);
+        btnAgregarEstudiante.setVisible(true);
+    }//GEN-LAST:event_btnGuardarEncargadoActionPerformed
+
+    private void chxAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxAccesoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_chxAccesoActionPerformed
+
+    private void txtNombreEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEncargadoKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtNombreEncargado.setEditable(true);
+                }else 
+                {
+                    txtNombreEncargado.setEditable(false);
+                }
+    }//GEN-LAST:event_txtNombreEncargadoKeyPressed
+
+    private void txtCedulaEncargadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEncargadoKeyTyped
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtCedulaEncargado.setEditable(false);
+                }else 
+                {
+                    txtCedulaEncargado.setEditable(true);
+                }
+    }//GEN-LAST:event_txtCedulaEncargadoKeyTyped
+
+    private void txtCedulaEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEncargadoKeyPressed
+        
+    }//GEN-LAST:event_txtCedulaEncargadoKeyPressed
+
+    private void txtApellidoEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEncargadoKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtApellidoEncargado.setEditable(true);
+                }else 
+                {
+                    txtApellidoEncargado.setEditable(false);
+                }
+    }//GEN-LAST:event_txtApellidoEncargadoKeyPressed
+
+    private void txtSegundoApellidoEncargadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEncargadoKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSegundoApellidoEncargadoKeyReleased
+
+    private void txtSegundoApellidoEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEncargadoKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtSegundoApellidoEncargado.setEditable(true);
+                }else 
+                {
+                    txtSegundoApellidoEncargado.setEditable(false);
+                }
+    }//GEN-LAST:event_txtSegundoApellidoEncargadoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -190,8 +331,12 @@ public class EncargadoWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAgregarEstudiante;
     private javax.swing.JButton btnBorrar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnGuardarEncargado;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JCheckBox chxAcceso;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -201,15 +346,15 @@ public class EncargadoWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtActualizarClave;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCelular;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtSegundoApellido;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblEstudiantes_Encargado;
+    private javax.swing.JTextField txtApellidoEncargado;
+    private javax.swing.JTextField txtCedulaEncargado;
+    private javax.swing.JTextField txtCelularEncargado;
+    private javax.swing.JTextField txtClave;
+    private javax.swing.JTextField txtCorreoEncargado;
+    private javax.swing.JTextField txtDireccionEncargado;
+    private javax.swing.JTextField txtNombreEncargado;
+    private javax.swing.JTextField txtSegundoApellidoEncargado;
     // End of variables declaration//GEN-END:variables
 }

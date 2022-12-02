@@ -25,6 +25,9 @@ package instituto.data.modelos;
  */
 public class Encargado extends Usuario {
 
+    public Encargado() {
+    }
+
     public String getCorreoElectronico() {
         return correoElectronico;
     }

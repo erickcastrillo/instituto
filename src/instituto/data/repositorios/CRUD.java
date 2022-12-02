@@ -22,7 +22,7 @@ import instituto.data.modelos.*;
 import java.util.ArrayList;
 
 /**
- * Interface que se utiliza para estandarizar los metodoos para los
+ * Interface que se utiliza para estandarizar los métodos para los
  * repositorios de datos
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
@@ -48,4 +48,8 @@ public interface CRUD {
     Boolean actualizar(Persona persona);
     // Borrar un objeto
     Boolean borrar(Persona persona);
+    // Cargar datos del disco duro
+    Boolean cargarDatos();
+    // Guardar datos
+    Boolean guardarDatos();
 }

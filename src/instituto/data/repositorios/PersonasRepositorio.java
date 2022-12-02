@@ -43,16 +43,16 @@ public class PersonasRepositorio implements CRUD {
     public ArrayList<Persona> listar(String filtro) {
         return switch (filtro) {
             case "Encargado" -> (ArrayList<Persona>) listaPersonas.stream()
-                    .filter(persona -> persona.getClass().isInstance(Encargado.class))
+                    .filter(persona -> persona instanceof Encargado)
                     .collect(Collectors.toList());
             case "Estudiante" -> (ArrayList<Persona>) listaPersonas.stream()
-                    .filter(persona -> persona.getClass().isInstance(Estudiante.class))
+                    .filter(persona -> persona instanceof Estudiante)
                     .collect(Collectors.toList());
             case "EstudianteIV" -> (ArrayList<Persona>) listaPersonas.stream()
-                    .filter(persona -> persona.getClass().isInstance(EstudianteIV.class))
+                    .filter(persona -> persona instanceof EstudianteIV)
                     .collect(Collectors.toList());
             case "Usuario" -> (ArrayList<Persona>) listaPersonas.stream()
-                    .filter(persona -> persona.getClass().isInstance(Usuario.class))
+                    .filter(persona -> persona instanceof Usuario)
                     .collect(Collectors.toList());
             default -> this.listaPersonas;
         };
@@ -62,7 +62,7 @@ public class PersonasRepositorio implements CRUD {
     public ArrayList<Encargado> listarEncargados() {
         ArrayList<Encargado> encargados = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
-            if(persona.getClass().isInstance(Encargado.class)){
+            if(persona instanceof Encargado){
                 encargados.add((Encargado) persona);
             }
         }
@@ -73,7 +73,7 @@ public class PersonasRepositorio implements CRUD {
     public ArrayList<Estudiante> listarEstudiantes() {
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
-            if(persona.getClass().isInstance(Estudiante.class)){
+            if(persona instanceof Estudiante){
                 estudiantes.add((Estudiante) persona);
             }
         }
@@ -84,7 +84,7 @@ public class PersonasRepositorio implements CRUD {
     public ArrayList<EstudianteIV> listarEstudiantesIV() {
         ArrayList<EstudianteIV> estudiantesIV = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
-            if(persona.getClass().isInstance(EstudianteIV.class)){
+            if(persona instanceof EstudianteIV){
                 estudiantesIV.add((EstudianteIV) persona);
             }
         }
@@ -95,7 +95,7 @@ public class PersonasRepositorio implements CRUD {
     public ArrayList<Usuario> listarUsuarios() {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
-            if(persona.getClass().isInstance(Usuario.class)){
+            if(persona instanceof Usuario){
                 usuarios.add((Usuario) persona);
             }
         }
@@ -172,5 +172,38 @@ public class PersonasRepositorio implements CRUD {
     @Override
     public Boolean borrar(Persona persona) {
         return this.listaPersonas.removeIf(p -> Objects.equals(persona.getId(), p.getId()));
+    }
+    
+    /**
+     * Returns a list of Estudiantes from a given Encargado Id
+     * @param encargadoId
+     * @return 
+     */
+    public ArrayList<Estudiante> estudiantesPorEncargado(String encargadoId){
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        for(Persona persona : this.listaPersonas){
+            if(persona instanceof Estudiante || persona instanceof EstudianteIV){
+                Estudiante estudiante = (Estudiante) persona;
+                if (estudiante.getIdEncargado() == encargadoId) {
+                    estudiantes.add(estudiante);
+                }
+            }
+        }
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public Boolean cargarDatos() {
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public Boolean guardarDatos() {
+        return null;
     }
 }
