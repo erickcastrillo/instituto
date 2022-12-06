@@ -32,6 +32,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
      */
     public EstudianteWindow() {
         initComponents();
+        setLocationRelativeTo(null);
         lblSeccion.setVisible(false);
         cbxPrimaria.setVisible(false);
         cbxTercerCiclo.setVisible(false);
@@ -59,7 +60,6 @@ public class EstudianteWindow extends javax.swing.JFrame {
         txtNombreEstudiante = new javax.swing.JTextField();
         txtApellidoEstudiante = new javax.swing.JTextField();
         txtSegundoApellidoEstudiante = new javax.swing.JTextField();
-        txtCedulaEstudiante = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         lblEspecialidad = new javax.swing.JLabel();
         btnGuardarEstudiante = new javax.swing.JButton();
@@ -76,8 +76,10 @@ public class EstudianteWindow extends javax.swing.JFrame {
         cbxPrimaria = new javax.swing.JComboBox<>();
         cbxCuartoCiclo = new javax.swing.JComboBox<>();
         btnMostrarEncargado = new javax.swing.JButton();
+        txtCedulaEstudiante = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Nombre:");
@@ -104,6 +106,11 @@ public class EstudianteWindow extends javax.swing.JFrame {
         getContentPane().add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 260, 40));
 
         txtNombreEstudiante.setName("txtNombreEstudiante"); // NOI18N
+        txtNombreEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreEstudianteActionPerformed(evt);
+            }
+        });
         txtNombreEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNombreEstudianteKeyPressed(evt);
@@ -126,9 +133,6 @@ public class EstudianteWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSegundoApellidoEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 260, 40));
-
-        txtCedulaEstudiante.setName("txtCedulaEstudiante"); // NOI18N
-        getContentPane().add(txtCedulaEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 260, 40));
 
         jLabel7.setText("Nivel");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
@@ -234,6 +238,14 @@ public class EstudianteWindow extends javax.swing.JFrame {
         });
         getContentPane().add(btnMostrarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 610, -1, -1));
 
+        txtCedulaEstudiante.setName("txtCedulaEstudiante"); // NOI18N
+        txtCedulaEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaEstudianteKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtCedulaEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 260, 40));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -249,7 +261,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudiante.setIdentificacion(txtCedulaEstudiante.getText());
             estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
             estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
-            estudiante.setNivel(String.valueOf(rdbPrimaria.getSelectedObjects()));
+            estudiante.setNivel("Primaria");
             
             Boolean guardado = Controlador.crearEstudiante(estudiante);
             JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito");
@@ -265,8 +277,10 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
             
             estudiante.setSeccion(String.valueOf(cbxTercerCiclo.getSelectedItem()));
-            estudiante.setNivel(String.valueOf(rdbTercerCiclo.isSelected()));
-            
+            estudiante.setNivel("Tercer Ciclo");
+            Boolean guardado = Controlador.crearEstudiante(estudiante);
+            JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito");
+            dispose();
             Controlador.crearEstudiante(estudiante);
             
         }else if (rdbCuartoCiclo.isSelected())
@@ -279,10 +293,12 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudianteiv.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
             estudianteiv.setIdentificacion(txtCedulaEstudiante.getText());
             estudianteiv.setFechaNacimiento(txtFechaNacimiento.getText());
-            estudianteiv.setNivel(String.valueOf(rdbCuartoCiclo.isSelected()));
+            estudianteiv.setNivel("Cuarto Ciclo");
             estudianteiv.setEspecialidad(String.valueOf(cbxEspecialidad.getSelectedItem()));
-            
-              Controlador.crearEstudianteIV(estudianteiv);
+            JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito");
+            dispose();
+            Boolean guardado = Controlador.crearEstudiante(estudianteiv);
+            Controlador.crearEstudianteIV(estudianteiv);
         }
     }//GEN-LAST:event_btnGuardarEstudianteActionPerformed
 
@@ -343,34 +359,34 @@ public class EstudianteWindow extends javax.swing.JFrame {
 
     private void txtNombreEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEstudianteKeyPressed
         char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtNombreEstudiante.setEditable(true);
-                }else 
+                if(Character.isDigit(c))
                 {
                     txtNombreEstudiante.setEditable(false);
+                }else 
+                {
+                    txtNombreEstudiante.setEditable(true);
                 }
     }//GEN-LAST:event_txtNombreEstudianteKeyPressed
 
     private void txtApellidoEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEstudianteKeyPressed
         char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtApellidoEstudiante.setEditable(true);
-                }else 
+                if(Character.isDigit(c))
                 {
                     txtApellidoEstudiante.setEditable(false);
+                }else 
+                {
+                    txtApellidoEstudiante.setEditable(true);
                 }
     }//GEN-LAST:event_txtApellidoEstudianteKeyPressed
 
     private void txtSegundoApellidoEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEstudianteKeyPressed
         char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtSegundoApellidoEstudiante.setEditable(true);
-                }else 
+                if(Character.isDigit(c))
                 {
                     txtSegundoApellidoEstudiante.setEditable(false);
+                }else 
+                {
+                    txtSegundoApellidoEstudiante.setEditable(true);
                 }
     }//GEN-LAST:event_txtSegundoApellidoEstudianteKeyPressed
 
@@ -384,6 +400,21 @@ public class EstudianteWindow extends javax.swing.JFrame {
                     txtFechaNacimiento.setEditable(true);
                 }
     }//GEN-LAST:event_txtFechaNacimientoKeyPressed
+
+    private void txtNombreEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEstudianteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEstudianteActionPerformed
+
+    private void txtCedulaEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEstudianteKeyPressed
+        char c =evt.getKeyChar();
+                if(Character.isLetter(c))
+                {
+                    txtFechaNacimiento.setEditable(false);
+                }else 
+                {
+                    txtFechaNacimiento.setEditable(true);
+                }
+    }//GEN-LAST:event_txtCedulaEstudianteKeyPressed
 
     /**
      * @param args the command line arguments
@@ -427,10 +458,10 @@ public class EstudianteWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarEstudiante;
     private javax.swing.JButton btnMostrarEncargado;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cbxCuartoCiclo;
-    private javax.swing.JComboBox<String> cbxEspecialidad;
-    private javax.swing.JComboBox<String> cbxPrimaria;
-    private javax.swing.JComboBox<String> cbxTercerCiclo;
+    public javax.swing.JComboBox<String> cbxCuartoCiclo;
+    public javax.swing.JComboBox<String> cbxEspecialidad;
+    public javax.swing.JComboBox<String> cbxPrimaria;
+    public javax.swing.JComboBox<String> cbxTercerCiclo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -438,15 +469,15 @@ public class EstudianteWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel lblEspecialidad;
-    private javax.swing.JLabel lblSeccion;
-    private javax.swing.JRadioButton rdbCuartoCiclo;
-    private javax.swing.JRadioButton rdbPrimaria;
-    private javax.swing.JRadioButton rdbTercerCiclo;
-    private javax.swing.JTextField txtApellidoEstudiante;
-    private javax.swing.JTextField txtCedulaEstudiante;
-    private javax.swing.JTextField txtFechaNacimiento;
-    private javax.swing.JTextField txtNombreEstudiante;
-    private javax.swing.JTextField txtSegundoApellidoEstudiante;
+    public javax.swing.JLabel lblEspecialidad;
+    public javax.swing.JLabel lblSeccion;
+    public javax.swing.JRadioButton rdbCuartoCiclo;
+    public javax.swing.JRadioButton rdbPrimaria;
+    public javax.swing.JRadioButton rdbTercerCiclo;
+    public javax.swing.JTextField txtApellidoEstudiante;
+    public javax.swing.JTextField txtCedulaEstudiante;
+    public javax.swing.JTextField txtFechaNacimiento;
+    public javax.swing.JTextField txtNombreEstudiante;
+    public javax.swing.JTextField txtSegundoApellidoEstudiante;
     // End of variables declaration//GEN-END:variables
 }
