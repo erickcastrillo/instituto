@@ -340,7 +340,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardarEncargado;
     private javax.swing.JButton btnNuevoEncargado;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JCheckBox chxAcceso;
+    public javax.swing.JCheckBox chxAcceso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -352,13 +352,13 @@ public class EncargadoWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblEstudiantes_Encargado;
-    private javax.swing.JTextField txtApellidoEncargado;
-    private javax.swing.JTextField txtCedulaEncargado;
-    private javax.swing.JTextField txtCelularEncargado;
-    private javax.swing.JTextField txtClave;
-    private javax.swing.JTextField txtCorreoEncargado;
-    private javax.swing.JTextField txtDireccionEncargado;
-    private javax.swing.JTextField txtNombreEncargado;
-    private javax.swing.JTextField txtSegundoApellidoEncargado;
+    public javax.swing.JTextField txtApellidoEncargado;
+    public javax.swing.JTextField txtCedulaEncargado;
+    public javax.swing.JTextField txtCelularEncargado;
+    public javax.swing.JTextField txtClave;
+    public javax.swing.JTextField txtCorreoEncargado;
+    public javax.swing.JTextField txtDireccionEncargado;
+    public javax.swing.JTextField txtNombreEncargado;
+    public javax.swing.JTextField txtSegundoApellidoEncargado;
     // End of variables declaration//GEN-END:variables
 }

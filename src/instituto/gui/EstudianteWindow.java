@@ -250,11 +250,10 @@ public class EstudianteWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEstudianteActionPerformed
-        
+               
         if(rdbPrimaria.isSelected())
         {
             Estudiante estudiante = new Estudiante();
-        
             estudiante.setNombre(txtNombreEstudiante.getText());
             estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
             estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
@@ -262,32 +261,27 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
             estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
             estudiante.setNivel("Primaria");
-            
             Boolean guardado = Controlador.crearEstudiante(estudiante);
-            JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito");
+            JOptionPane.showMessageDialog(null, "Estudiante de primaria guardado con éxito");
             dispose();
         }else if (rdbTercerCiclo.isSelected())
         {
             Estudiante estudiante = new Estudiante();
-        
             estudiante.setNombre(txtNombreEstudiante.getText());
             estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
             estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
             estudiante.setIdentificacion(txtCedulaEstudiante.getText());
             estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
-            
             estudiante.setSeccion(String.valueOf(cbxTercerCiclo.getSelectedItem()));
             estudiante.setNivel("Tercer Ciclo");
             Boolean guardado = Controlador.crearEstudiante(estudiante);
-            JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito");
+            JOptionPane.showMessageDialog(null, "Estudiante de tercer ciclo guardado con éxito");
             dispose();
             Controlador.crearEstudiante(estudiante);
             
         }else if (rdbCuartoCiclo.isSelected())
         {
-            
             EstudianteIV estudianteiv = new EstudianteIV();
-            
             estudianteiv.setNombre(txtNombreEstudiante.getText());
             estudianteiv.setPrimerApellido(txtApellidoEstudiante.getText());
             estudianteiv.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
@@ -295,7 +289,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudianteiv.setFechaNacimiento(txtFechaNacimiento.getText());
             estudianteiv.setNivel("Cuarto Ciclo");
             estudianteiv.setEspecialidad(String.valueOf(cbxEspecialidad.getSelectedItem()));
-            JOptionPane.showMessageDialog(null, "Estudiante guardado con éxito");
+            JOptionPane.showMessageDialog(null, "Estudiante de cuarto ciclo guardado con éxito");
             dispose();
             Boolean guardado = Controlador.crearEstudiante(estudianteiv);
             Controlador.crearEstudianteIV(estudianteiv);

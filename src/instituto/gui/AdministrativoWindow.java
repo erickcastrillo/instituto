@@ -227,8 +227,11 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         usuario.setIdentificacion(txtCedulaAdministrativo.getText());
         usuario.setClave(txtClaveAdministrativo.getText());
         usuario.setTelefono(txtTelefonoAdministrativo.getText());
-        //usuario.setTipoUsuario(String.valueOf(cbxRolAdministrativo.getSelectedIndex()));
-        // falta agregar el tipo de usuario que es el administrativo.
+        String RolAdministrativo = String.valueOf(cbxRolAdministrativo.getSelectedItem());
+            /**if (RolAdministrativo =="")
+            {
+                usuario.set("Profesor");
+            }*/
         Boolean guardado = Controlador.crearUsuario(usuario);
         JOptionPane.showMessageDialog(null, "Administrativo guardado con éxito");
             dispose();
@@ -294,7 +297,7 @@ public class AdministrativoWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> cbxRolAdministrativo;
+    public javax.swing.JComboBox<String> cbxRolAdministrativo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -308,11 +311,11 @@ public class AdministrativoWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField txtCedulaAdministrativo;
-    private javax.swing.JTextField txtClaveAdministrativo;
-    private javax.swing.JTextField txtNombreAdministrativo;
-    private javax.swing.JTextField txtPrimerApellidoAdministrativo;
-    private javax.swing.JTextField txtSegundoApellidoAdministrativo;
-    private javax.swing.JTextField txtTelefonoAdministrativo;
+    public javax.swing.JTextField txtCedulaAdministrativo;
+    public javax.swing.JTextField txtClaveAdministrativo;
+    public javax.swing.JTextField txtNombreAdministrativo;
+    public javax.swing.JTextField txtPrimerApellidoAdministrativo;
+    public javax.swing.JTextField txtSegundoApellidoAdministrativo;
+    public javax.swing.JTextField txtTelefonoAdministrativo;
     // End of variables declaration//GEN-END:variables
 }

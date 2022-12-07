@@ -17,6 +17,7 @@
 package instituto.gui;
 
 import instituto.data.controladdores.Controlador;
+import static instituto.data.controladdores.Controlador.obtenerEstudianteIV;
 import instituto.data.modelos.Encargado;
 import instituto.data.modelos.Estudiante;
 import instituto.data.modelos.EstudianteIV;
@@ -380,20 +381,22 @@ public class Principal extends javax.swing.JFrame {
     
     private void actualizarTablaEstudiante(){
         modelo = new DefaultTableModel();
+        modelo.addColumn("Tipo");
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("Nivel");
         modelo.addColumn("Sección");
-        Object[] fila = new Object[5];
+        Object[] fila = new Object[6];
         ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
             for (Estudiante estudiante : listadeestudiantes)
             {
-                fila[0] = estudiante.getId();
-                fila[1] = estudiante.getNombre();
-                fila[2] = estudiante.getPrimerApellido();
-                fila[3] = estudiante.getNivel();
-                fila[4] = estudiante.getSeccion();
+                fila[0] = "Estudiante";
+                fila[1] = estudiante.getId();
+                fila[2] = estudiante.getNombre();
+                fila[3] = estudiante.getPrimerApellido();
+                fila[4] = estudiante.getNivel();
+                fila[5] = estudiante.getSeccion();
                 modelo.addRow(fila);
             }
         tblPrincipal.setModel(modelo);
@@ -402,19 +405,21 @@ public class Principal extends javax.swing.JFrame {
     {
         modelo = new DefaultTableModel();
         modelo.addColumn("Tipo");
+        modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("Telefono");
         modelo.addColumn("Acceso");
-        Object[] fila = new Object[5];
+        Object[] fila = new Object[6];
         ArrayList<Encargado> listadeencargados = Controlador.listarEncargados();
         for (Encargado encargado : listadeencargados)
             {
                 fila[0] = "Encargado";
-                fila[1] = encargado.getNombre();
-                fila[2] = encargado.getPrimerApellido();
-                fila[3] = encargado.getTelefono();
-                fila[4] = encargado.getAcceso();
+                fila[1] = encargado.getId();
+                fila[2] = encargado.getNombre();
+                fila[3] = encargado.getPrimerApellido();
+                fila[4] = encargado.getTelefono();
+                fila[5] = encargado.getAcceso();
                 modelo.addRow(fila);
             }
         tblPrincipal.setModel(modelo);
@@ -423,19 +428,21 @@ public class Principal extends javax.swing.JFrame {
     {
         modelo = new DefaultTableModel();
         modelo.addColumn("Tipo");
+        modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("Nivel");
         modelo.addColumn("Sección");
-        Object[] fila = new Object[5];
+        Object[] fila = new Object[6];
         ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
             for (Estudiante estudiante : listadeestudiantes)
-            { // if estudiante . get nivel == primaria o primer ciclo 
+            {
                 fila[0] = "Estudiante";
-                fila[1] = estudiante.getNombre();
-                fila[2] = estudiante.getPrimerApellido();
-                fila[3] = estudiante.getNivel();
-                fila[4] = estudiante.getSeccion();
+                fila[1] = estudiante.getId();
+                fila[2] = estudiante.getNombre();
+                fila[3] = estudiante.getPrimerApellido();
+                fila[4] = estudiante.getNivel();
+                fila[5] = estudiante.getSeccion();
                 modelo.addRow(fila);
             }
         tblPrincipal.setModel(modelo);
@@ -466,19 +473,23 @@ public class Principal extends javax.swing.JFrame {
     {
         modelo = new DefaultTableModel();
         modelo.addColumn("Tipo");
+        modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("Nivel");
         modelo.addColumn("Sección");
-        Object[] fila = new Object[5];
-        ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
-            for (Estudiante estudiante : listadeestudiantes)
+        modelo.addColumn("Especialidad");
+        Object[] fila = new Object[7];
+        ArrayList<EstudianteIV> listadeestudiantes = Controlador.listarEstudiantesIV();
+            for (EstudianteIV estudianteiv : listadeestudiantes)
             {
-                fila[0] = "Estudiante";
-                fila[1] = estudiante.getNombre();
-                fila[2] = estudiante.getPrimerApellido();
-                fila[3] = estudiante.getNivel();
-                fila[4] = estudiante.getSeccion();
+                fila[0] = "Estudiante IV";
+                fila[1] = estudianteiv.getId();
+                fila[2] = estudianteiv.getNombre();
+                fila[3] = estudianteiv.getPrimerApellido();
+                fila[4] = estudianteiv.getNivel();
+                fila[5] = estudianteiv.getSeccion();
+                fila[6] = estudianteiv.getEspecialidad();
                 modelo.addRow(fila);
             }
         tblPrincipal.setModel(modelo);
@@ -488,19 +499,21 @@ public class Principal extends javax.swing.JFrame {
     {
         modelo = new DefaultTableModel();
         modelo.addColumn("Tipo");
+        modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
         modelo.addColumn("Telefono");
         modelo.addColumn("Rol");
-        Object[] fila = new Object[5];
+        Object[] fila = new Object[6];
         ArrayList<Usuario> listadeadministrativos = Controlador.listarUsuarios();
         for (Usuario usuario : listadeadministrativos)
             {
                 fila[0] = "Administrativo";
-                fila[1] = usuario.getNombre();
-                fila[2] = usuario.getPrimerApellido();
-                fila[3] = usuario.getTelefono();
-                fila[4] = usuario.getTipoUsuario();
+                fila[1] = usuario.getId();
+                fila[2] = usuario.getNombre();
+                fila[3] = usuario.getPrimerApellido();
+                fila[4] = usuario.getTelefono();
+                fila[5] = usuario.getTipoUsuario();
                 modelo.addRow(fila);
             }
         tblPrincipal.setModel(modelo);
@@ -515,19 +528,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnListarAdministrativosActionPerformed
     
     private void tblPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPrincipalMouseClicked
-        /* int indice = tbDepartamentos.getSelectedRow();
-        txtId.setText(String.valueOf(Login.empresa.getListaDepartamento().get(indice).getId()));
-        txtDescripcion.setText(Login.empresa.getListaDepartamento().get(indice).getDescripcion());
-        txtId.setEnabled(true);
-        txtDescripcion.setEnabled(true);
-        btnAlmacenar.setEnabled(true);
-        btnBorrar.setEnabled(true);
-        btnAlmacenar.setText("Actualizar");*/ 
-        
+                
         int selectedRow =tblPrincipal.getSelectedRow();
-        String id = tblPrincipal.getValueAt(selectedRow, 0).toString();
-        if(id != null) 
+        String tipo = tblPrincipal.getValueAt(selectedRow, 0).toString();
+        //Estudiante estudiante = Controlador.obtenerEstudiante(id);
+        //Encargado engarcado = Controlador.obtenerEncargado(id);
+        //EstudianteIV estudianteiv= Controlador.obtenerEstudianteIV(id);
+        //Usuario usuario = Controlador.obtenerUsuario(id);
+        if(tipo == "Estudiante")
         {
+            String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
             Estudiante estudiante = Controlador.obtenerEstudiante(id);
             EstudianteWindow ventana = new EstudianteWindow();
             ventana.setVisible(true);
@@ -549,16 +559,54 @@ public class Principal extends javax.swing.JFrame {
                 ventana.cbxTercerCiclo.setSelectedItem(estudiante.getSeccion());
                 ventana.lblSeccion.setVisible(true);
                 ventana.cbxTercerCiclo.setVisible(true);
-            }else if (estudiante.getNivel()=="Cuarto Ciclo")
-            {
-                //ventana.rdbCuartoCiclo.setSelected(true);
-                //ventana.cbxCuartoCiclo.setSelectedItem(EstudianteIV);
-            }
+            }  
+        }
+        else if (tipo == "Encargado")
+        {
+            String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
+            Encargado encargado = Controlador.obtenerEncargado(id);
+            EncargadoWindow ventana = new EncargadoWindow();
+            ventana.setVisible(true);
+            ventana.txtNombreEncargado.setText(encargado.getNombre());
+            ventana.txtApellidoEncargado.setText(encargado.getPrimerApellido());
+            ventana.txtSegundoApellidoEncargado.setText(encargado.getSegundoApellido());
+            ventana.txtCedulaEncargado.setText(encargado.getIdentificacion());
+            ventana.txtCelularEncargado.setText(encargado.getTelefono());
+            ventana.txtClave.setText(encargado.getClave());
+            ventana.txtDireccionEncargado.setText(encargado.getDireccion());
+            ventana.txtCorreoEncargado.setText(encargado.getCorreoElectronico());
+        }
+        else if(tipo=="Estudiante IV")
+        {
+            String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
+            EstudianteIV estudianteiv = Controlador.obtenerEstudianteIV(id);
+            EstudianteWindow ventana = new EstudianteWindow();
+            ventana.setVisible(true);
+            ventana.txtNombreEstudiante.setText(estudianteiv.getNombre());
+            ventana.txtApellidoEstudiante.setText(estudianteiv.getPrimerApellido());
+            ventana.txtSegundoApellidoEstudiante.setText(estudianteiv.getSegundoApellido());
+            ventana.txtCedulaEstudiante.setText(estudianteiv.getIdentificacion());
+            ventana.txtFechaNacimiento.setText(estudianteiv.getFechaNacimiento());
+            ventana.rdbCuartoCiclo.setSelected(true);
+            ventana.cbxCuartoCiclo.setSelectedItem(estudianteiv.getSeccion());
+            ventana.lblSeccion.setVisible(true);
+            ventana.cbxCuartoCiclo.setVisible(true);
+        }
+        else if (tipo=="Administrativo")
+        {
+            String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
+            Usuario usuario = Controlador.obtenerUsuario(id);
+            AdministrativoWindow ventana = new AdministrativoWindow();
+            ventana.setVisible(true);
+            ventana.txtNombreAdministrativo.setText(usuario.getNombre());
+            ventana.txtPrimerApellidoAdministrativo.setText(usuario.getPrimerApellido());
+            ventana.txtSegundoApellidoAdministrativo.setText(usuario.getSegundoApellido());
+            ventana.txtCedulaAdministrativo.setText(usuario.getIdentificacion());
+            ventana.txtTelefonoAdministrativo.setText(usuario.getTelefono());
+            ventana.cbxRolAdministrativo.setSelectedItem(usuario.getTipoUsuario());
+            ventana.txtClaveAdministrativo.setText(usuario.getClave());
             
         }
-        
-       
-              
     }//GEN-LAST:event_tblPrincipalMouseClicked
     private void listarSeccion1A()
     {
@@ -644,9 +692,9 @@ public class Principal extends javax.swing.JFrame {
     private void mnSeccion12AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion12AActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnSeccion12AActionPerformed
-
+    
     private void mnListarPrimariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarPrimariaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_mnListarPrimariaActionPerformed
 
     /**
