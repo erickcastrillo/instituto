@@ -62,8 +62,8 @@ public class PersonasRepositorio implements CRUD {
     public ArrayList<Encargado> listarEncargados() {
         ArrayList<Encargado> encargados = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
-            if(persona instanceof Encargado){
-                encargados.add((Encargado) persona);
+            if(persona instanceof Encargado encargado){
+                encargados.add(encargado);
             }
         }
         return encargados;
@@ -73,8 +73,8 @@ public class PersonasRepositorio implements CRUD {
     public ArrayList<Estudiante> listarEstudiantes() {
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
-            if(persona instanceof Estudiante){
-                estudiantes.add((Estudiante) persona);
+            if(persona instanceof Estudiante estudiante){
+                estudiantes.add(estudiante);
             }
         }
         return estudiantes;
@@ -84,8 +84,8 @@ public class PersonasRepositorio implements CRUD {
     public ArrayList<EstudianteIV> listarEstudiantesIV() {
         ArrayList<EstudianteIV> estudiantesIV = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
-            if(persona instanceof EstudianteIV){
-                estudiantesIV.add((EstudianteIV) persona);
+            if(persona instanceof EstudianteIV estudianteIV){
+                estudiantesIV.add(estudianteIV);
             }
         }
         return estudiantesIV;
@@ -95,8 +95,8 @@ public class PersonasRepositorio implements CRUD {
     public ArrayList<Usuario> listarUsuarios() {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
-            if(persona instanceof Usuario){
-                usuarios.add((Usuario) persona);
+            if(persona instanceof Usuario usuario){
+                usuarios.add(usuario);
             }
         }
         return usuarios;
@@ -184,7 +184,7 @@ public class PersonasRepositorio implements CRUD {
         for(Persona persona : this.listaPersonas){
             if(persona instanceof Estudiante || persona instanceof EstudianteIV){
                 Estudiante estudiante = (Estudiante) persona;
-                if (estudiante.getIdEncargado() == encargadoId) {
+                if (estudiante.getIdEncargado() == null ? encargadoId == null : estudiante.getIdEncargado().equals(encargadoId)) {
                     estudiantes.add(estudiante);
                 }
             }
