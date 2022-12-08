@@ -17,16 +17,14 @@
 package instituto.gui;
 
 import instituto.data.controladdores.Controlador;
-import static instituto.data.controladdores.Controlador.obtenerEstudianteIV;
 import instituto.data.modelos.Encargado;
 import instituto.data.modelos.Estudiante;
 import instituto.data.modelos.EstudianteIV;
 import instituto.data.modelos.Usuario;
 import instituto.data.repositorios.PersonasRepositorio;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -212,6 +210,11 @@ public class Principal extends javax.swing.JFrame {
 
         mnSeccion1A.setText("Sección 1-A");
         mnSeccion1A.setName("mnSeccion1A"); // NOI18N
+        mnSeccion1A.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnSeccion1AMouseClicked(evt);
+            }
+        });
         mnSeccion1A.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnSeccion1AActionPerformed(evt);
@@ -379,7 +382,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnSecretariadoActionPerformed
     
     
-    private void actualizarTablaEstudiante(){
+    private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
         modelo = new DefaultTableModel();
         modelo.addColumn("Tipo");
         modelo.addColumn("ID");
@@ -388,7 +391,7 @@ public class Principal extends javax.swing.JFrame {
         modelo.addColumn("Nivel");
         modelo.addColumn("Sección");
         Object[] fila = new Object[6];
-        ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
+        
             for (Estudiante estudiante : listadeestudiantes)
             {
                 fila[0] = "Estudiante";
@@ -520,7 +523,9 @@ public class Principal extends javax.swing.JFrame {
     }
     
     private void mnListarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarEstudianteActionPerformed
-      actualizarTablaEstudiante();
+
+        ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
+        actualizarTablaEstudiante(listadeestudiantes);
     }//GEN-LAST:event_mnListarEstudianteActionPerformed
     
     private void mnListarAdministrativosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarAdministrativosActionPerformed
@@ -613,89 +618,106 @@ public class Principal extends javax.swing.JFrame {
         
     }
     private void mnSeccion1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion1AActionPerformed
-        // TODO add your handling code here:
+
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("1-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion1AActionPerformed
     private void listarSeccion2A()
     {
         
     }
     private void mnSeccion2AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion2AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("2-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion2AActionPerformed
     private void listarSeccion3A()
     {
         
     }
     private void mnSeccion3AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion3AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("3-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion3AActionPerformed
     private void listarSeccion4A()
     {
         
     }
     private void mnSeccion4AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion4AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("4-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion4AActionPerformed
     private void listarSeccion5A()
     {
         
     }
     private void mnSeccion5AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion5AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("5-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion5AActionPerformed
     private void listarSeccion6A()
     {
         
     }
     private void mnSeccion6AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion6AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("6-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion6AActionPerformed
     private void listarSeccion7A()
     {
         
     }
     private void mnSeccion7AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion7AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("7-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion7AActionPerformed
     private void listarSeccion8A()
     {
         
     }
     private void mnSeccion8AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion8AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("8-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion8AActionPerformed
     private void listarSeccion9A()
     {
         
     }
     private void mnSeccion9AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion9AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("9-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion9AActionPerformed
     private void listarSeccion10A()
     {
         
     }
     private void mnSeccion10AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion10AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("10-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion10AActionPerformed
     private void listarSeccion11A()
     {
         
     }
     private void mnSeccion11AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion11AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("11-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion11AActionPerformed
     private void listarSeccion12A()
     {
         
     }
     private void mnSeccion12AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion12AActionPerformed
-        // TODO add your handling code here:
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("12-A");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion12AActionPerformed
     
     private void mnListarPrimariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarPrimariaActionPerformed
         
     }//GEN-LAST:event_mnListarPrimariaActionPerformed
+
+    private void mnSeccion1AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSeccion1AMouseClicked
+
+    }//GEN-LAST:event_mnSeccion1AMouseClicked
 
     /**
      * @param args the command line arguments
