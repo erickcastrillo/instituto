@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 public class PersonasRepositorio implements CRUD {
 
     // Creating a new ArrayList of Personas.
-    private final ArrayList<Persona> listaPersonas = new ArrayList<>();
+    private ArrayList<Persona> listaPersonas = new ArrayList<>();
     
     /**
      * Returning the list of Personas.
@@ -219,7 +219,7 @@ public class PersonasRepositorio implements CRUD {
         for(Persona persona : this.listaPersonas){
             if(persona instanceof Estudiante || persona instanceof EstudianteIV){
                 Estudiante estudiante = (Estudiante) persona;
-                if (estudiante.getIdEncargado() == encargadoId) {
+                if (estudiante.getIdEncargado() == null ? encargadoId == null : estudiante.getIdEncargado().equals(encargadoId)) {
                     estudiantes.add(estudiante);
                 }
             }
@@ -232,7 +232,13 @@ public class PersonasRepositorio implements CRUD {
      */
     @Override
     public Boolean cargarDatos() {
-        return null;
+        Object datos = Serializador.deserializar("database.dat");
+        if(datos != null){
+            this.listaPersonas = (ArrayList<Persona>) datos;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -240,7 +246,7 @@ public class PersonasRepositorio implements CRUD {
      */
     @Override
     public Boolean guardarDatos() {
-        return null;
+        return Serializador.serializar(this.listaPersonas, "database.dat");
     }
     
 }

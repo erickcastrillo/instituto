@@ -37,7 +37,7 @@ public class Serializador {
      * Serializa una clase u Objeto y lo guarda en el disco duro
      * @param obj Objeto o Clase a Serializar
      * @param fileName Ubicación del archivo a guardar
-     * @throws IOException IOException
+     * @return true si el objeto se serializo o false si no se logro
      */
     public static Boolean serializar(Object obj, String fileName) {
         try{
