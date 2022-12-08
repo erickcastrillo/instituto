@@ -261,4 +261,8 @@ public class Controlador {
             return false;
         }
     }
+    
+    public static ArrayList<Estudiante> obtenerEstudiantesPorEncargado(String encargadoId){
+        
+    }
 }
