@@ -20,6 +20,7 @@ package instituto.data.repositorios;
 import instituto.data.modelos.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Interface que se utiliza para estandarizar los métodos para los
@@ -34,6 +35,8 @@ public interface CRUD {
     ArrayList<Encargado> listarEncargados();
     // Listar todos los Estudiantes
     ArrayList<Estudiante> listarEstudiantes();
+    List<Estudiante> filtrarEstudiantesSeccion(String Seccion);
+    //Listar Secciones
     // Listar todos los Estudiantes de IV ciclo
     ArrayList<EstudianteIV> listarEstudiantesIV();
     // Listar todos los Usuarios

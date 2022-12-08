@@ -24,6 +24,7 @@ import instituto.data.modelos.Usuario;
 import instituto.data.repositorios.PersonasRepositorio;
 import instituto.data.repositorios.Serializador;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -245,8 +246,12 @@ public class Controlador {
         PersonasRepositorio repo = (PersonasRepositorio) Serializador.deserializar(
                 "PersonasRepositorio.dat"
         );
-        return repo == null;
+        return repo == null;   
 
+    }
+    
+    public static List<Estudiante> filtrarEstudiantesSeccion(String Seccion){
+        return repositorio.filtrarEstudiantesSeccion(Seccion);
     }
 
     /** 
@@ -260,9 +265,5 @@ public class Controlador {
         } catch(NoSuchElementException e){
             return false;
         }
-    }
-    
-    public static ArrayList<Estudiante> obtenerEstudiantesPorEncargado(String encargadoId){
-        
     }
 }
