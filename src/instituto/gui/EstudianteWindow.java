@@ -201,7 +201,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
         });
         getContentPane().add(cbxTercerCiclo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
 
-        cbxEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Mecánica", "Secretariado" }));
+        cbxEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Mecanica", "Secretariado" }));
         cbxEspecialidad.setName("cbxEspecialidad"); // NOI18N
         getContentPane().add(cbxEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, -1, -1));
 
@@ -262,8 +262,16 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
             estudiante.setNivel("Primaria");
             Boolean guardado = Controlador.crearEstudiante(estudiante);
-            JOptionPane.showMessageDialog(null, "Estudiante de primaria guardado con éxito");
-            dispose();
+            if (guardado)
+            {
+               JOptionPane.showMessageDialog(null, "Estudiante de primaria guardado con éxito"); 
+               dispose();
+            }else 
+            {
+              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
+            
         }else if (rdbTercerCiclo.isSelected())
         {
             Estudiante estudiante = new Estudiante();
@@ -275,9 +283,15 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudiante.setSeccion(String.valueOf(cbxTercerCiclo.getSelectedItem()));
             estudiante.setNivel("Tercer Ciclo");
             Boolean guardado = Controlador.crearEstudiante(estudiante);
-            JOptionPane.showMessageDialog(null, "Estudiante de tercer ciclo guardado con éxito");
-            dispose();
-            Controlador.crearEstudiante(estudiante);
+            if (guardado)
+            {
+               JOptionPane.showMessageDialog(null, "Estudiante de Tercer Ciclo guardado con éxito"); 
+               dispose();
+            }else 
+            {
+              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
             
         }else if (rdbCuartoCiclo.isSelected())
         {
@@ -288,11 +302,19 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudianteiv.setIdentificacion(txtCedulaEstudiante.getText());
             estudianteiv.setFechaNacimiento(txtFechaNacimiento.getText());
             estudianteiv.setNivel("Cuarto Ciclo");
+            estudianteiv.setSeccion(String.valueOf(cbxCuartoCiclo.getSelectedItem()));
             estudianteiv.setEspecialidad(String.valueOf(cbxEspecialidad.getSelectedItem()));
-            JOptionPane.showMessageDialog(null, "Estudiante de cuarto ciclo guardado con éxito");
-            dispose();
-            Boolean guardado = Controlador.crearEstudiante(estudianteiv);
-            Controlador.crearEstudianteIV(estudianteiv);
+            //estudianteiv.setSeccion(String.valueOf(cbxCuartoCiclo.getSelectedItem()));
+            Boolean guardado = Controlador.crearEstudianteIV(estudianteiv);
+            if (guardado)
+            {
+               JOptionPane.showMessageDialog(null, "Estudiante de IV Ciclo guardado con éxito"); 
+               dispose();
+            }else 
+            {
+              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnGuardarEstudianteActionPerformed
 

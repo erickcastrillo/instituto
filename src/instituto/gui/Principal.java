@@ -156,10 +156,20 @@ public class Principal extends javax.swing.JFrame {
 
         mnListarTercerCiclo.setText("Tercer Ciclo");
         mnListarTercerCiclo.setName("mnListarTercerCiclo"); // NOI18N
+        mnListarTercerCiclo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListarTercerCicloActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnListarTercerCiclo);
 
         mnListarIV.setText("Cuarto Ciclo");
         mnListarIV.setName("mnListarIV"); // NOI18N
+        mnListarIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListarIVActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnListarIV);
 
         mnListarAdministrativos.setText("Administrativos");
@@ -347,6 +357,11 @@ public class Principal extends javax.swing.JFrame {
 
         mnMecanica.setText("Mecanica");
         mnMecanica.setName("mnMecanica"); // NOI18N
+        mnMecanica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnMecanicaActionPerformed(evt);
+            }
+        });
         jMenu6.add(mnMecanica);
 
         jMenuBar1.add(jMenu6);
@@ -378,17 +393,41 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnListarEncargadosActionPerformed
 
     private void mnSecretariadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSecretariadoActionPerformed
-        // TODO add your handling code here:
+        List<EstudianteIV>estudianteIVs = Controlador.filtrarPorEspecialidad("Secretariado");
+        this.actualizarTablaEstudianteIV(estudianteIVs);
     }//GEN-LAST:event_mnSecretariadoActionPerformed
     
-    
+    private void actualizarTablaEstudianteIV(List<EstudianteIV> listadeestudiantes){
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Tipo");
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Nivel");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Sección");
+        modelo.addColumn("Especialidad");
+        Object[] fila = new Object[7];
+        
+            for (EstudianteIV estudianteiv : listadeestudiantes)
+            {
+                fila[0] = "Estudiante";
+                fila[1] = estudianteiv.getId();
+                fila[2] = estudianteiv.getNombre();
+                fila[3] = estudianteiv.getNivel();
+                fila[4] = estudianteiv.getPrimerApellido();
+                fila[5] = estudianteiv.getSeccion();
+                fila[6] = estudianteiv.getEspecialidad();
+                modelo.addRow(fila);
+            }
+        tblPrincipal.setModel(modelo);
+    }
     private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
         modelo = new DefaultTableModel();
         modelo.addColumn("Tipo");
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Apellido");
         modelo.addColumn("Nivel");
+        modelo.addColumn("Apellido");
         modelo.addColumn("Sección");
         Object[] fila = new Object[6];
         
@@ -397,8 +436,8 @@ public class Principal extends javax.swing.JFrame {
                 fila[0] = "Estudiante";
                 fila[1] = estudiante.getId();
                 fila[2] = estudiante.getNombre();
-                fila[3] = estudiante.getPrimerApellido();
-                fila[4] = estudiante.getNivel();
+                fila[3] = estudiante.getNivel();
+                fila[4] = estudiante.getPrimerApellido();
                 fila[5] = estudiante.getSeccion();
                 modelo.addRow(fila);
             }
@@ -407,20 +446,20 @@ public class Principal extends javax.swing.JFrame {
     private void actualizarTablaEncargado()
     {
         modelo = new DefaultTableModel();
-        modelo.addColumn("Tipo");
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
+        modelo.addColumn("Tipo");
         modelo.addColumn("Telefono");
         modelo.addColumn("Acceso");
         Object[] fila = new Object[6];
         ArrayList<Encargado> listadeencargados = Controlador.listarEncargados();
         for (Encargado encargado : listadeencargados)
             {
-                fila[0] = "Encargado";
-                fila[1] = encargado.getId();
-                fila[2] = encargado.getNombre();
-                fila[3] = encargado.getPrimerApellido();
+                fila[0] = encargado.getId();
+                fila[1] = encargado.getNombre();
+                fila[2] = encargado.getPrimerApellido();
+                fila[3] = "Encargado";
                 fila[4] = encargado.getTelefono();
                 fila[5] = encargado.getAcceso();
                 modelo.addRow(fila);
@@ -443,56 +482,9 @@ public class Principal extends javax.swing.JFrame {
                 fila[0] = "Estudiante";
                 fila[1] = estudiante.getId();
                 fila[2] = estudiante.getNombre();
-                fila[3] = estudiante.getPrimerApellido();
-                fila[4] = estudiante.getNivel();
-                fila[5] = estudiante.getSeccion();
-                modelo.addRow(fila);
-            }
-        tblPrincipal.setModel(modelo);
-    }
-    private void actualizarTablaEstudianteTercerCiclo()
-    {
-        modelo = new DefaultTableModel();
-        modelo.addColumn("Tipo");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Apellido");
-        modelo.addColumn("Nivel");
-        modelo.addColumn("Sección");
-        Object[] fila = new Object[5];
-        ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
-            for (Estudiante estudiante : listadeestudiantes)
-            {
-                fila[0] = "Estudiante";
-                fila[1] = estudiante.getNombre();
-                fila[2] = estudiante.getPrimerApellido();
                 fila[3] = estudiante.getNivel();
-                fila[4] = estudiante.getSeccion();
-                modelo.addRow(fila);
-            }
-        tblPrincipal.setModel(modelo);
-    }
-    
-    private void actualizarTablaEstudianteIV()
-    {
-        modelo = new DefaultTableModel();
-        modelo.addColumn("Tipo");
-        modelo.addColumn("ID");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Apellido");
-        modelo.addColumn("Nivel");
-        modelo.addColumn("Sección");
-        modelo.addColumn("Especialidad");
-        Object[] fila = new Object[7];
-        ArrayList<EstudianteIV> listadeestudiantes = Controlador.listarEstudiantesIV();
-            for (EstudianteIV estudianteiv : listadeestudiantes)
-            {
-                fila[0] = "Estudiante IV";
-                fila[1] = estudianteiv.getId();
-                fila[2] = estudianteiv.getNombre();
-                fila[3] = estudianteiv.getPrimerApellido();
-                fila[4] = estudianteiv.getNivel();
-                fila[5] = estudianteiv.getSeccion();
-                fila[6] = estudianteiv.getEspecialidad();
+                fila[4] = estudiante.getPrimerApellido();
+                fila[5] = estudiante.getSeccion();
                 modelo.addRow(fila);
             }
         tblPrincipal.setModel(modelo);
@@ -501,22 +493,22 @@ public class Principal extends javax.swing.JFrame {
     private void actualizarTablaAdministrativos()
     {
         modelo = new DefaultTableModel();
-        modelo.addColumn("Tipo");
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
+        modelo.addColumn("Tipo");
         modelo.addColumn("Telefono");
-        modelo.addColumn("Rol");
+        modelo.addColumn("Cedula");
         Object[] fila = new Object[6];
         ArrayList<Usuario> listadeadministrativos = Controlador.listarUsuarios();
         for (Usuario usuario : listadeadministrativos)
             {
-                fila[0] = "Administrativo";
-                fila[1] = usuario.getId();
-                fila[2] = usuario.getNombre();
-                fila[3] = usuario.getPrimerApellido();
+                fila[0] = usuario.getId();
+                fila[1] = usuario.getNombre();
+                fila[2] = usuario.getPrimerApellido();
+                fila[3] = "Administrativo";
                 fila[4] = usuario.getTelefono();
-                fila[5] = usuario.getTipoUsuario();
+                fila[5] = usuario.getIdentificacion();
                 modelo.addRow(fila);
             }
         tblPrincipal.setModel(modelo);
@@ -535,12 +527,12 @@ public class Principal extends javax.swing.JFrame {
     private void tblPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPrincipalMouseClicked
                 
         int selectedRow =tblPrincipal.getSelectedRow();
-        String tipo = tblPrincipal.getValueAt(selectedRow, 0).toString();
+        String tipo = tblPrincipal.getValueAt(selectedRow, 3).toString();
         //Estudiante estudiante = Controlador.obtenerEstudiante(id);
         //Encargado engarcado = Controlador.obtenerEncargado(id);
         //EstudianteIV estudianteiv= Controlador.obtenerEstudianteIV(id);
         //Usuario usuario = Controlador.obtenerUsuario(id);
-        if(tipo == "Estudiante")
+        if(tipo == "Primaria")
         {
             String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
             Estudiante estudiante = Controlador.obtenerEstudiante(id);
@@ -551,20 +543,26 @@ public class Principal extends javax.swing.JFrame {
             ventana.txtSegundoApellidoEstudiante.setText(estudiante.getSegundoApellido());
             ventana.txtCedulaEstudiante.setText(estudiante.getIdentificacion());
             ventana.txtFechaNacimiento.setText(estudiante.getFechaNacimiento());
-            
-            if (estudiante.getNivel()=="Primaria")
-            {
-                ventana.rdbPrimaria.setSelected(true);
-                ventana.cbxPrimaria.setSelectedItem(estudiante.getSeccion());
-                ventana.lblSeccion.setVisible(true);
-                ventana.cbxPrimaria.setVisible(true);
-            }else if (estudiante.getNivel()=="Tercer Ciclo")
-            {
-                ventana.rdbTercerCiclo.setSelected(true);
-                ventana.cbxTercerCiclo.setSelectedItem(estudiante.getSeccion());
-                ventana.lblSeccion.setVisible(true);
-                ventana.cbxTercerCiclo.setVisible(true);
-            }  
+            ventana.rdbPrimaria.setSelected(true);
+            ventana.cbxPrimaria.setSelectedItem(estudiante.getSeccion());
+            ventana.lblSeccion.setVisible(true);
+            ventana.cbxPrimaria.setVisible(true);
+        }
+        else if (tipo=="Tercer Ciclo")
+        {
+            String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
+            Estudiante estudiante = Controlador.obtenerEstudiante(id);
+            EstudianteWindow ventana = new EstudianteWindow();
+            ventana.setVisible(true);
+            ventana.txtNombreEstudiante.setText(estudiante.getNombre());
+            ventana.txtApellidoEstudiante.setText(estudiante.getPrimerApellido());
+            ventana.txtSegundoApellidoEstudiante.setText(estudiante.getSegundoApellido());
+            ventana.txtCedulaEstudiante.setText(estudiante.getIdentificacion());
+            ventana.txtFechaNacimiento.setText(estudiante.getFechaNacimiento());
+            ventana.rdbTercerCiclo.setSelected(true);
+            ventana.cbxTercerCiclo.setSelectedItem(estudiante.getSeccion());
+            ventana.lblSeccion.setVisible(true);
+            ventana.cbxTercerCiclo.setVisible(true);
         }
         else if (tipo == "Encargado")
         {
@@ -580,8 +578,9 @@ public class Principal extends javax.swing.JFrame {
             ventana.txtClave.setText(encargado.getClave());
             ventana.txtDireccionEncargado.setText(encargado.getDireccion());
             ventana.txtCorreoEncargado.setText(encargado.getCorreoElectronico());
+            ventana.chxAcceso.setSelected(encargado.getAcceso());
         }
-        else if(tipo=="Estudiante IV")
+        else if(tipo=="Cuarto Ciclo")
         {
             String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
             EstudianteIV estudianteiv = Controlador.obtenerEstudianteIV(id);
@@ -593,9 +592,12 @@ public class Principal extends javax.swing.JFrame {
             ventana.txtCedulaEstudiante.setText(estudianteiv.getIdentificacion());
             ventana.txtFechaNacimiento.setText(estudianteiv.getFechaNacimiento());
             ventana.rdbCuartoCiclo.setSelected(true);
-            ventana.cbxCuartoCiclo.setSelectedItem(estudianteiv.getSeccion());
             ventana.lblSeccion.setVisible(true);
             ventana.cbxCuartoCiclo.setVisible(true);
+            ventana.cbxCuartoCiclo.setSelectedItem(estudianteiv.getSeccion());
+            ventana.lblEspecialidad.setVisible(true);
+            ventana.cbxEspecialidad.setVisible(true);
+            ventana.cbxEspecialidad.setSelectedItem(estudianteiv.getEspecialidad());   
         }
         else if (tipo=="Administrativo")
         {
@@ -608,116 +610,93 @@ public class Principal extends javax.swing.JFrame {
             ventana.txtSegundoApellidoAdministrativo.setText(usuario.getSegundoApellido());
             ventana.txtCedulaAdministrativo.setText(usuario.getIdentificacion());
             ventana.txtTelefonoAdministrativo.setText(usuario.getTelefono());
-            ventana.cbxRolAdministrativo.setSelectedItem(usuario.getTipoUsuario());
-            ventana.txtClaveAdministrativo.setText(usuario.getClave());
-            
+            ventana.txtClaveAdministrativo.setText(usuario.getClave());   
         }
     }//GEN-LAST:event_tblPrincipalMouseClicked
-    private void listarSeccion1A()
-    {
-        
-    }
+    
     private void mnSeccion1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion1AActionPerformed
-
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("1-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion1AActionPerformed
-    private void listarSeccion2A()
-    {
-        
-    }
+    
     private void mnSeccion2AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion2AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("2-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion2AActionPerformed
-    private void listarSeccion3A()
-    {
-        
-    }
+   
     private void mnSeccion3AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion3AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("3-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion3AActionPerformed
-    private void listarSeccion4A()
-    {
-        
-    }
+   
     private void mnSeccion4AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion4AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("4-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion4AActionPerformed
-    private void listarSeccion5A()
-    {
-        
-    }
+   
     private void mnSeccion5AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion5AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("5-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion5AActionPerformed
-    private void listarSeccion6A()
-    {
-        
-    }
+  
     private void mnSeccion6AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion6AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("6-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion6AActionPerformed
-    private void listarSeccion7A()
-    {
-        
-    }
+   
     private void mnSeccion7AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion7AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("7-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion7AActionPerformed
-    private void listarSeccion8A()
-    {
-        
-    }
+  
     private void mnSeccion8AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion8AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("8-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion8AActionPerformed
-    private void listarSeccion9A()
-    {
-        
-    }
+   
     private void mnSeccion9AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion9AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("9-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion9AActionPerformed
-    private void listarSeccion10A()
-    {
-        
-    }
+    
     private void mnSeccion10AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion10AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("10-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion10AActionPerformed
-    private void listarSeccion11A()
-    {
-        
-    }
+  
     private void mnSeccion11AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion11AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("11-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion11AActionPerformed
-    private void listarSeccion12A()
-    {
-        
-    }
+   
     private void mnSeccion12AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion12AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("12-A");
         this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnSeccion12AActionPerformed
     
     private void mnListarPrimariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarPrimariaActionPerformed
-        
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesNivel("Primaria");
+        this.actualizarTablaEstudiante(estudiantes);
     }//GEN-LAST:event_mnListarPrimariaActionPerformed
 
     private void mnSeccion1AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnSeccion1AMouseClicked
 
     }//GEN-LAST:event_mnSeccion1AMouseClicked
+
+    private void mnListarTercerCicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarTercerCicloActionPerformed
+        List<Estudiante> estudiantes = Controlador.filtrarEstudiantesNivel("Tercer Ciclo");
+        this.actualizarTablaEstudiante(estudiantes);
+    }//GEN-LAST:event_mnListarTercerCicloActionPerformed
+
+    private void mnListarIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarIVActionPerformed
+        List<EstudianteIV>estudianteIVs = Controlador.filtrarEstudiantesNivelIV("Cuarto Ciclo");
+        this.actualizarTablaEstudianteIV(estudianteIVs);
+    }//GEN-LAST:event_mnListarIVActionPerformed
+
+    private void mnMecanicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnMecanicaActionPerformed
+        List<EstudianteIV>estudianteIVs = Controlador.filtrarPorEspecialidad("Mecanica");
+        this.actualizarTablaEstudianteIV(estudianteIVs);
+    }//GEN-LAST:event_mnMecanicaActionPerformed
 
     /**
      * @param args the command line arguments

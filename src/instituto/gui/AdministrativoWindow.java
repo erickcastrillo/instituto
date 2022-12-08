@@ -17,6 +17,7 @@
 package instituto.gui;
 
 import instituto.data.controladdores.Controlador;
+import instituto.data.modelos.TipoUsuario;
 import instituto.data.modelos.Usuario;
 import javax.swing.JOptionPane;
 
@@ -43,7 +44,6 @@ public class AdministrativoWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -53,7 +53,6 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         txtSegundoApellidoAdministrativo = new javax.swing.JTextField();
         txtTelefonoAdministrativo = new javax.swing.JTextField();
         txtClaveAdministrativo = new javax.swing.JTextField();
-        cbxRolAdministrativo = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -69,9 +68,6 @@ public class AdministrativoWindow extends javax.swing.JFrame {
 
         jLabel1.setText("Personal Administrativo");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
-
-        jLabel2.setText("Rol:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
 
         jLabel3.setText("Nombre:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
@@ -120,10 +116,6 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         txtClaveAdministrativo.setName("txtClaveAdministrativo"); // NOI18N
         getContentPane().add(txtClaveAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 220, -1));
 
-        cbxRolAdministrativo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Administrativo", "Profesor", "Seguridad", "Miscelaneo" }));
-        cbxRolAdministrativo.setName("cbxRolAdministrativo"); // NOI18N
-        getContentPane().add(cbxRolAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
-
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -140,13 +132,13 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, 150));
 
         jButton1.setText("Nuevo");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, -1, -1));
 
         jButton2.setText("Actualizar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, -1));
 
         jButton3.setText("Eliminar");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, -1));
 
         btnGuardar.setText("Guardar");
         btnGuardar.setName("btnGuardar"); // NOI18N
@@ -155,7 +147,7 @@ public class AdministrativoWindow extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, -1, -1));
 
         jLabel8.setText("Cédula:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
@@ -227,11 +219,7 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         usuario.setIdentificacion(txtCedulaAdministrativo.getText());
         usuario.setClave(txtClaveAdministrativo.getText());
         usuario.setTelefono(txtTelefonoAdministrativo.getText());
-        String RolAdministrativo = String.valueOf(cbxRolAdministrativo.getSelectedItem());
-            /**if (RolAdministrativo =="")
-            {
-                usuario.set("Profesor");
-            }*/
+        usuario.setTipoUsuario(TipoUsuario.ADMINISTRACION);
         Boolean guardado = Controlador.crearUsuario(usuario);
         JOptionPane.showMessageDialog(null, "Administrativo guardado con éxito");
             dispose();
@@ -297,12 +285,10 @@ public class AdministrativoWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    public javax.swing.JComboBox<String> cbxRolAdministrativo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

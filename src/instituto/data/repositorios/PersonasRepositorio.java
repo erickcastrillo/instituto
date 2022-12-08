@@ -87,12 +87,37 @@ public class PersonasRepositorio implements CRUD {
                 .collect(Collectors.toList());
     }
     
-       
     
+    @Override
+    public List<Estudiante> filtrarEstudiantesNivel(String Nivel){
+        return this.listaPersonas
+                .stream()
+                .filter(persona->persona instanceof Estudiante && ((Estudiante)persona)
+                        .getNivel().equalsIgnoreCase(Nivel))
+                .map(per -> (Estudiante)per)
+                .collect(Collectors.toList());
+    }
+    
+    public List<EstudianteIV> filtrarEstudiantesNivelIV(String Nivel){
+        return this.listaPersonas
+                .stream()
+                .filter(persona->persona instanceof Estudiante && ((Estudiante)persona)
+                        .getNivel().equalsIgnoreCase(Nivel))
+                .map(per -> (EstudianteIV)per)
+                .collect(Collectors.toList());
+    }
+    public List<EstudianteIV> filtrarPorEspecialidad (String Especialidad){
+        return this.listaPersonas
+                .stream()
+                .filter(persona->persona instanceof EstudianteIV && ((EstudianteIV)persona)
+                        .getEspecialidad().equalsIgnoreCase(Especialidad))
+                .map(per -> (EstudianteIV)per)
+                .collect(Collectors.toList());
+    }
 
     @Override
-    public ArrayList<EstudianteIV> listarEstudiantesIV() {
-        ArrayList<EstudianteIV> estudiantesIV = new ArrayList<>();
+    public List<EstudianteIV> listarEstudiantesIV() {
+        List<EstudianteIV> estudiantesIV = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
             if(persona instanceof EstudianteIV estudianteIV){
                 estudiantesIV.add(estudianteIV);
@@ -217,4 +242,5 @@ public class PersonasRepositorio implements CRUD {
     public Boolean guardarDatos() {
         return null;
     }
+    
 }

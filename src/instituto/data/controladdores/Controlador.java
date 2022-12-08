@@ -142,7 +142,7 @@ public class Controlador {
      * Regresa una lista de objetos de clase EstudianteIV
      * @return lista de clases EstudianteIV
      */
-    public static ArrayList<EstudianteIV> listarEstudiantesIV() {
+    public static List<EstudianteIV> listarEstudiantesIV() {
         return repositorio.listarEstudiantesIV();
     }
 
@@ -253,7 +253,16 @@ public class Controlador {
     public static List<Estudiante> filtrarEstudiantesSeccion(String Seccion){
         return repositorio.filtrarEstudiantesSeccion(Seccion);
     }
-
+    public static List<EstudianteIV> filtrarPorEspecialidad(String Especialidad){
+        return repositorio.filtrarPorEspecialidad(Especialidad);
+    }
+    
+    public static List<Estudiante> filtrarEstudiantesNivel(String Nivel){
+        return repositorio.filtrarEstudiantesNivel(Nivel);
+    }
+    public static List<EstudianteIV> filtrarEstudiantesNivelIV(String Nivel){
+        return repositorio.filtrarEstudiantesNivelIV(Nivel);
+    }
     /** 
      * Guarda los datos de un objeto (en este caso el repositorio) en el
      * disco duro

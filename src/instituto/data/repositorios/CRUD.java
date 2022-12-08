@@ -31,14 +31,24 @@ import java.util.List;
 public interface CRUD {
     // Listar todas las personas
     ArrayList<Persona> listar(String filtro);
+    
     // Listar todos los Encargados
     ArrayList<Encargado> listarEncargados();
+    
     // Listar todos los Estudiantes
     ArrayList<Estudiante> listarEstudiantes();
-    List<Estudiante> filtrarEstudiantesSeccion(String Seccion);
+    
     //Listar Secciones
+    List<Estudiante> filtrarEstudiantesSeccion(String Seccion);
+    
+    //lisrtar estudiantes por nivel /(prim-o tercer c - o cuarto)
+    List<Estudiante> filtrarEstudiantesNivel(String Nivel);
+    
     // Listar todos los Estudiantes de IV ciclo
-    ArrayList<EstudianteIV> listarEstudiantesIV();
+    List<EstudianteIV> listarEstudiantesIV();
+    
+    List<EstudianteIV> filtrarPorEspecialidad(String Especialidad);
+    
     // Listar todos los Usuarios
     ArrayList<Usuario> listarUsuarios();
     // Crear una Persona
