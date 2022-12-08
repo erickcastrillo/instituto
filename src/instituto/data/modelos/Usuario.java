@@ -32,7 +32,7 @@ public class Usuario extends Persona {
             String clave, 
             String identificacion, 
             String nombre, 
-            String primerApellido, 
+            String primerApellido,
             String segundoApellido) {
         super(identificacion, nombre, primerApellido, segundoApellido);
         this.tipoUsuario = tipoUsuario;
@@ -58,7 +58,7 @@ public class Usuario extends Persona {
         return tipoUsuario;
     }
 
-    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+      public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
 

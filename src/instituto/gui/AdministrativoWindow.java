@@ -16,7 +16,9 @@
  */
 package instituto.gui;
 
+import instituto.data.controladdores.Controlador;
 import instituto.data.modelos.Usuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,12 +27,11 @@ import instituto.data.modelos.Usuario;
 public class AdministrativoWindow extends javax.swing.JFrame {
 
     /**
-     * Creates new form Administrador
+     * Creates new form NewJFrame
      */
     public AdministrativoWindow() {
         initComponents();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,8 +42,6 @@ public class AdministrativoWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -51,7 +50,6 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtNombreAdministrativo = new javax.swing.JTextField();
-        txtPrimerApellidoAdministrativo = new javax.swing.JTextField();
         txtSegundoApellidoAdministrativo = new javax.swing.JTextField();
         txtTelefonoAdministrativo = new javax.swing.JTextField();
         txtClaveAdministrativo = new javax.swing.JTextField();
@@ -64,21 +62,9 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtCedulaAdministrativo = new javax.swing.JTextField();
+        txtPrimerApellidoAdministrativo = new javax.swing.JTextField();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Personal Administrativo");
@@ -114,14 +100,6 @@ public class AdministrativoWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNombreAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 220, -1));
-
-        txtPrimerApellidoAdministrativo.setName("txtPrimerApellidoAdministrativo"); // NOI18N
-        txtPrimerApellidoAdministrativo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtPrimerApellidoAdministrativoKeyPressed(evt);
-            }
-        });
-        getContentPane().add(txtPrimerApellidoAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 220, -1));
 
         txtSegundoApellidoAdministrativo.setName("txtSegundoApellidoAdministrativo"); // NOI18N
         txtSegundoApellidoAdministrativo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -190,8 +168,56 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         });
         getContentPane().add(txtCedulaAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 220, -1));
 
+        txtPrimerApellidoAdministrativo.setName("txtPrimerApellidoAdministrativo"); // NOI18N
+        txtPrimerApellidoAdministrativo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPrimerApellidoAdministrativoKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtPrimerApellidoAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 220, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNombreAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreAdministrativoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreAdministrativoActionPerformed
+
+    private void txtNombreAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreAdministrativoKeyPressed
+        char c =evt.getKeyChar();
+        if(Character.isDigit(c))
+        {
+            txtNombreAdministrativo.setEditable(false);
+        }else
+        {
+            txtNombreAdministrativo.setEditable(true);
+        }
+    }//GEN-LAST:event_txtNombreAdministrativoKeyPressed
+
+    private void txtSegundoApellidoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoAdministrativoKeyPressed
+        char c =evt.getKeyChar();
+        if(Character.isDigit(c))
+        {
+            txtNombreAdministrativo.setEditable(false);
+        }else
+        {
+            txtNombreAdministrativo.setEditable(true);
+        }
+    }//GEN-LAST:event_txtSegundoApellidoAdministrativoKeyPressed
+
+    private void txtTelefonoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoAdministrativoKeyPressed
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c))
+        {
+            txtTelefonoAdministrativo.setEditable(false);
+        } else if (Character.isSpaceChar(c))
+        {
+            txtTelefonoAdministrativo.setEditable(false);
+        }else
+        {
+            txtTelefonoAdministrativo.setEditable(true);
+        }
+    }//GEN-LAST:event_txtTelefonoAdministrativoKeyPressed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         Usuario usuario = new Usuario();
@@ -201,71 +227,37 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         usuario.setIdentificacion(txtCedulaAdministrativo.getText());
         usuario.setClave(txtClaveAdministrativo.getText());
         usuario.setTelefono(txtTelefonoAdministrativo.getText());
-        // falta agregar el tipo de usuario que es el administrativo.
-        
+        String RolAdministrativo = String.valueOf(cbxRolAdministrativo.getSelectedItem());
+            /**if (RolAdministrativo =="")
+            {
+                usuario.set("Profesor");
+            }*/
+        Boolean guardado = Controlador.crearUsuario(usuario);
+        JOptionPane.showMessageDialog(null, "Administrativo guardado con éxito");
+            dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void txtNombreAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreAdministrativoKeyPressed
-         char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtNombreAdministrativo.setEditable(true);
-                }else 
-                {
-                    txtNombreAdministrativo.setEditable(false);
-                }
-    }//GEN-LAST:event_txtNombreAdministrativoKeyPressed
+    private void txtCedulaAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaAdministrativoKeyPressed
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c))
+        {
+            txtCedulaAdministrativo.setEditable(false);
+        }else
+        {
+            txtCedulaAdministrativo.setEditable(true);
+        }
+    }//GEN-LAST:event_txtCedulaAdministrativoKeyPressed
 
     private void txtPrimerApellidoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrimerApellidoAdministrativoKeyPressed
         char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtPrimerApellidoAdministrativo.setEditable(true);
-                }else 
-                {
-                    txtPrimerApellidoAdministrativo.setEditable(false);
-                }
+        if(Character.isDigit(c))
+        {
+            txtNombreAdministrativo.setEditable(false);
+        }else
+        {
+            txtNombreAdministrativo.setEditable(true);
+        }
     }//GEN-LAST:event_txtPrimerApellidoAdministrativoKeyPressed
-
-    private void txtSegundoApellidoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoAdministrativoKeyPressed
-        char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtPrimerApellidoAdministrativo.setEditable(true);
-                }else 
-                {
-                    txtPrimerApellidoAdministrativo.setEditable(false);
-                }
-    }//GEN-LAST:event_txtSegundoApellidoAdministrativoKeyPressed
-
-    private void txtCedulaAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaAdministrativoKeyPressed
-         char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtCedulaAdministrativo.setEditable(false);
-                }else 
-                {
-                    txtCedulaAdministrativo.setEditable(true);
-                }
-    }//GEN-LAST:event_txtCedulaAdministrativoKeyPressed
-
-    private void txtTelefonoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoAdministrativoKeyPressed
-         char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtTelefonoAdministrativo.setEditable(false);
-                } else if (Character.isSpaceChar(c))
-                {
-                    txtTelefonoAdministrativo.setEditable(false);            
-                }else 
-                {
-                    txtTelefonoAdministrativo.setEditable(true);
-                }
-    }//GEN-LAST:event_txtTelefonoAdministrativoKeyPressed
-
-    private void txtNombreAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreAdministrativoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreAdministrativoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,7 +297,7 @@ public class AdministrativoWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> cbxRolAdministrativo;
+    public javax.swing.JComboBox<String> cbxRolAdministrativo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -317,15 +309,13 @@ public class AdministrativoWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField txtCedulaAdministrativo;
-    private javax.swing.JTextField txtClaveAdministrativo;
-    private javax.swing.JTextField txtNombreAdministrativo;
-    private javax.swing.JTextField txtPrimerApellidoAdministrativo;
-    private javax.swing.JTextField txtSegundoApellidoAdministrativo;
-    private javax.swing.JTextField txtTelefonoAdministrativo;
+    public javax.swing.JTextField txtCedulaAdministrativo;
+    public javax.swing.JTextField txtClaveAdministrativo;
+    public javax.swing.JTextField txtNombreAdministrativo;
+    public javax.swing.JTextField txtPrimerApellidoAdministrativo;
+    public javax.swing.JTextField txtSegundoApellidoAdministrativo;
+    public javax.swing.JTextField txtTelefonoAdministrativo;
     // End of variables declaration//GEN-END:variables
 }

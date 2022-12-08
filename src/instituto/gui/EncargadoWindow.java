@@ -18,6 +18,7 @@ package instituto.gui;
 
 import instituto.data.controladdores.Controlador;
 import instituto.data.modelos.Encargado;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,14 +27,11 @@ import instituto.data.modelos.Encargado;
 public class EncargadoWindow extends javax.swing.JFrame {
 
     /**
-     * Creates new form Encargado
+     * Creates new form encargadoW
      */
     public EncargadoWindow() {
+        
         initComponents();
-        btnActualizar.setVisible(false);
-        btnBorrar.setVisible(false);
-        btnAgregarEstudiante.setVisible(false);
-        tblEstudiantes_Encargado.setVisible(false);
     }
 
     /**
@@ -65,14 +63,14 @@ public class EncargadoWindow extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtClave = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnNuevoEncargado = new javax.swing.JButton();
         btnGuardarEncargado = new javax.swing.JButton();
         chxAcceso = new javax.swing.JCheckBox();
         btnSalir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEstudiantes_Encargado = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Datos de Encargado");
@@ -169,8 +167,9 @@ public class EncargadoWindow extends javax.swing.JFrame {
         txtClave.setName("txtClave"); // NOI18N
         getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 260, 40));
 
-        jButton2.setText("Nuevo");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
+        btnNuevoEncargado.setText("Nuevo");
+        btnNuevoEncargado.setName("btnNuevoEncargado"); // NOI18N
+        getContentPane().add(btnNuevoEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
 
         btnGuardarEncargado.setText("Guardar");
         btnGuardarEncargado.setName("btnGuardarEncargado"); // NOI18N
@@ -208,16 +207,68 @@ public class EncargadoWindow extends javax.swing.JFrame {
         tblEstudiantes_Encargado.setName("tblEstudiantes_Encargado"); // NOI18N
         jScrollPane2.setViewportView(tblEstudiantes_Encargado);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, -1, 120));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, -1, 120));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNombreEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEncargadoKeyPressed
+        char c =evt.getKeyChar();
+        if(Character.isDigit(c))
+        {
+            txtApellidoEncargado.setEditable(false);
+        }else
+        {
+            txtApellidoEncargado.setEditable(true);
+        }
+    }//GEN-LAST:event_txtNombreEncargadoKeyPressed
+
+    private void txtApellidoEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEncargadoKeyPressed
+        char c =evt.getKeyChar();
+        if(Character.isDigit(c))
+        {
+            txtApellidoEncargado.setEditable(false);
+        }else
+        {
+            txtApellidoEncargado.setEditable(true);
+        }
+    }//GEN-LAST:event_txtApellidoEncargadoKeyPressed
+
+    private void txtSegundoApellidoEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEncargadoKeyPressed
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c))
+        {
+            txtSegundoApellidoEncargado.setEditable(true);
+        }else
+        {
+            txtSegundoApellidoEncargado.setEditable(false);
+        }
+    }//GEN-LAST:event_txtSegundoApellidoEncargadoKeyPressed
+
+    private void txtSegundoApellidoEncargadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEncargadoKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSegundoApellidoEncargadoKeyReleased
+
+    private void txtCedulaEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEncargadoKeyPressed
+
+    }//GEN-LAST:event_txtCedulaEncargadoKeyPressed
+
+    private void txtCedulaEncargadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEncargadoKeyTyped
+        char c =evt.getKeyChar();
+        if(Character.isLetter(c))
+        {
+            txtCedulaEncargado.setEditable(false);
+        }else
+        {
+            txtCedulaEncargado.setEditable(true);
+        }
+    }//GEN-LAST:event_txtCedulaEncargadoKeyTyped
 
     private void btnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstudianteActionPerformed
         EstudianteWindow ventana = new EstudianteWindow();
         ventana.setVisible(true);
         tblEstudiantes_Encargado.setVisible(true);
-        
+
     }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
 
     private void btnGuardarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEncargadoActionPerformed
@@ -231,8 +282,12 @@ public class EncargadoWindow extends javax.swing.JFrame {
         encargado.setTelefono(txtCelularEncargado.getText());
         encargado.setClave(txtClave.getText());
         encargado.setAcceso(chxAcceso.isSelected());
+        Boolean guardado = Controlador.crearEncargado(encargado);
+
+        //Controlador.crearEncargado(encargado);
         
-        Controlador.crearEncargado(encargado);
+        JOptionPane.showMessageDialog(null, "Encargado guardado con éxito");
+            dispose();
         btnActualizar.setVisible(true);
         btnActualizar.setVisible(true);
         btnAgregarEstudiante.setVisible(true);
@@ -241,58 +296,6 @@ public class EncargadoWindow extends javax.swing.JFrame {
     private void chxAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxAccesoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chxAccesoActionPerformed
-
-    private void txtNombreEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEncargadoKeyPressed
-        char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtNombreEncargado.setEditable(true);
-                }else 
-                {
-                    txtNombreEncargado.setEditable(false);
-                }
-    }//GEN-LAST:event_txtNombreEncargadoKeyPressed
-
-    private void txtCedulaEncargadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEncargadoKeyTyped
-        char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtCedulaEncargado.setEditable(false);
-                }else 
-                {
-                    txtCedulaEncargado.setEditable(true);
-                }
-    }//GEN-LAST:event_txtCedulaEncargadoKeyTyped
-
-    private void txtCedulaEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEncargadoKeyPressed
-        
-    }//GEN-LAST:event_txtCedulaEncargadoKeyPressed
-
-    private void txtApellidoEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEncargadoKeyPressed
-        char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtApellidoEncargado.setEditable(true);
-                }else 
-                {
-                    txtApellidoEncargado.setEditable(false);
-                }
-    }//GEN-LAST:event_txtApellidoEncargadoKeyPressed
-
-    private void txtSegundoApellidoEncargadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEncargadoKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSegundoApellidoEncargadoKeyReleased
-
-    private void txtSegundoApellidoEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEncargadoKeyPressed
-        char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtSegundoApellidoEncargado.setEditable(true);
-                }else 
-                {
-                    txtSegundoApellidoEncargado.setEditable(false);
-                }
-    }//GEN-LAST:event_txtSegundoApellidoEncargadoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -320,6 +323,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(EncargadoWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -334,9 +338,9 @@ public class EncargadoWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarEstudiante;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnGuardarEncargado;
+    private javax.swing.JButton btnNuevoEncargado;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JCheckBox chxAcceso;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JCheckBox chxAcceso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -348,13 +352,13 @@ public class EncargadoWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblEstudiantes_Encargado;
-    private javax.swing.JTextField txtApellidoEncargado;
-    private javax.swing.JTextField txtCedulaEncargado;
-    private javax.swing.JTextField txtCelularEncargado;
-    private javax.swing.JTextField txtClave;
-    private javax.swing.JTextField txtCorreoEncargado;
-    private javax.swing.JTextField txtDireccionEncargado;
-    private javax.swing.JTextField txtNombreEncargado;
-    private javax.swing.JTextField txtSegundoApellidoEncargado;
+    public javax.swing.JTextField txtApellidoEncargado;
+    public javax.swing.JTextField txtCedulaEncargado;
+    public javax.swing.JTextField txtCelularEncargado;
+    public javax.swing.JTextField txtClave;
+    public javax.swing.JTextField txtCorreoEncargado;
+    public javax.swing.JTextField txtDireccionEncargado;
+    public javax.swing.JTextField txtNombreEncargado;
+    public javax.swing.JTextField txtSegundoApellidoEncargado;
     // End of variables declaration//GEN-END:variables
 }
