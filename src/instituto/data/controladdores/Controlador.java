@@ -275,4 +275,13 @@ public class Controlador {
             return false;
         }
     }
+    
+    /**
+     * Metodo para retornar una lista de encargados que se registraron pero 
+     * no tienen acceso
+     * @return lista de encargados
+     */
+    public static ArrayList<Encargado> cargarEncargadosSinAcceso(){
+        return repositorio.encargadosPendientesSinAcceso();
+    }
 }

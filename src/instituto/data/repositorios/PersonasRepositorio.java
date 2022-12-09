@@ -226,6 +226,18 @@ public class PersonasRepositorio implements CRUD {
         }
         return estudiantes;
     }
+    
+    public ArrayList<Encargado> encargadosPendientesSinAcceso(){
+        ArrayList<Encargado> encargados = new ArrayList<>();
+        for(Persona persona : this.listaPersonas){
+            if(persona instanceof Encargado encargado){
+                if(!encargado.getAcceso()){
+                    encargados.add(encargado);
+                }
+            }
+        }
+        return encargados;
+    }
 
     /**
      * @return
