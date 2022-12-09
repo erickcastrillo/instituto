@@ -284,4 +284,23 @@ public class Controlador {
     public static ArrayList<Encargado> cargarEncargadosSinAcceso(){
         return repositorio.encargadosPendientesSinAcceso();
     }
+    
+    /**
+     * Metodo para loguear al usuaro
+     * @param telefono
+     * @param clave
+     * @return usuario si las credenciales son correctas o null si no lo son
+     */
+    public static Usuario login(String telefono, String clave){
+        return repositorio.login(telefono, clave);
+    }
+    
+    /**
+     * Metodo para regresar la lista de estudiantes asignados a un encargado
+     * @param encardadoId
+     * @return lista de estudiantes
+     */
+    public static ArrayList<Estudiante> estudiantesPorEncargado(String encardadoId){
+        return repositorio.estudiantesPorEncargado(encardadoId);
+    }
 }
