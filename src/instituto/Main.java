@@ -17,6 +17,9 @@
 
 package instituto;
 
+import instituto.gui.Login;
+import instituto.data.controladdores.Controlador;
+
 /**
  *
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
@@ -29,8 +32,10 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Hola Mundo");
-        System.out.println("Hola Mundox2");
+        Controlador.cargarData();
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
+        });
     }
 
 }
