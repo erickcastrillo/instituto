@@ -301,6 +301,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
         actualizarTablaEstudiante(listadeestudiantes);
         btnAgregarEstudiante.setVisible(false);
         lblSeleccionarHijo.setVisible(true);
+        btnAsociar.setVisible(true);
 
     }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
 private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
