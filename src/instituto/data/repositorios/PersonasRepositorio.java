@@ -192,7 +192,7 @@ public class PersonasRepositorio implements CRUD {
         Persona p = this.obtenerPorId(persona.getId());
         int index = this.listaPersonas.indexOf(p);
         try {
-            this.listaPersonas.add(index, persona);
+            this.listaPersonas.set(index, persona);
             return true;
         } catch (IndexOutOfBoundsException e){
             return false;
