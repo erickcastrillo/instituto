@@ -238,6 +238,18 @@ public class PersonasRepositorio implements CRUD {
         }
         return encargados;
     }
+    
+    public Usuario login(String telefono, String clave){
+        Usuario usuario = null;
+        for(Persona persona : this.listaPersonas){
+            if(persona instanceof Usuario usuarioLocal){
+                if((usuarioLocal.getTelefono() == null ? telefono == null : usuarioLocal.getTelefono().equals(telefono)) && (usuarioLocal.getClave() == null ? clave == null : usuarioLocal.getClave().equals(clave))){
+                    usuario = usuarioLocal;
+                }
+            }
+        }
+        return usuario;
+    }
 
     /**
      * @return
