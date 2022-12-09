@@ -63,7 +63,6 @@ public class EncargadoWindow extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtClave = new javax.swing.JTextField();
-        btnNuevoEncargado = new javax.swing.JButton();
         btnGuardarEncargado = new javax.swing.JButton();
         chxAcceso = new javax.swing.JCheckBox();
         btnSalir = new javax.swing.JButton();
@@ -166,10 +165,6 @@ public class EncargadoWindow extends javax.swing.JFrame {
 
         txtClave.setName("txtClave"); // NOI18N
         getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 260, 40));
-
-        btnNuevoEncargado.setText("Nuevo");
-        btnNuevoEncargado.setName("btnNuevoEncargado"); // NOI18N
-        getContentPane().add(btnNuevoEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
 
         btnGuardarEncargado.setText("Guardar");
         btnGuardarEncargado.setName("btnGuardarEncargado"); // NOI18N
@@ -334,11 +329,10 @@ public class EncargadoWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnAgregarEstudiante;
-    private javax.swing.JButton btnBorrar;
+    public javax.swing.JButton btnActualizar;
+    public javax.swing.JButton btnAgregarEstudiante;
+    public javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnGuardarEncargado;
-    private javax.swing.JButton btnNuevoEncargado;
     private javax.swing.JButton btnSalir;
     public javax.swing.JCheckBox chxAcceso;
     private javax.swing.JLabel jLabel1;
@@ -351,7 +345,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblEstudiantes_Encargado;
+    public javax.swing.JTable tblEstudiantes_Encargado;
     public javax.swing.JTextField txtApellidoEncargado;
     public javax.swing.JTextField txtCedulaEncargado;
     public javax.swing.JTextField txtCelularEncargado;

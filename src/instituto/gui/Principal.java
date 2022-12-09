@@ -93,6 +93,7 @@ public class Principal extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         mnSecretariado = new javax.swing.JMenuItem();
         mnMecanica = new javax.swing.JMenuItem();
+        mnSolicitudesyPendientes = new javax.swing.JMenu();
 
         jMenuItem8.setText("jMenuItem8");
 
@@ -365,6 +366,9 @@ public class Principal extends javax.swing.JFrame {
         jMenu6.add(mnMecanica);
 
         jMenuBar1.add(jMenu6);
+
+        mnSolicitudesyPendientes.setText("Solicitudes y Pendientes");
+        jMenuBar1.add(mnSolicitudesyPendientes);
 
         setJMenuBar(jMenuBar1);
 
@@ -770,6 +774,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnSeccion8A;
     private javax.swing.JMenuItem mnSeccion9A;
     private javax.swing.JMenuItem mnSecretariado;
+    private javax.swing.JMenu mnSolicitudesyPendientes;
     public javax.swing.JTable tblPrincipal;
     // End of variables declaration//GEN-END:variables
 }

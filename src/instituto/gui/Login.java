@@ -83,6 +83,11 @@ public class Login extends javax.swing.JFrame {
 
         btnRegistrar.setText("Registrarme");
         btnRegistrar.setName("btnRegistrar"); // NOI18N
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
 
         pack();
@@ -114,6 +119,16 @@ public class Login extends javax.swing.JFrame {
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        EncargadoWindow ventana = new EncargadoWindow();
+        ventana.setVisible(true);
+        ventana.chxAcceso.setVisible(false);
+        ventana.btnAgregarEstudiante.setVisible(false);
+        ventana.btnBorrar.setVisible(false);
+        ventana.btnActualizar.setVisible(false);
+        ventana.tblEstudiantes_Encargado.setVisible(false);
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
