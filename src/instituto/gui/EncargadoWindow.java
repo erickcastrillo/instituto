@@ -365,6 +365,7 @@ private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
         String ID = tblHijos.getValueAt(selectedRow, 1).toString();
         Estudiante estudiante = Controlador.obtenerEstudiante(ID);
         estudiante.setIdEncargado(encargadoID);
+        Controlador.updateEstudiante(estudiante);
     }//GEN-LAST:event_btnAsociarActionPerformed
 
     /**

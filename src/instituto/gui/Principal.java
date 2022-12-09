@@ -559,7 +559,10 @@ public class Principal extends javax.swing.JFrame {
             }
         tblPrincipal.setModel(modelo);
     }
-    
+    private void actualizarTablaHijos()
+    {
+        //ArrayList<Estudiante> listaEstudiantes =Controlador.estudiantesPorEncargado(encardadoId);
+    }
     private void mnListarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarEstudianteActionPerformed
 
         ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
@@ -634,8 +637,6 @@ public class Principal extends javax.swing.JFrame {
             ventana.rdbTercerCiclo.setEnabled(false);
             ventana.rdbPrimaria.setVisible(false);
             ventana.rdbCuartoCiclo.setVisible(false);
-            
-            
         }
         else if (tipo == "Encargado") //acceso true
         {
@@ -656,6 +657,8 @@ public class Principal extends javax.swing.JFrame {
             ventana.lblSeleccionarHijo.setVisible(false);
             ventana.btnAsociar.setVisible(false);
             ventana.btnGuardarEncargado.setVisible(false);
+            
+            
             
             
             
