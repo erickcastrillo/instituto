@@ -4,6 +4,8 @@
  */
 package instituto.gui;
 
+import instituto.data.controladdores.Controlador;
+import instituto.data.modelos.Usuario;
 import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle;
 
@@ -97,14 +99,15 @@ public class Login extends javax.swing.JFrame {
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         String telefono = txtTelefono.getText();
         String clave = String.valueOf(txtClave.getText());
-        if("admin".equals(telefono))
+        Usuario usuario = Controlador.login(telefono, clave);
+        if(usuario != null){
+            JOptionPane.showMessageDialog(null,"Login exitoso!");
+            Principal ventana = new Principal();
+            ventana.setVisible(true);
+        }
+        else 
         {
-            if ("123".equals(clave))
-            {
-                JOptionPane.showMessageDialog(null,"Administrador");
-                Principal ventana = new Principal();
-                ventana.setVisible(true);
-            }
+            JOptionPane.showMessageDialog(null, "Telefono o clave incorrectos", "Error al validar credenciales", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
