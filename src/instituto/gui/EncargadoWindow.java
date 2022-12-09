@@ -18,7 +18,11 @@ package instituto.gui;
 
 import instituto.data.controladdores.Controlador;
 import instituto.data.modelos.Encargado;
+import instituto.data.modelos.Estudiante;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -67,9 +71,13 @@ public class EncargadoWindow extends javax.swing.JFrame {
         chxAcceso = new javax.swing.JCheckBox();
         btnSalir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblEstudiantes_Encargado = new javax.swing.JTable();
+        tblHijos = new javax.swing.JTable();
+        lblHijos = new javax.swing.JLabel();
+        lblSeleccionarHijo = new javax.swing.JLabel();
+        btnAsociar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Datos de Encargado");
@@ -93,6 +101,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
         txtCelularEncargado.setName("txtCelularEncargado"); // NOI18N
         getContentPane().add(txtCelularEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 260, 40));
 
+        txtNombreEncargado.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNombreEncargado.setName("txtNombreEncargado"); // NOI18N
         txtNombreEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -173,7 +182,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
                 btnGuardarEncargadoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
+        getContentPane().add(btnGuardarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, -1));
 
         chxAcceso.setText("Brindar Acceso");
         chxAcceso.setName("chxAcceso"); // NOI18N
@@ -186,9 +195,14 @@ public class EncargadoWindow extends javax.swing.JFrame {
 
         btnSalir.setText("Salir");
         btnSalir.setName("btnSalir"); // NOI18N
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, -1, -1));
 
-        tblEstudiantes_Encargado.setModel(new javax.swing.table.DefaultTableModel(
+        tblHijos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -199,10 +213,32 @@ public class EncargadoWindow extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblEstudiantes_Encargado.setName("tblEstudiantes_Encargado"); // NOI18N
-        jScrollPane2.setViewportView(tblEstudiantes_Encargado);
+        tblHijos.setName("tblHijos"); // NOI18N
+        tblHijos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHijosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblHijos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, -1, 120));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, -1, 150));
+
+        lblHijos.setText("Estudiantes que tengo asociados");
+        lblHijos.setName("lblHijos"); // NOI18N
+        getContentPane().add(lblHijos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, -1, -1));
+
+        lblSeleccionarHijo.setText("Seleccione el estudiante a asociar");
+        lblSeleccionarHijo.setName("lblSeleccionarHijo"); // NOI18N
+        getContentPane().add(lblSeleccionarHijo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, -1, -1));
+
+        btnAsociar.setText("Asociar");
+        btnAsociar.setName("btnAsociar"); // NOI18N
+        btnAsociar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsociarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAsociar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,14 +294,37 @@ public class EncargadoWindow extends javax.swing.JFrame {
             txtCedulaEncargado.setEditable(true);
         }
     }//GEN-LAST:event_txtCedulaEncargadoKeyTyped
-
+    public String encargadoID;
     private void btnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstudianteActionPerformed
-        EstudianteWindow ventana = new EstudianteWindow();
-        ventana.setVisible(true);
-        tblEstudiantes_Encargado.setVisible(true);
+        tblHijos.setVisible(true);
+        lblHijos.setVisible(false);
+        ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
+        actualizarTablaEstudiante(listadeestudiantes);
+        btnAgregarEstudiante.setVisible(false);
 
     }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
-
+private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Tipo");
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Nivel");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Sección");
+        Object[] fila = new Object[6];
+        
+            for (Estudiante estudiante : listadeestudiantes)
+            {
+                fila[0] = "Estudiante";
+                fila[1] = estudiante.getId();
+                fila[2] = estudiante.getNombre();
+                fila[3] = estudiante.getNivel();
+                fila[4] = estudiante.getPrimerApellido();
+                fila[5] = estudiante.getSeccion();
+                modelo.addRow(fila);
+            }
+        tblHijos.setModel(modelo);
+    }
     private void btnGuardarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEncargadoActionPerformed
         Encargado encargado = new Encargado();
         encargado.setNombre(txtNombreEncargado.getText());
@@ -291,6 +350,21 @@ public class EncargadoWindow extends javax.swing.JFrame {
     private void chxAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chxAccesoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chxAccesoActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void tblHijosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHijosMouseClicked
+    
+    }//GEN-LAST:event_tblHijosMouseClicked
+
+    private void btnAsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsociarActionPerformed
+        int selectedRow =tblHijos.getSelectedRow();
+        String ID = tblHijos.getValueAt(selectedRow, 1).toString();
+        Estudiante estudiante = Controlador.obtenerEstudiante(ID);
+        estudiante.setIdEncargado(encargadoID);
+    }//GEN-LAST:event_btnAsociarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,8 +405,9 @@ public class EncargadoWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActualizar;
     public javax.swing.JButton btnAgregarEstudiante;
+    private javax.swing.JButton btnAsociar;
     public javax.swing.JButton btnBorrar;
-    private javax.swing.JButton btnGuardarEncargado;
+    public javax.swing.JButton btnGuardarEncargado;
     private javax.swing.JButton btnSalir;
     public javax.swing.JCheckBox chxAcceso;
     private javax.swing.JLabel jLabel1;
@@ -345,7 +420,9 @@ public class EncargadoWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTable tblEstudiantes_Encargado;
+    private javax.swing.JLabel lblHijos;
+    private javax.swing.JLabel lblSeleccionarHijo;
+    public javax.swing.JTable tblHijos;
     public javax.swing.JTextField txtApellidoEncargado;
     public javax.swing.JTextField txtCedulaEncargado;
     public javax.swing.JTextField txtCelularEncargado;

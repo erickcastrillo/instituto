@@ -62,7 +62,6 @@ public class EstudianteWindow extends javax.swing.JFrame {
         txtSegundoApellidoEstudiante = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         lblEspecialidad = new javax.swing.JLabel();
-        btnGuardarEstudiante = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         rdbCuartoCiclo = new javax.swing.JRadioButton();
@@ -75,10 +74,12 @@ public class EstudianteWindow extends javax.swing.JFrame {
         btnAgregarEncargado = new javax.swing.JButton();
         cbxPrimaria = new javax.swing.JComboBox<>();
         cbxCuartoCiclo = new javax.swing.JComboBox<>();
-        btnMostrarEncargado = new javax.swing.JButton();
         txtCedulaEstudiante = new javax.swing.JTextField();
+        btnGuardarEstudiante1 = new javax.swing.JButton();
+        btnSalirEstudiante = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(720, 750));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -141,22 +142,13 @@ public class EstudianteWindow extends javax.swing.JFrame {
         lblEspecialidad.setName("lblEspecialidad"); // NOI18N
         getContentPane().add(lblEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, -1, -1));
 
-        btnGuardarEstudiante.setText("Guardar estudiante");
-        btnGuardarEstudiante.setName("btnGuardarEstudiante"); // NOI18N
-        btnGuardarEstudiante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarEstudianteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnGuardarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 610, -1, -1));
-
         btnBorrar.setText("Borrar");
         btnBorrar.setName("btnBorrar"); // NOI18N
-        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, -1, -1));
+        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, -1, -1));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.setName("btnActualizar"); // NOI18N
-        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 610, -1, -1));
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, -1, -1));
 
         buttonGroup1.add(rdbCuartoCiclo);
         rdbCuartoCiclo.setText("Cuarto Ciclo");
@@ -215,7 +207,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
                 btnAgregarEncargadoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 610, -1, -1));
+        getContentPane().add(btnAgregarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, -1, -1));
 
         cbxPrimaria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1-A", "2-A", "3-A", "4-A", "5-A", "6-A" }));
         cbxPrimaria.setName("cbxPrimaria"); // NOI18N
@@ -230,14 +222,6 @@ public class EstudianteWindow extends javax.swing.JFrame {
         cbxCuartoCiclo.setName("cbxCuartoCiclo"); // NOI18N
         getContentPane().add(cbxCuartoCiclo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
 
-        btnMostrarEncargado.setText("Mostrar encargado");
-        btnMostrarEncargado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarEncargadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnMostrarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 610, -1, -1));
-
         txtCedulaEstudiante.setName("txtCedulaEstudiante"); // NOI18N
         txtCedulaEstudiante.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -246,77 +230,26 @@ public class EstudianteWindow extends javax.swing.JFrame {
         });
         getContentPane().add(txtCedulaEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 260, 40));
 
+        btnGuardarEstudiante1.setText("Guardar Estudiante");
+        btnGuardarEstudiante1.setName("btnGuardarEstudiante1"); // NOI18N
+        btnGuardarEstudiante1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarEstudiante1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuardarEstudiante1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 610, -1, -1));
+
+        btnSalirEstudiante.setText("Salir");
+        btnSalirEstudiante.setName("btnSalirEstudiante"); // NOI18N
+        btnSalirEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirEstudianteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalirEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnGuardarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEstudianteActionPerformed
-               
-        if(rdbPrimaria.isSelected())
-        {
-            Estudiante estudiante = new Estudiante();
-            estudiante.setNombre(txtNombreEstudiante.getText());
-            estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
-            estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
-            estudiante.setIdentificacion(txtCedulaEstudiante.getText());
-            estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
-            estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
-            estudiante.setNivel("Primaria");
-            Boolean guardado = Controlador.crearEstudiante(estudiante);
-            if (guardado)
-            {
-               JOptionPane.showMessageDialog(null, "Estudiante de primaria guardado con éxito"); 
-               dispose();
-            }else 
-            {
-              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
-                        "Atención", JOptionPane.ERROR_MESSAGE);
-            }
-            
-        }else if (rdbTercerCiclo.isSelected())
-        {
-            Estudiante estudiante = new Estudiante();
-            estudiante.setNombre(txtNombreEstudiante.getText());
-            estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
-            estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
-            estudiante.setIdentificacion(txtCedulaEstudiante.getText());
-            estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
-            estudiante.setSeccion(String.valueOf(cbxTercerCiclo.getSelectedItem()));
-            estudiante.setNivel("Tercer Ciclo");
-            Boolean guardado = Controlador.crearEstudiante(estudiante);
-            if (guardado)
-            {
-               JOptionPane.showMessageDialog(null, "Estudiante de Tercer Ciclo guardado con éxito"); 
-               dispose();
-            }else 
-            {
-              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
-                        "Atención", JOptionPane.ERROR_MESSAGE);
-            }
-            
-        }else if (rdbCuartoCiclo.isSelected())
-        {
-            EstudianteIV estudianteiv = new EstudianteIV();
-            estudianteiv.setNombre(txtNombreEstudiante.getText());
-            estudianteiv.setPrimerApellido(txtApellidoEstudiante.getText());
-            estudianteiv.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
-            estudianteiv.setIdentificacion(txtCedulaEstudiante.getText());
-            estudianteiv.setFechaNacimiento(txtFechaNacimiento.getText());
-            estudianteiv.setNivel("Cuarto Ciclo");
-            estudianteiv.setSeccion(String.valueOf(cbxCuartoCiclo.getSelectedItem()));
-            estudianteiv.setEspecialidad(String.valueOf(cbxEspecialidad.getSelectedItem()));
-            //estudianteiv.setSeccion(String.valueOf(cbxCuartoCiclo.getSelectedItem()));
-            Boolean guardado = Controlador.crearEstudianteIV(estudianteiv);
-            if (guardado)
-            {
-               JOptionPane.showMessageDialog(null, "Estudiante de IV Ciclo guardado con éxito"); 
-               dispose();
-            }else 
-            {
-              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
-                        "Atención", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_btnGuardarEstudianteActionPerformed
 
     private void rdbCuartoCicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbCuartoCicloActionPerformed
         if (rdbCuartoCiclo.isSelected())
@@ -367,11 +300,6 @@ public class EstudianteWindow extends javax.swing.JFrame {
         EncargadoWindow ventana =new EncargadoWindow();
         ventana.setVisible(true);
     }//GEN-LAST:event_btnAgregarEncargadoActionPerformed
-
-    private void btnMostrarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarEncargadoActionPerformed
-        EncargadoWindow ventana =new EncargadoWindow();
-        ventana.setVisible(true);
-    }//GEN-LAST:event_btnMostrarEncargadoActionPerformed
 
     private void txtNombreEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEstudianteKeyPressed
         char c =evt.getKeyChar();
@@ -432,6 +360,79 @@ public class EstudianteWindow extends javax.swing.JFrame {
                 }
     }//GEN-LAST:event_txtCedulaEstudianteKeyPressed
 
+    private void btnGuardarEstudiante1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEstudiante1ActionPerformed
+        if(rdbPrimaria.isSelected())
+        {
+            Estudiante estudiante = new Estudiante();
+            estudiante.setNombre(txtNombreEstudiante.getText());
+            estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
+            estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
+            estudiante.setIdentificacion(txtCedulaEstudiante.getText());
+            estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
+            estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
+            estudiante.setNivel("Primaria");
+            //estudiante.setIdEncargado();
+            Boolean guardado = Controlador.crearEstudiante(estudiante);
+            if (guardado)
+            {
+               JOptionPane.showMessageDialog(null, "Estudiante de primaria guardado con éxito"); 
+               dispose();
+            }else 
+            {
+              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }else if (rdbTercerCiclo.isSelected())
+        {
+            Estudiante estudiante = new Estudiante();
+            estudiante.setNombre(txtNombreEstudiante.getText());
+            estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
+            estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
+            estudiante.setIdentificacion(txtCedulaEstudiante.getText());
+            estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
+            estudiante.setSeccion(String.valueOf(cbxTercerCiclo.getSelectedItem()));
+            estudiante.setNivel("Tercer Ciclo");
+            Boolean guardado = Controlador.crearEstudiante(estudiante);
+            if (guardado)
+            {
+               JOptionPane.showMessageDialog(null, "Estudiante de Tercer Ciclo guardado con éxito"); 
+               dispose();
+            }else 
+            {
+              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }else if (rdbCuartoCiclo.isSelected())
+        {
+            EstudianteIV estudianteiv = new EstudianteIV();
+            estudianteiv.setNombre(txtNombreEstudiante.getText());
+            estudianteiv.setPrimerApellido(txtApellidoEstudiante.getText());
+            estudianteiv.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
+            estudianteiv.setIdentificacion(txtCedulaEstudiante.getText());
+            estudianteiv.setFechaNacimiento(txtFechaNacimiento.getText());
+            estudianteiv.setNivel("Cuarto Ciclo");
+            estudianteiv.setSeccion(String.valueOf(cbxCuartoCiclo.getSelectedItem()));
+            estudianteiv.setEspecialidad(String.valueOf(cbxEspecialidad.getSelectedItem()));
+            //estudianteiv.setSeccion(String.valueOf(cbxCuartoCiclo.getSelectedItem()));
+            Boolean guardado = Controlador.crearEstudianteIV(estudianteiv);
+            if (guardado)
+            {
+               JOptionPane.showMessageDialog(null, "Estudiante de IV Ciclo guardado con éxito"); 
+               dispose();
+            }else 
+            {
+              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnGuardarEstudiante1ActionPerformed
+
+    private void btnSalirEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirEstudianteActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirEstudianteActionPerformed
+    public String encargadoID;
     /**
      * @param args the command line arguments
      */
@@ -468,11 +469,11 @@ public class EstudianteWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnAgregarEncargado;
-    private javax.swing.JButton btnBorrar;
-    private javax.swing.JButton btnGuardarEstudiante;
-    private javax.swing.JButton btnMostrarEncargado;
+    public javax.swing.JButton btnActualizar;
+    public javax.swing.JButton btnAgregarEncargado;
+    public javax.swing.JButton btnBorrar;
+    public javax.swing.JButton btnGuardarEstudiante1;
+    private javax.swing.JButton btnSalirEstudiante;
     private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JComboBox<String> cbxCuartoCiclo;
     public javax.swing.JComboBox<String> cbxEspecialidad;

@@ -53,16 +53,18 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         txtSegundoApellidoAdministrativo = new javax.swing.JTextField();
         txtTelefonoAdministrativo = new javax.swing.JTextField();
         txtClaveAdministrativo = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnActualizarAdministrativo = new javax.swing.JButton();
+        btnEliminarAdministrativo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtCedulaAdministrativo = new javax.swing.JTextField();
         txtPrimerApellidoAdministrativo = new javax.swing.JTextField();
+        btnSalirAdministrativo = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(550, 350));
+        setPreferredSize(new java.awt.Dimension(550, 380));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Personal Administrativo");
@@ -115,26 +117,13 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         txtClaveAdministrativo.setName("txtClaveAdministrativo"); // NOI18N
         getContentPane().add(txtClaveAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 220, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        btnActualizarAdministrativo.setText("Actualizar");
+        btnActualizarAdministrativo.setName("btnActualizarAdministrativo"); // NOI18N
+        getContentPane().add(btnActualizarAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, -1));
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, 150));
-
-        jButton2.setText("Actualizar");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, -1));
-
-        jButton3.setText("Eliminar");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 80, -1));
+        btnEliminarAdministrativo.setText("Eliminar");
+        btnEliminarAdministrativo.setName("btnEliminarAdministrativo"); // NOI18N
+        getContentPane().add(btnEliminarAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 80, -1));
 
         btnGuardar.setText("Guardar");
         btnGuardar.setName("btnGuardar"); // NOI18N
@@ -163,6 +152,15 @@ public class AdministrativoWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPrimerApellidoAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 220, -1));
+
+        btnSalirAdministrativo.setText("Salir");
+        btnSalirAdministrativo.setName("btnSalirAdministrativo"); // NOI18N
+        btnSalirAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirAdministrativoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalirAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -243,6 +241,10 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPrimerApellidoAdministrativoKeyPressed
 
+    private void btnSalirAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirAdministrativoActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirAdministrativoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -280,9 +282,10 @@ public class AdministrativoWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnActualizarAdministrativo;
+    public javax.swing.JButton btnEliminarAdministrativo;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnSalirAdministrativo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -290,8 +293,6 @@ public class AdministrativoWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     public javax.swing.JTextField txtCedulaAdministrativo;
     public javax.swing.JTextField txtClaveAdministrativo;
     public javax.swing.JTextField txtNombreAdministrativo;

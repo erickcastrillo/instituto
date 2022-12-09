@@ -60,8 +60,13 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
         jMenuItem22 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu8 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPrincipal = new javax.swing.JTable();
+        btnSalirAdmin = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnListarEstudiante = new javax.swing.JMenuItem();
@@ -70,6 +75,7 @@ public class Principal extends javax.swing.JFrame {
         mnListarTercerCiclo = new javax.swing.JMenuItem();
         mnListarIV = new javax.swing.JMenuItem();
         mnListarAdministrativos = new javax.swing.JMenuItem();
+        mnPendientes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnAgregarEstudiante = new javax.swing.JMenuItem();
         mnRegistrarEncargado = new javax.swing.JMenuItem();
@@ -93,7 +99,6 @@ public class Principal extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         mnSecretariado = new javax.swing.JMenuItem();
         mnMecanica = new javax.swing.JMenuItem();
-        mnSolicitudesyPendientes = new javax.swing.JMenu();
 
         jMenuItem8.setText("jMenuItem8");
 
@@ -101,7 +106,16 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem22.setText("jMenuItem22");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenu8.setText("File");
+        jMenuBar2.add(jMenu8);
+
+        jMenu9.setText("Edit");
+        jMenuBar2.add(jMenu9);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblPrincipal.setModel(new javax.swing.table.DefaultTableModel(
@@ -125,6 +139,15 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblPrincipal);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 500, 148));
+
+        btnSalirAdmin.setText("Salir");
+        btnSalirAdmin.setName("btnSalirAdmin"); // NOI18N
+        btnSalirAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirAdminActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalirAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, -1, -1));
 
         jMenu1.setText("Mantenimiento");
 
@@ -181,6 +204,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(mnListarAdministrativos);
+
+        mnPendientes.setText("Solicitudes y Pendientes");
+        mnPendientes.setName("mnPendientes"); // NOI18N
+        mnPendientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnPendientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnPendientes);
 
         jMenuBar1.add(jMenu1);
 
@@ -367,9 +399,6 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
-        mnSolicitudesyPendientes.setText("Solicitudes y Pendientes");
-        jMenuBar1.add(mnSolicitudesyPendientes);
-
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -378,18 +407,27 @@ public class Principal extends javax.swing.JFrame {
     private void mnAdministrativosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAdministrativosActionPerformed
         AdministrativoWindow ventana = new AdministrativoWindow();
         ventana.setVisible(true);
+        ventana.btnActualizarAdministrativo.setVisible(false);
+        ventana.btnEliminarAdministrativo.setVisible(false);
         
     }//GEN-LAST:event_mnAdministrativosActionPerformed
 
     private void mnRegistrarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRegistrarEncargadoActionPerformed
         EncargadoWindow ventana = new EncargadoWindow();
         ventana.setVisible(true);
-        
+        ventana.btnActualizar.setVisible(false);
+        ventana.btnBorrar.setVisible(false);
+        ventana.tblHijos.setVisible(false);
+        ventana.btnAgregarEstudiante.setVisible(false);
     }//GEN-LAST:event_mnRegistrarEncargadoActionPerformed
 
     private void mnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarEstudianteActionPerformed
         EstudianteWindow ventana = new EstudianteWindow();
         ventana.setVisible(true);
+        ventana.btnActualizar.setVisible(false);
+        ventana.btnAgregarEncargado.setVisible(false);
+        ventana.btnBorrar.setVisible(false);
+        ventana.btnGuardarEstudiante1.setVisible(true);
     }//GEN-LAST:event_mnAgregarEstudianteActionPerformed
 
     private void mnListarEncargadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarEncargadosActionPerformed
@@ -568,9 +606,9 @@ public class Principal extends javax.swing.JFrame {
             ventana.lblSeccion.setVisible(true);
             ventana.cbxTercerCiclo.setVisible(true);
         }
-        else if (tipo == "Encargado")
+        else if (tipo == "Encargado") //acceso true
         {
-            String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
+            String id = tblPrincipal.getValueAt(selectedRow, 0).toString();
             Encargado encargado = Controlador.obtenerEncargado(id);
             EncargadoWindow ventana = new EncargadoWindow();
             ventana.setVisible(true);
@@ -583,6 +621,9 @@ public class Principal extends javax.swing.JFrame {
             ventana.txtDireccionEncargado.setText(encargado.getDireccion());
             ventana.txtCorreoEncargado.setText(encargado.getCorreoElectronico());
             ventana.chxAcceso.setSelected(encargado.getAcceso());
+            ventana.encargadoID=encargado.getId();
+            
+            //actualizar la tabla si es que ya tiene hijos
         }
         else if(tipo=="Cuarto Ciclo")
         {
@@ -701,6 +742,39 @@ public class Principal extends javax.swing.JFrame {
         List<EstudianteIV>estudianteIVs = Controlador.filtrarPorEspecialidad("Mecanica");
         this.actualizarTablaEstudianteIV(estudianteIVs);
     }//GEN-LAST:event_mnMecanicaActionPerformed
+    private void actualizarTablaEncargadoSinAcceso()
+    {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Tipo");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Acceso");
+        Object[] fila = new Object[6];
+        
+        ArrayList<Encargado> encargados = Controlador.cargarEncargadosSinAcceso();
+        for (Encargado encargado : encargados)
+            {
+                fila[0] = encargado.getId();
+                fila[1] = encargado.getNombre();
+                fila[2] = encargado.getPrimerApellido();
+                fila[3] = "Encargado";
+                fila[4] = encargado.getTelefono();
+                fila[5] = encargado.getAcceso();
+                modelo.addRow(fila);
+            }
+        tblPrincipal.setModel(modelo);
+    }
+    private void mnPendientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPendientesActionPerformed
+       actualizarTablaEncargadoSinAcceso();
+    }//GEN-LAST:event_mnPendientesActionPerformed
+
+    private void btnSalirAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirAdminActionPerformed
+        dispose();
+        Login ventana = new Login();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnSalirAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -739,6 +813,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalirAdmin;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -746,7 +821,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem8;
@@ -760,6 +839,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnListarPrimaria;
     private javax.swing.JMenuItem mnListarTercerCiclo;
     private javax.swing.JMenuItem mnMecanica;
+    private javax.swing.JMenuItem mnPendientes;
     private javax.swing.JMenuItem mnRegistrarEncargado;
     private javax.swing.JMenuItem mnSeccion10A;
     private javax.swing.JMenuItem mnSeccion11A;
@@ -774,7 +854,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnSeccion8A;
     private javax.swing.JMenuItem mnSeccion9A;
     private javax.swing.JMenuItem mnSecretariado;
-    private javax.swing.JMenu mnSolicitudesyPendientes;
     public javax.swing.JTable tblPrincipal;
     // End of variables declaration//GEN-END:variables
 }
