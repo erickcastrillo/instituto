@@ -419,15 +419,19 @@ public class Principal extends javax.swing.JFrame {
         ventana.btnBorrar.setVisible(false);
         ventana.tblHijos.setVisible(false);
         ventana.btnAgregarEstudiante.setVisible(false);
+        ventana.lblHijos.setVisible(false);
+        ventana.lblSeleccionarHijo.setVisible(false);
+        ventana.btnAsociar.setVisible(false);
     }//GEN-LAST:event_mnRegistrarEncargadoActionPerformed
 
     private void mnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarEstudianteActionPerformed
         EstudianteWindow ventana = new EstudianteWindow();
         ventana.setVisible(true);
-        ventana.btnActualizar.setVisible(false);
-        ventana.btnAgregarEncargado.setVisible(false);
+        ventana.btnActualizarEst.setVisible(false);
         ventana.btnBorrar.setVisible(false);
         ventana.btnGuardarEstudiante1.setVisible(true);
+        ventana.btnUpdateEstudiante.setVisible(false);
+        
     }//GEN-LAST:event_mnAgregarEstudianteActionPerformed
 
     private void mnListarEncargadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarEncargadosActionPerformed
@@ -579,7 +583,9 @@ public class Principal extends javax.swing.JFrame {
             String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
             Estudiante estudiante = Controlador.obtenerEstudiante(id);
             EstudianteWindow ventana = new EstudianteWindow();
+            ventana.estudianteID = estudiante.getId();
             ventana.setVisible(true);
+            
             ventana.txtNombreEstudiante.setText(estudiante.getNombre());
             ventana.txtApellidoEstudiante.setText(estudiante.getPrimerApellido());
             ventana.txtSegundoApellidoEstudiante.setText(estudiante.getSegundoApellido());
@@ -589,12 +595,24 @@ public class Principal extends javax.swing.JFrame {
             ventana.cbxPrimaria.setSelectedItem(estudiante.getSeccion());
             ventana.lblSeccion.setVisible(true);
             ventana.cbxPrimaria.setVisible(true);
+            ventana.btnGuardarEstudiante1.setVisible(false);
+            ventana.txtNombreEstudiante.setEnabled(false);
+            ventana.txtApellidoEstudiante.setEnabled(false);
+            ventana.txtSegundoApellidoEstudiante.setEnabled(false);
+            ventana.txtCedulaEstudiante.setEnabled(false);
+            ventana.txtFechaNacimiento.setEnabled(false);
+            ventana.rdbPrimaria.setEnabled(false);
+            ventana.rdbTercerCiclo.setVisible(false);
+            ventana.rdbCuartoCiclo.setVisible(false);
+            ventana.cbxPrimaria.setEnabled(false);
+            ventana.btnUpdateEstudiante.setVisible(false);
         }
         else if (tipo=="Tercer Ciclo")
         {
             String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
             Estudiante estudiante = Controlador.obtenerEstudiante(id);
             EstudianteWindow ventana = new EstudianteWindow();
+            ventana.estudianteID = estudiante.getId();
             ventana.setVisible(true);
             ventana.txtNombreEstudiante.setText(estudiante.getNombre());
             ventana.txtApellidoEstudiante.setText(estudiante.getPrimerApellido());
@@ -605,6 +623,19 @@ public class Principal extends javax.swing.JFrame {
             ventana.cbxTercerCiclo.setSelectedItem(estudiante.getSeccion());
             ventana.lblSeccion.setVisible(true);
             ventana.cbxTercerCiclo.setVisible(true);
+            ventana.btnGuardarEstudiante1.setVisible(false);
+            
+            ventana.txtNombreEstudiante.setEnabled(false);
+            ventana.txtApellidoEstudiante.setEnabled(false);
+            ventana.txtSegundoApellidoEstudiante.setEnabled(false);
+            ventana.txtCedulaEstudiante.setEnabled(false);
+            ventana.txtFechaNacimiento.setEnabled(false);
+            ventana.cbxTercerCiclo.setEnabled(false);
+            ventana.rdbTercerCiclo.setEnabled(false);
+            ventana.rdbPrimaria.setVisible(false);
+            ventana.rdbCuartoCiclo.setVisible(false);
+            
+            
         }
         else if (tipo == "Encargado") //acceso true
         {
@@ -622,6 +653,11 @@ public class Principal extends javax.swing.JFrame {
             ventana.txtCorreoEncargado.setText(encargado.getCorreoElectronico());
             ventana.chxAcceso.setSelected(encargado.getAcceso());
             ventana.encargadoID=encargado.getId();
+            ventana.lblSeleccionarHijo.setVisible(false);
+            ventana.btnAsociar.setVisible(false);
+            ventana.btnGuardarEncargado.setVisible(false);
+            
+            
             
             //actualizar la tabla si es que ya tiene hijos
         }
@@ -630,6 +666,7 @@ public class Principal extends javax.swing.JFrame {
             String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
             EstudianteIV estudianteiv = Controlador.obtenerEstudianteIV(id);
             EstudianteWindow ventana = new EstudianteWindow();
+            ventana.estudianteID = estudianteiv.getId();
             ventana.setVisible(true);
             ventana.txtNombreEstudiante.setText(estudianteiv.getNombre());
             ventana.txtApellidoEstudiante.setText(estudianteiv.getPrimerApellido());
@@ -642,7 +679,21 @@ public class Principal extends javax.swing.JFrame {
             ventana.cbxCuartoCiclo.setSelectedItem(estudianteiv.getSeccion());
             ventana.lblEspecialidad.setVisible(true);
             ventana.cbxEspecialidad.setVisible(true);
-            ventana.cbxEspecialidad.setSelectedItem(estudianteiv.getEspecialidad());   
+            ventana.cbxEspecialidad.setSelectedItem(estudianteiv.getEspecialidad());
+            ventana.btnGuardarEstudiante1.setVisible(false);
+            
+            ventana.txtNombreEstudiante.setEnabled(false);
+            ventana.txtApellidoEstudiante.setEnabled(false);
+            ventana.txtSegundoApellidoEstudiante.setEnabled(false);
+            ventana.txtCedulaEstudiante.setEnabled(false);
+            ventana.txtFechaNacimiento.setEnabled(false);
+            ventana.rdbPrimaria.setVisible(false);
+            ventana.rdbTercerCiclo.setVisible(false);
+            ventana.cbxTercerCiclo.setVisible(false);
+            ventana.cbxEspecialidad.setEnabled(false);
+            ventana.rdbCuartoCiclo.setEnabled(false);
+            ventana.cbxCuartoCiclo.setEnabled(false);
+            
         }
         else if (tipo=="Administrativo")
         {

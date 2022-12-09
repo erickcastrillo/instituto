@@ -63,7 +63,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         lblEspecialidad = new javax.swing.JLabel();
         btnBorrar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
+        btnActualizarEst = new javax.swing.JButton();
         rdbCuartoCiclo = new javax.swing.JRadioButton();
         rdbPrimaria = new javax.swing.JRadioButton();
         rdbTercerCiclo = new javax.swing.JRadioButton();
@@ -71,12 +71,12 @@ public class EstudianteWindow extends javax.swing.JFrame {
         cbxTercerCiclo = new javax.swing.JComboBox<>();
         cbxEspecialidad = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        btnAgregarEncargado = new javax.swing.JButton();
         cbxPrimaria = new javax.swing.JComboBox<>();
         cbxCuartoCiclo = new javax.swing.JComboBox<>();
         txtCedulaEstudiante = new javax.swing.JTextField();
         btnGuardarEstudiante1 = new javax.swing.JButton();
         btnSalirEstudiante = new javax.swing.JButton();
+        btnUpdateEstudiante = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(720, 750));
@@ -146,9 +146,14 @@ public class EstudianteWindow extends javax.swing.JFrame {
         btnBorrar.setName("btnBorrar"); // NOI18N
         getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, -1, -1));
 
-        btnActualizar.setText("Actualizar");
-        btnActualizar.setName("btnActualizar"); // NOI18N
-        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, -1, -1));
+        btnActualizarEst.setText("Actualizar");
+        btnActualizarEst.setName("btnActualizarEst"); // NOI18N
+        btnActualizarEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarEstActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnActualizarEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, -1, -1));
 
         buttonGroup1.add(rdbCuartoCiclo);
         rdbCuartoCiclo.setText("Cuarto Ciclo");
@@ -200,15 +205,6 @@ public class EstudianteWindow extends javax.swing.JFrame {
         jLabel1.setText("Datos de estudiante");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
-        btnAgregarEncargado.setText("Agregar encargado");
-        btnAgregarEncargado.setName("btnAgregarEncargado"); // NOI18N
-        btnAgregarEncargado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarEncargadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAgregarEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, -1, -1));
-
         cbxPrimaria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1-A", "2-A", "3-A", "4-A", "5-A", "6-A" }));
         cbxPrimaria.setName("cbxPrimaria"); // NOI18N
         cbxPrimaria.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +243,15 @@ public class EstudianteWindow extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalirEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
+
+        btnUpdateEstudiante.setText("Actualizar Estudiante");
+        btnUpdateEstudiante.setName("btnUpdateEstudiante"); // NOI18N
+        btnUpdateEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateEstudianteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUpdateEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -295,11 +300,6 @@ public class EstudianteWindow extends javax.swing.JFrame {
     private void cbxPrimariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxPrimariaActionPerformed
 
     }//GEN-LAST:event_cbxPrimariaActionPerformed
-
-    private void btnAgregarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEncargadoActionPerformed
-        EncargadoWindow ventana =new EncargadoWindow();
-        ventana.setVisible(true);
-    }//GEN-LAST:event_btnAgregarEncargadoActionPerformed
 
     private void txtNombreEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEstudianteKeyPressed
         char c =evt.getKeyChar();
@@ -432,7 +432,65 @@ public class EstudianteWindow extends javax.swing.JFrame {
     private void btnSalirEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirEstudianteActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirEstudianteActionPerformed
+
+    private void btnActualizarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEstActionPerformed
+        btnUpdateEstudiante.setVisible(true);
+        txtNombreEstudiante.setEnabled(true);
+        txtNombreEstudiante.setEditable(true);
+        txtNombreEstudiante.setVisible(true);
+        
+        txtApellidoEstudiante.setEnabled(true);
+        txtSegundoApellidoEstudiante.setEnabled(true);
+        txtCedulaEstudiante.setEnabled(true);
+        txtFechaNacimiento.setEnabled(true);
+        if (rdbPrimaria.isSelected())
+        {
+            rdbPrimaria.setEnabled(true);
+            cbxPrimaria.setEnabled(true);
+        }
+        else if (rdbTercerCiclo.isSelected())
+        {
+            rdbTercerCiclo.setEnabled(true);
+            cbxTercerCiclo.setEnabled(true);
+        }
+        else
+        {
+            rdbCuartoCiclo.setEnabled(true);
+            cbxCuartoCiclo.setEnabled(true);
+            cbxEspecialidad.setEnabled(true);
+        }
+        btnActualizarEst.setVisible(false);
+        
+    }//GEN-LAST:event_btnActualizarEstActionPerformed
+
+    private void btnUpdateEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEstudianteActionPerformed
+        if(rdbPrimaria.isSelected())
+        {
+           Estudiante estudiante = Controlador.obtenerEstudiante(estudianteID);
+           estudiante.setNombre(txtNombreEstudiante.getText());
+           estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
+           estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
+           estudiante.setIdentificacion(txtCedulaEstudiante.getText());
+           estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
+           estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
+           estudiante.setNivel("Primaria");
+            //estudiante.setIdEncargado();
+            Boolean guardado = Controlador.updateEstudiante(estudiante);
+            if (guardado)
+            {
+               JOptionPane.showMessageDialog(null, "Estudiante actualizado"); 
+               dispose();
+            }else 
+            {
+              JOptionPane.showMessageDialog(null, "Error al actualizar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+        
+    }//GEN-LAST:event_btnUpdateEstudianteActionPerformed
     public String encargadoID;
+    public String estudianteID;
     /**
      * @param args the command line arguments
      */
@@ -469,11 +527,11 @@ public class EstudianteWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnActualizar;
-    public javax.swing.JButton btnAgregarEncargado;
+    public javax.swing.JButton btnActualizarEst;
     public javax.swing.JButton btnBorrar;
     public javax.swing.JButton btnGuardarEstudiante1;
     private javax.swing.JButton btnSalirEstudiante;
+    public javax.swing.JButton btnUpdateEstudiante;
     private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JComboBox<String> cbxCuartoCiclo;
     public javax.swing.JComboBox<String> cbxEspecialidad;

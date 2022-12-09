@@ -221,7 +221,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblHijos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, -1, 150));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, -1, 150));
 
         lblHijos.setText("Estudiantes que tengo asociados");
         lblHijos.setName("lblHijos"); // NOI18N
@@ -296,11 +296,11 @@ public class EncargadoWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCedulaEncargadoKeyTyped
     public String encargadoID;
     private void btnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstudianteActionPerformed
-        tblHijos.setVisible(true);
         lblHijos.setVisible(false);
         ArrayList<Estudiante> listadeestudiantes = Controlador.listarEstudiantes();
         actualizarTablaEstudiante(listadeestudiantes);
         btnAgregarEstudiante.setVisible(false);
+        lblSeleccionarHijo.setVisible(true);
 
     }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
 private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
@@ -356,7 +356,7 @@ private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void tblHijosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHijosMouseClicked
-    
+        
     }//GEN-LAST:event_tblHijosMouseClicked
 
     private void btnAsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsociarActionPerformed
@@ -405,7 +405,7 @@ private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActualizar;
     public javax.swing.JButton btnAgregarEstudiante;
-    private javax.swing.JButton btnAsociar;
+    public javax.swing.JButton btnAsociar;
     public javax.swing.JButton btnBorrar;
     public javax.swing.JButton btnGuardarEncargado;
     private javax.swing.JButton btnSalir;
@@ -420,8 +420,8 @@ private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblHijos;
-    private javax.swing.JLabel lblSeleccionarHijo;
+    public javax.swing.JLabel lblHijos;
+    public javax.swing.JLabel lblSeleccionarHijo;
     public javax.swing.JTable tblHijos;
     public javax.swing.JTextField txtApellidoEncargado;
     public javax.swing.JTextField txtCedulaEncargado;
