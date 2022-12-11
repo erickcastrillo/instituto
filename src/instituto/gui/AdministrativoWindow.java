@@ -20,6 +20,7 @@ import instituto.data.controladdores.Controlador;
 import instituto.data.modelos.TipoUsuario;
 import instituto.data.modelos.Usuario;
 import javax.swing.JOptionPane;
+import static instituto.data.modelos.TipoUsuario.ADMINISTRACION; //probar
 
 /**
  *
@@ -60,6 +61,7 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         txtCedulaAdministrativo = new javax.swing.JTextField();
         txtPrimerApellidoAdministrativo = new javax.swing.JTextField();
         btnSalirAdministrativo = new javax.swing.JButton();
+        btnGuardarCambiosAdministrativo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(550, 350));
@@ -119,10 +121,20 @@ public class AdministrativoWindow extends javax.swing.JFrame {
 
         btnActualizarAdministrativo.setText("Actualizar");
         btnActualizarAdministrativo.setName("btnActualizarAdministrativo"); // NOI18N
+        btnActualizarAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarAdministrativoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnActualizarAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, -1));
 
         btnEliminarAdministrativo.setText("Eliminar");
         btnEliminarAdministrativo.setName("btnEliminarAdministrativo"); // NOI18N
+        btnEliminarAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarAdministrativoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnEliminarAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 80, -1));
 
         btnGuardar.setText("Guardar");
@@ -162,6 +174,15 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         });
         getContentPane().add(btnSalirAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, -1, -1));
 
+        btnGuardarCambiosAdministrativo.setText("Guardar Cambios");
+        btnGuardarCambiosAdministrativo.setName("btnGuardarCambiosAdministrativo"); // NOI18N
+        btnGuardarCambiosAdministrativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarCambiosAdministrativoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuardarCambiosAdministrativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -170,37 +191,30 @@ public class AdministrativoWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreAdministrativoActionPerformed
 
     private void txtNombreAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreAdministrativoKeyPressed
-        char c =evt.getKeyChar();
-        if(Character.isDigit(c))
-        {
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
             txtNombreAdministrativo.setEditable(false);
-        }else
-        {
+        } else {
             txtNombreAdministrativo.setEditable(true);
         }
     }//GEN-LAST:event_txtNombreAdministrativoKeyPressed
 
     private void txtSegundoApellidoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoAdministrativoKeyPressed
-        char c =evt.getKeyChar();
-        if(Character.isDigit(c))
-        {
-            txtNombreAdministrativo.setEditable(false);
-        }else
-        {
-            txtNombreAdministrativo.setEditable(true);
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            txtSegundoApellidoAdministrativo.setEditable(false);
+        } else {
+            txtSegundoApellidoAdministrativo.setEditable(true);
         }
     }//GEN-LAST:event_txtSegundoApellidoAdministrativoKeyPressed
 
     private void txtTelefonoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoAdministrativoKeyPressed
-        char c =evt.getKeyChar();
-        if(Character.isLetter(c))
-        {
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
             txtTelefonoAdministrativo.setEditable(false);
-        } else if (Character.isSpaceChar(c))
-        {
+        } else if (Character.isSpaceChar(c)) {
             txtTelefonoAdministrativo.setEditable(false);
-        }else
-        {
+        } else {
             txtTelefonoAdministrativo.setEditable(true);
         }
     }//GEN-LAST:event_txtTelefonoAdministrativoKeyPressed
@@ -216,34 +230,76 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         usuario.setTipoUsuario(TipoUsuario.ADMINISTRACION);
         Boolean guardado = Controlador.crearUsuario(usuario);
         JOptionPane.showMessageDialog(null, "Administrativo guardado con éxito");
-            dispose();
+        dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtCedulaAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaAdministrativoKeyPressed
-        char c =evt.getKeyChar();
-        if(Character.isLetter(c))
-        {
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
             txtCedulaAdministrativo.setEditable(false);
-        }else
-        {
+        } else {
             txtCedulaAdministrativo.setEditable(true);
         }
     }//GEN-LAST:event_txtCedulaAdministrativoKeyPressed
 
     private void txtPrimerApellidoAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrimerApellidoAdministrativoKeyPressed
-        char c =evt.getKeyChar();
-        if(Character.isDigit(c))
-        {
-            txtNombreAdministrativo.setEditable(false);
-        }else
-        {
-            txtNombreAdministrativo.setEditable(true);
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            txtPrimerApellidoAdministrativo.setEditable(false);
+        } else {
+            txtPrimerApellidoAdministrativo.setEditable(true);
         }
     }//GEN-LAST:event_txtPrimerApellidoAdministrativoKeyPressed
 
     private void btnSalirAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirAdministrativoActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirAdministrativoActionPerformed
+
+    private void btnActualizarAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarAdministrativoActionPerformed
+        btnActualizarAdministrativo.setVisible(false);
+        btnGuardar.setVisible(false);
+        btnGuardarCambiosAdministrativo.setVisible(true);
+        txtNombreAdministrativo.setEnabled(true);
+        txtPrimerApellidoAdministrativo.setEnabled(true);
+        txtSegundoApellidoAdministrativo.setEnabled(true);
+        txtCedulaAdministrativo.setEnabled(true);
+        txtTelefonoAdministrativo.setEnabled(true);
+        txtClaveAdministrativo.setEnabled(true);
+
+    }//GEN-LAST:event_btnActualizarAdministrativoActionPerformed
+    public String usuarioid;
+    private void btnGuardarCambiosAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosAdministrativoActionPerformed
+        Usuario usuario = Controlador.obtenerUsuario(usuarioid);
+        usuario.setNombre(txtNombreAdministrativo.getText());
+        usuario.setPrimerApellido(txtPrimerApellidoAdministrativo.getText());
+        usuario.setSegundoApellido(txtSegundoApellidoAdministrativo.getText());
+        usuario.setIdentificacion(txtCedulaAdministrativo.getText());
+        usuario.setClave(txtClaveAdministrativo.getText());
+        usuario.setTelefono(txtTelefonoAdministrativo.getText());
+        usuario.setTipoUsuario(TipoUsuario.ADMINISTRACION);
+        Boolean guardado = Controlador.updateUsuario(usuario);
+        if (guardado) {
+            JOptionPane.showMessageDialog(null, "Administrativo actualizado");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar administrativo",
+                    "Atención", JOptionPane.ERROR_MESSAGE);
+        }
+
+        dispose();
+    }//GEN-LAST:event_btnGuardarCambiosAdministrativoActionPerformed
+
+    private void btnEliminarAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAdministrativoActionPerformed
+        /*Usuario Usuario = Controlador.obtenerUsuario(usuarioid);
+        Boolean borrado = Controlador.borrarUsuario(usuarioid);
+        if (borrado) {
+            JOptionPane.showMessageDialog(null, "Encargado borrado con éxito");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al borrar encargado",
+                    "Atención", JOptionPane.ERROR_MESSAGE);
+        }*/
+    }//GEN-LAST:event_btnEliminarAdministrativoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,7 +340,8 @@ public class AdministrativoWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActualizarAdministrativo;
     public javax.swing.JButton btnEliminarAdministrativo;
-    private javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnGuardarCambiosAdministrativo;
     private javax.swing.JButton btnSalirAdministrativo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

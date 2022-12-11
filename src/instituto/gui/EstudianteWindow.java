@@ -144,6 +144,11 @@ public class EstudianteWindow extends javax.swing.JFrame {
 
         btnBorrar.setText("Borrar");
         btnBorrar.setName("btnBorrar"); // NOI18N
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, -1, -1));
 
         btnActualizarEst.setText("Actualizar");
@@ -257,8 +262,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rdbCuartoCicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbCuartoCicloActionPerformed
-        if (rdbCuartoCiclo.isSelected())
-        {
+        if (rdbCuartoCiclo.isSelected()) {
             cbxPrimaria.setVisible(false);
             cbxTercerCiclo.setVisible(false);
             cbxCuartoCiclo.setVisible(true);
@@ -269,8 +273,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_rdbCuartoCicloActionPerformed
 
     private void rdbPrimariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbPrimariaActionPerformed
-        if (rdbPrimaria.isSelected())
-        {
+        if (rdbPrimaria.isSelected()) {
             cbxPrimaria.setVisible(true);
             cbxTercerCiclo.setVisible(false);
             cbxCuartoCiclo.setVisible(false);
@@ -282,8 +285,7 @@ public class EstudianteWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_rdbPrimariaActionPerformed
 
     private void rdbTercerCicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbTercerCicloActionPerformed
-        if (rdbTercerCiclo.isSelected())
-        {
+        if (rdbTercerCiclo.isSelected()) {
             cbxPrimaria.setVisible(false);
             cbxTercerCiclo.setVisible(true);
             cbxCuartoCiclo.setVisible(false);
@@ -302,47 +304,39 @@ public class EstudianteWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxPrimariaActionPerformed
 
     private void txtNombreEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEstudianteKeyPressed
-        char c =evt.getKeyChar();
-                if(Character.isDigit(c))
-                {
-                    txtNombreEstudiante.setEditable(false);
-                }else 
-                {
-                    txtNombreEstudiante.setEditable(true);
-                }
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            txtNombreEstudiante.setEditable(false);
+        } else {
+            txtNombreEstudiante.setEditable(true);
+        }
     }//GEN-LAST:event_txtNombreEstudianteKeyPressed
 
     private void txtApellidoEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEstudianteKeyPressed
-        char c =evt.getKeyChar();
-                if(Character.isDigit(c))
-                {
-                    txtApellidoEstudiante.setEditable(false);
-                }else 
-                {
-                    txtApellidoEstudiante.setEditable(true);
-                }
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            txtApellidoEstudiante.setEditable(false);
+        } else {
+            txtApellidoEstudiante.setEditable(true);
+        }
     }//GEN-LAST:event_txtApellidoEstudianteKeyPressed
 
     private void txtSegundoApellidoEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEstudianteKeyPressed
-        char c =evt.getKeyChar();
-                if(Character.isDigit(c))
-                {
-                    txtSegundoApellidoEstudiante.setEditable(false);
-                }else 
-                {
-                    txtSegundoApellidoEstudiante.setEditable(true);
-                }
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            txtSegundoApellidoEstudiante.setEditable(false);
+        } else {
+            txtSegundoApellidoEstudiante.setEditable(true);
+        }
     }//GEN-LAST:event_txtSegundoApellidoEstudianteKeyPressed
 
     private void txtFechaNacimientoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFechaNacimientoKeyPressed
-       char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtFechaNacimiento.setEditable(false);
-                }else 
-                {
-                    txtFechaNacimiento.setEditable(true);
-                }
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            txtFechaNacimiento.setEditable(false);
+        } else {
+            txtFechaNacimiento.setEditable(true);
+        }
     }//GEN-LAST:event_txtFechaNacimientoKeyPressed
 
     private void txtNombreEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEstudianteActionPerformed
@@ -350,19 +344,16 @@ public class EstudianteWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreEstudianteActionPerformed
 
     private void txtCedulaEstudianteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEstudianteKeyPressed
-        char c =evt.getKeyChar();
-                if(Character.isLetter(c))
-                {
-                    txtFechaNacimiento.setEditable(false);
-                }else 
-                {
-                    txtFechaNacimiento.setEditable(true);
-                }
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            txtCedulaEstudiante.setEditable(false);
+        } else {
+            txtCedulaEstudiante.setEditable(true);
+        }
     }//GEN-LAST:event_txtCedulaEstudianteKeyPressed
 
     private void btnGuardarEstudiante1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEstudiante1ActionPerformed
-        if(rdbPrimaria.isSelected())
-        {
+        if (rdbPrimaria.isSelected()) {
             Estudiante estudiante = new Estudiante();
             estudiante.setNombre(txtNombreEstudiante.getText());
             estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
@@ -373,18 +364,15 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudiante.setNivel("Primaria");
             //estudiante.setIdEncargado();
             Boolean guardado = Controlador.crearEstudiante(estudiante);
-            if (guardado)
-            {
-               JOptionPane.showMessageDialog(null, "Estudiante de primaria guardado con éxito"); 
-               dispose();
-            }else 
-            {
-              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
+            if (guardado) {
+                JOptionPane.showMessageDialog(null, "Estudiante de primaria guardado con éxito");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
                         "Atención", JOptionPane.ERROR_MESSAGE);
             }
-            
-        }else if (rdbTercerCiclo.isSelected())
-        {
+
+        } else if (rdbTercerCiclo.isSelected()) {
             Estudiante estudiante = new Estudiante();
             estudiante.setNombre(txtNombreEstudiante.getText());
             estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
@@ -394,18 +382,15 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudiante.setSeccion(String.valueOf(cbxTercerCiclo.getSelectedItem()));
             estudiante.setNivel("Tercer Ciclo");
             Boolean guardado = Controlador.crearEstudiante(estudiante);
-            if (guardado)
-            {
-               JOptionPane.showMessageDialog(null, "Estudiante de Tercer Ciclo guardado con éxito"); 
-               dispose();
-            }else 
-            {
-              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
+            if (guardado) {
+                JOptionPane.showMessageDialog(null, "Estudiante de Tercer Ciclo guardado con éxito");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
                         "Atención", JOptionPane.ERROR_MESSAGE);
             }
-            
-        }else if (rdbCuartoCiclo.isSelected())
-        {
+
+        } else if (rdbCuartoCiclo.isSelected()) {
             EstudianteIV estudianteiv = new EstudianteIV();
             estudianteiv.setNombre(txtNombreEstudiante.getText());
             estudianteiv.setPrimerApellido(txtApellidoEstudiante.getText());
@@ -417,13 +402,11 @@ public class EstudianteWindow extends javax.swing.JFrame {
             estudianteiv.setEspecialidad(String.valueOf(cbxEspecialidad.getSelectedItem()));
             //estudianteiv.setSeccion(String.valueOf(cbxCuartoCiclo.getSelectedItem()));
             Boolean guardado = Controlador.crearEstudianteIV(estudianteiv);
-            if (guardado)
-            {
-               JOptionPane.showMessageDialog(null, "Estudiante de IV Ciclo guardado con éxito"); 
-               dispose();
-            }else 
-            {
-              JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
+            if (guardado) {
+                JOptionPane.showMessageDialog(null, "Estudiante de IV Ciclo guardado con éxito");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al guardar estudiante",
                         "Atención", JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -438,59 +421,131 @@ public class EstudianteWindow extends javax.swing.JFrame {
         txtNombreEstudiante.setEnabled(true);
         txtNombreEstudiante.setEditable(true);
         txtNombreEstudiante.setVisible(true);
-        
+
         txtApellidoEstudiante.setEnabled(true);
         txtSegundoApellidoEstudiante.setEnabled(true);
         txtCedulaEstudiante.setEnabled(true);
         txtFechaNacimiento.setEnabled(true);
-        if (rdbPrimaria.isSelected())
-        {
+        if (rdbPrimaria.isSelected()) {
             rdbPrimaria.setEnabled(true);
             cbxPrimaria.setEnabled(true);
-        }
-        else if (rdbTercerCiclo.isSelected())
-        {
+        } else if (rdbTercerCiclo.isSelected()) {
             rdbTercerCiclo.setEnabled(true);
             cbxTercerCiclo.setEnabled(true);
-        }
-        else
-        {
+        } else {
             rdbCuartoCiclo.setEnabled(true);
             cbxCuartoCiclo.setEnabled(true);
             cbxEspecialidad.setEnabled(true);
         }
         btnActualizarEst.setVisible(false);
-        
+
     }//GEN-LAST:event_btnActualizarEstActionPerformed
 
     private void btnUpdateEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEstudianteActionPerformed
-        if(rdbPrimaria.isSelected())
-        {
-           Estudiante estudiante = Controlador.obtenerEstudiante(estudianteID);
-           estudiante.setNombre(txtNombreEstudiante.getText());
-           estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
-           estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
-           estudiante.setIdentificacion(txtCedulaEstudiante.getText());
-           estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
-           estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
-           estudiante.setNivel("Primaria");
+        if (rdbPrimaria.isSelected()) {
+            Estudiante estudiante = Controlador.obtenerEstudiante(estudianteID);
+            estudiante.setNombre(txtNombreEstudiante.getText());
+            estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
+            estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
+            estudiante.setIdentificacion(txtCedulaEstudiante.getText());
+            estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
+            estudiante.setSeccion(String.valueOf(cbxPrimaria.getSelectedItem()));
+            estudiante.setNivel("Primaria");
             //estudiante.setIdEncargado();
             Boolean guardado = Controlador.updateEstudiante(estudiante);
-            if (guardado)
-            {
-               JOptionPane.showMessageDialog(null, "Estudiante actualizado"); 
-               dispose();
-            }else 
-            {
-              JOptionPane.showMessageDialog(null, "Error al actualizar estudiante",
+            if (guardado) {
+                JOptionPane.showMessageDialog(null, "Estudiante actualizado");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (rdbTercerCiclo.isSelected()) {
+            Estudiante estudiante = Controlador.obtenerEstudiante(estudianteID);
+            estudiante.setNombre(txtNombreEstudiante.getText());
+            estudiante.setPrimerApellido(txtApellidoEstudiante.getText());
+            estudiante.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
+            estudiante.setIdentificacion(txtCedulaEstudiante.getText());
+            estudiante.setFechaNacimiento(txtFechaNacimiento.getText());
+            estudiante.setSeccion(String.valueOf(cbxTercerCiclo.getSelectedItem()));
+            estudiante.setNivel("Tercer Ciclo");
+            //estudiante.setIdEncargado();
+            Boolean guardado = Controlador.updateEstudiante(estudiante);
+            if (guardado) {
+                JOptionPane.showMessageDialog(null, "Estudiante actualizado");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (rdbCuartoCiclo.isSelected()) {
+            EstudianteIV estudianteiv = Controlador.obtenerEstudianteIV(estudianteID);
+            estudianteiv.setNombre(txtNombreEstudiante.getText());
+            estudianteiv.setPrimerApellido(txtApellidoEstudiante.getText());
+            estudianteiv.setSegundoApellido(txtSegundoApellidoEstudiante.getText());
+            estudianteiv.setIdentificacion(txtCedulaEstudiante.getText());
+            estudianteiv.setFechaNacimiento(txtFechaNacimiento.getText());
+            estudianteiv.setSeccion(String.valueOf(cbxCuartoCiclo.getSelectedItem()));
+            estudianteiv.setEspecialidad(String.valueOf(cbxEspecialidad.getSelectedItem()));
+            estudianteiv.setNivel("Cuarto Ciclo");
+            //estudiante.setIdEncargado();
+            Boolean guardado = Controlador.updateEstudianteIV(estudianteiv);
+            if (guardado) {
+                JOptionPane.showMessageDialog(null, "Estudiante actualizado");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+
+    }//GEN-LAST:event_btnUpdateEstudianteActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        if (rdbPrimaria.isSelected()) 
+        {
+            Estudiante estudiante = Controlador.obtenerEstudiante(estudianteID);
+            Boolean borrado = Controlador.borrarEstudiante(estudiante);
+            if (borrado) {
+                JOptionPane.showMessageDialog(null, "Estudiante borrado con éxito");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al borrar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (rdbTercerCiclo.isSelected()) 
+        {
+            Estudiante estudiante = Controlador.obtenerEstudiante(estudianteID);
+            Boolean borrado = Controlador.borrarEstudiante(estudiante);
+            if (borrado) {
+                JOptionPane.showMessageDialog(null, "Estudiante borrado con éxito");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al borrar estudiante",
+                        "Atención", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (rdbCuartoCiclo.isSelected()) 
+        {
+            EstudianteIV estudianteiv = Controlador.obtenerEstudianteIV(estudianteID);
+            Boolean borrado = Controlador.borrarEstudianteIV(estudianteiv);
+            if (borrado) {
+                JOptionPane.showMessageDialog(null, "Estudiante borrado con éxito");
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al borrar estudiante",
                         "Atención", JOptionPane.ERROR_MESSAGE);
             }
         }
         
-        
-    }//GEN-LAST:event_btnUpdateEstudianteActionPerformed
+        dispose();
+
+      
+
+    }//GEN-LAST:event_btnBorrarActionPerformed
     public String encargadoID;
     public String estudianteID;
+
     /**
      * @param args the command line arguments
      */

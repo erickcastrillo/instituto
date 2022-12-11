@@ -126,7 +126,7 @@ public class Principal extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         tblPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -409,6 +409,7 @@ public class Principal extends javax.swing.JFrame {
         ventana.setVisible(true);
         ventana.btnActualizarAdministrativo.setVisible(false);
         ventana.btnEliminarAdministrativo.setVisible(false);
+        ventana.btnGuardarCambiosAdministrativo.setVisible(false);
         
     }//GEN-LAST:event_mnAdministrativosActionPerformed
 
@@ -422,6 +423,7 @@ public class Principal extends javax.swing.JFrame {
         ventana.lblHijos.setVisible(false);
         ventana.lblSeleccionarHijo.setVisible(false);
         ventana.btnAsociar.setVisible(false);
+        ventana.btnGuardarCambiosEncargado.setVisible(false);
     }//GEN-LAST:event_mnRegistrarEncargadoActionPerformed
 
     private void mnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarEstudianteActionPerformed
@@ -552,7 +554,7 @@ public class Principal extends javax.swing.JFrame {
                 fila[0] = usuario.getId();
                 fila[1] = usuario.getNombre();
                 fila[2] = usuario.getPrimerApellido();
-                fila[3] = "Administrativo";
+                fila[3] = "ADMINISTRACION";
                 fila[4] = usuario.getTelefono();
                 fila[5] = usuario.getIdentificacion();
                 modelo.addRow(fila);
@@ -572,7 +574,19 @@ public class Principal extends javax.swing.JFrame {
     private void mnListarAdministrativosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListarAdministrativosActionPerformed
         actualizarTablaAdministrativos();
     }//GEN-LAST:event_mnListarAdministrativosActionPerformed
-    
+    private void limpiartabla()
+    {
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Title 1");
+        modelo.addColumn("Title 2");
+        modelo.addColumn("Title 3");
+        modelo.addColumn("Title 4");
+        modelo.addColumn("Nivel");
+        modelo.addColumn("Sección");
+        
+        tblPrincipal.setModel(modelo);
+        
+    }
     private void tblPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPrincipalMouseClicked
                 
         int selectedRow =tblPrincipal.getSelectedRow();
@@ -609,6 +623,7 @@ public class Principal extends javax.swing.JFrame {
             ventana.rdbCuartoCiclo.setVisible(false);
             ventana.cbxPrimaria.setEnabled(false);
             ventana.btnUpdateEstudiante.setVisible(false);
+            limpiartabla();
         }
         else if (tipo=="Tercer Ciclo")
         {
@@ -626,8 +641,8 @@ public class Principal extends javax.swing.JFrame {
             ventana.cbxTercerCiclo.setSelectedItem(estudiante.getSeccion());
             ventana.lblSeccion.setVisible(true);
             ventana.cbxTercerCiclo.setVisible(true);
-            ventana.btnGuardarEstudiante1.setVisible(false);
             
+            ventana.btnGuardarEstudiante1.setVisible(false);
             ventana.txtNombreEstudiante.setEnabled(false);
             ventana.txtApellidoEstudiante.setEnabled(false);
             ventana.txtSegundoApellidoEstudiante.setEnabled(false);
@@ -637,6 +652,10 @@ public class Principal extends javax.swing.JFrame {
             ventana.rdbTercerCiclo.setEnabled(false);
             ventana.rdbPrimaria.setVisible(false);
             ventana.rdbCuartoCiclo.setVisible(false);
+            ventana.btnUpdateEstudiante.setVisible(false);
+            limpiartabla();
+          
+            
         }
         else if (tipo == "Encargado") //acceso true
         {
@@ -658,9 +677,17 @@ public class Principal extends javax.swing.JFrame {
             ventana.btnAsociar.setVisible(false);
             ventana.btnGuardarEncargado.setVisible(false);
             
-            
-            
-            
+            ventana.txtNombreEncargado.setEnabled(false);
+            ventana.txtApellidoEncargado.setEnabled(false);
+            ventana.txtSegundoApellidoEncargado.setEnabled(false);
+            ventana.txtCedulaEncargado.setEnabled(false);
+            ventana.txtCelularEncargado.setEnabled(false);
+            ventana.txtClave.setEnabled(false);
+            ventana.txtDireccionEncargado.setEnabled(false);
+            ventana.txtCorreoEncargado.setEnabled(false);
+            ventana.chxAcceso.setEnabled(false);
+            ventana.btnGuardarCambiosEncargado.setVisible(false);
+            limpiartabla();
             
             //actualizar la tabla si es que ya tiene hijos
         }
@@ -696,11 +723,13 @@ public class Principal extends javax.swing.JFrame {
             ventana.cbxEspecialidad.setEnabled(false);
             ventana.rdbCuartoCiclo.setEnabled(false);
             ventana.cbxCuartoCiclo.setEnabled(false);
+            ventana.btnUpdateEstudiante.setVisible(false);
+            limpiartabla();
             
         }
-        else if (tipo=="Administrativo")
+        else if (tipo=="ADMINISTRACION")
         {
-            String id = tblPrincipal.getValueAt(selectedRow, 1).toString();
+            String id = tblPrincipal.getValueAt(selectedRow, 0).toString();
             Usuario usuario = Controlador.obtenerUsuario(id);
             AdministrativoWindow ventana = new AdministrativoWindow();
             ventana.setVisible(true);
@@ -709,10 +738,21 @@ public class Principal extends javax.swing.JFrame {
             ventana.txtSegundoApellidoAdministrativo.setText(usuario.getSegundoApellido());
             ventana.txtCedulaAdministrativo.setText(usuario.getIdentificacion());
             ventana.txtTelefonoAdministrativo.setText(usuario.getTelefono());
-            ventana.txtClaveAdministrativo.setText(usuario.getClave());   
+            ventana.txtClaveAdministrativo.setText(usuario.getClave());
+            ventana.btnGuardar.setVisible(false);
+            ventana.btnGuardarCambiosAdministrativo.setVisible(false);
+            
+            ventana.txtNombreAdministrativo.setEnabled(false);
+            ventana.txtPrimerApellidoAdministrativo.setEnabled(false);
+            ventana.txtSegundoApellidoAdministrativo.setEnabled(false);
+            ventana.txtCedulaAdministrativo.setEnabled(false);
+            ventana.txtTelefonoAdministrativo.setEnabled(false);
+            ventana.txtClaveAdministrativo.setEnabled(false);
+            limpiartabla();
+            
         }
     }//GEN-LAST:event_tblPrincipalMouseClicked
-    
+
     private void mnSeccion1AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeccion1AActionPerformed
         List<Estudiante> estudiantes = Controlador.filtrarEstudiantesSeccion("1-A");
         this.actualizarTablaEstudiante(estudiantes);

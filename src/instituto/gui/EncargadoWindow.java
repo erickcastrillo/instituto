@@ -19,6 +19,7 @@ package instituto.gui;
 import instituto.data.controladdores.Controlador;
 import instituto.data.modelos.Encargado;
 import instituto.data.modelos.Estudiante;
+import instituto.data.modelos.TipoUsuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -34,7 +35,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
      * Creates new form encargadoW
      */
     public EncargadoWindow() {
-        
+
         initComponents();
     }
 
@@ -75,6 +76,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
         lblHijos = new javax.swing.JLabel();
         lblSeleccionarHijo = new javax.swing.JLabel();
         btnAsociar = new javax.swing.JButton();
+        btnGuardarCambiosEncargado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -99,6 +101,11 @@ public class EncargadoWindow extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
         txtCelularEncargado.setName("txtCelularEncargado"); // NOI18N
+        txtCelularEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCelularEncargadoKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtCelularEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 260, 40));
 
         txtNombreEncargado.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -119,6 +126,11 @@ public class EncargadoWindow extends javax.swing.JFrame {
         getContentPane().add(txtApellidoEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 260, 40));
 
         txtSegundoApellidoEncargado.setName("txtSegundoApellidoEncargado"); // NOI18N
+        txtSegundoApellidoEncargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSegundoApellidoEncargadoActionPerformed(evt);
+            }
+        });
         txtSegundoApellidoEncargado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSegundoApellidoEncargadoKeyPressed(evt);
@@ -163,11 +175,21 @@ public class EncargadoWindow extends javax.swing.JFrame {
 
         btnBorrar.setText("Eliminar datos");
         btnBorrar.setName("btnBorrar"); // NOI18N
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, -1, -1));
 
         btnActualizar.setText("Actualizar");
         btnActualizar.setName("btnActualizar"); // NOI18N
-        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, -1, -1));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, -1, -1));
 
         jLabel9.setText("Clave:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
@@ -240,39 +262,41 @@ public class EncargadoWindow extends javax.swing.JFrame {
         });
         getContentPane().add(btnAsociar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, -1, -1));
 
+        btnGuardarCambiosEncargado.setText("Guardar");
+        btnGuardarCambiosEncargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarCambiosEncargadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuardarCambiosEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEncargadoKeyPressed
-        char c =evt.getKeyChar();
-        if(Character.isDigit(c))
-        {
-            txtApellidoEncargado.setEditable(false);
-        }else
-        {
-            txtApellidoEncargado.setEditable(true);
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            txtNombreEncargado.setEditable(false);
+        } else {
+            txtNombreEncargado.setEditable(true);
         }
     }//GEN-LAST:event_txtNombreEncargadoKeyPressed
 
     private void txtApellidoEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoEncargadoKeyPressed
-        char c =evt.getKeyChar();
-        if(Character.isDigit(c))
-        {
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
             txtApellidoEncargado.setEditable(false);
-        }else
-        {
+        } else {
             txtApellidoEncargado.setEditable(true);
         }
     }//GEN-LAST:event_txtApellidoEncargadoKeyPressed
 
     private void txtSegundoApellidoEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEncargadoKeyPressed
-        char c =evt.getKeyChar();
-        if(Character.isLetter(c))
-        {
-            txtSegundoApellidoEncargado.setEditable(true);
-        }else
-        {
+        char c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
             txtSegundoApellidoEncargado.setEditable(false);
+        } else {
+            txtSegundoApellidoEncargado.setEditable(true);
         }
     }//GEN-LAST:event_txtSegundoApellidoEncargadoKeyPressed
 
@@ -281,18 +305,16 @@ public class EncargadoWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSegundoApellidoEncargadoKeyReleased
 
     private void txtCedulaEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEncargadoKeyPressed
-
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            txtCedulaEncargado.setEditable(false);
+        } else {
+            txtCedulaEncargado.setEditable(true);
+        }
     }//GEN-LAST:event_txtCedulaEncargadoKeyPressed
 
     private void txtCedulaEncargadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaEncargadoKeyTyped
-        char c =evt.getKeyChar();
-        if(Character.isLetter(c))
-        {
-            txtCedulaEncargado.setEditable(false);
-        }else
-        {
-            txtCedulaEncargado.setEditable(true);
-        }
+
     }//GEN-LAST:event_txtCedulaEncargadoKeyTyped
     public String encargadoID;
     private void btnAgregarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstudianteActionPerformed
@@ -302,9 +324,10 @@ public class EncargadoWindow extends javax.swing.JFrame {
         btnAgregarEstudiante.setVisible(false);
         lblSeleccionarHijo.setVisible(true);
         btnAsociar.setVisible(true);
+        btnActualizar.setVisible(false);
 
     }//GEN-LAST:event_btnAgregarEstudianteActionPerformed
-private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
+    private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Tipo");
         modelo.addColumn("ID");
@@ -313,17 +336,16 @@ private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
         modelo.addColumn("Apellido");
         modelo.addColumn("Sección");
         Object[] fila = new Object[6];
-        
-            for (Estudiante estudiante : listadeestudiantes)
-            {
-                fila[0] = "Estudiante";
-                fila[1] = estudiante.getId();
-                fila[2] = estudiante.getNombre();
-                fila[3] = estudiante.getNivel();
-                fila[4] = estudiante.getPrimerApellido();
-                fila[5] = estudiante.getSeccion();
-                modelo.addRow(fila);
-            }
+
+        for (Estudiante estudiante : listadeestudiantes) {
+            fila[0] = "Estudiante";
+            fila[1] = estudiante.getId();
+            fila[2] = estudiante.getNombre();
+            fila[3] = estudiante.getNivel();
+            fila[4] = estudiante.getPrimerApellido();
+            fila[5] = estudiante.getSeccion();
+            modelo.addRow(fila);
+        }
         tblHijos.setModel(modelo);
     }
     private void btnGuardarEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEncargadoActionPerformed
@@ -337,12 +359,12 @@ private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
         encargado.setTelefono(txtCelularEncargado.getText());
         encargado.setClave(txtClave.getText());
         encargado.setAcceso(chxAcceso.isSelected());
+        encargado.setTipoUsuario(TipoUsuario.ENCARGADO);
         Boolean guardado = Controlador.crearEncargado(encargado);
 
         //Controlador.crearEncargado(encargado);
-        
         JOptionPane.showMessageDialog(null, "Encargado guardado con éxito");
-            dispose();
+        dispose();
         btnActualizar.setVisible(true);
         btnActualizar.setVisible(true);
         btnAgregarEstudiante.setVisible(true);
@@ -357,16 +379,85 @@ private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void tblHijosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHijosMouseClicked
-        
+
     }//GEN-LAST:event_tblHijosMouseClicked
 
     private void btnAsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsociarActionPerformed
-        int selectedRow =tblHijos.getSelectedRow();
+        int selectedRow = tblHijos.getSelectedRow();
         String ID = tblHijos.getValueAt(selectedRow, 1).toString();
         Estudiante estudiante = Controlador.obtenerEstudiante(ID);
         estudiante.setIdEncargado(encargadoID);
         Controlador.updateEstudiante(estudiante);
+        btnAsociar.setVisible(false);
+        btnAgregarEstudiante.setVisible(true);
+        ArrayList<Estudiante> listadeestudiantes = Controlador.estudiantesPorEncargado(encargadoID);
+        actualizarTablaEstudiante(listadeestudiantes);
+        lblSeleccionarHijo.setVisible(false);
+        lblHijos.setVisible(true);
+
+
     }//GEN-LAST:event_btnAsociarActionPerformed
+
+    private void txtCelularEncargadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCelularEncargadoKeyPressed
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            txtCelularEncargado.setEditable(false);
+        } else {
+            txtCelularEncargado.setEditable(true);
+        }
+    }//GEN-LAST:event_txtCelularEncargadoKeyPressed
+
+    private void txtSegundoApellidoEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSegundoApellidoEncargadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSegundoApellidoEncargadoActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        Encargado encargado = Controlador.obtenerEncargado(encargadoID);
+        Boolean borrado = Controlador.borrarEncargado(encargado);
+        if (borrado) {
+            JOptionPane.showMessageDialog(null, "Encargado borrado con éxito");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al borrar encargado",
+                    "Atención", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        btnActualizar.setVisible(false);
+        btnGuardarCambiosEncargado.setVisible(true);
+        txtNombreEncargado.setEnabled(true);
+        txtApellidoEncargado.setEnabled(true);
+        txtSegundoApellidoEncargado.setEnabled(true);
+        txtCedulaEncargado.setEnabled(true);
+        txtCelularEncargado.setEnabled(true);
+        txtCorreoEncargado.setEnabled(true);
+        txtDireccionEncargado.setEnabled(true);
+        txtClave.setEnabled(true);
+        chxAcceso.setEnabled(true);
+        btnAgregarEstudiante.setVisible(false);
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnGuardarCambiosEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCambiosEncargadoActionPerformed
+        Encargado encargado = Controlador.obtenerEncargado(encargadoID);
+        encargado.setNombre(txtNombreEncargado.getText());
+        encargado.setPrimerApellido(txtApellidoEncargado.getText());
+        encargado.setSegundoApellido(txtSegundoApellidoEncargado.getText());
+        encargado.setIdentificacion(txtCedulaEncargado.getText());
+        encargado.setCorreoElectronico(txtCorreoEncargado.getText());
+        encargado.setClave(txtClave.getText());
+        encargado.setDireccion(txtDireccionEncargado.getText());
+        encargado.setTelefono(txtCelularEncargado.getText());
+        encargado.setAcceso(chxAcceso.isSelected());
+        Boolean guardado = Controlador.updateEncargado(encargado);
+        if (guardado) {
+            JOptionPane.showMessageDialog(null, "Encargado actualizado");
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al actualizar encargado",
+                    "Atención", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnGuardarCambiosEncargadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,6 +500,7 @@ private void actualizarTablaEstudiante(List<Estudiante> listadeestudiantes){
     public javax.swing.JButton btnAgregarEstudiante;
     public javax.swing.JButton btnAsociar;
     public javax.swing.JButton btnBorrar;
+    public javax.swing.JButton btnGuardarCambiosEncargado;
     public javax.swing.JButton btnGuardarEncargado;
     private javax.swing.JButton btnSalir;
     public javax.swing.JCheckBox chxAcceso;
