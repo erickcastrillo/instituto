@@ -548,7 +548,7 @@ public class Principal extends javax.swing.JFrame {
         modelo.addColumn("Telefono");
         modelo.addColumn("Cedula");
         Object[] fila = new Object[6];
-        ArrayList<Usuario> listadeadministrativos = Controlador.listarUsuarios();
+        ArrayList<Usuario> listadeadministrativos = Controlador.listarAdministrativos();
         for (Usuario usuario : listadeadministrativos)
             {
                 fila[0] = usuario.getId();
@@ -741,6 +741,7 @@ public class Principal extends javax.swing.JFrame {
             ventana.txtClaveAdministrativo.setText(usuario.getClave());
             ventana.btnGuardar.setVisible(false);
             ventana.btnGuardarCambiosAdministrativo.setVisible(false);
+            ventana.usuarioid = usuario.getId();
             
             ventana.txtNombreAdministrativo.setEnabled(false);
             ventana.txtPrimerApellidoAdministrativo.setEnabled(false);

@@ -17,6 +17,7 @@
 
 package instituto.data.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -24,7 +25,7 @@ import java.util.Date;
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public class EstudianteIV extends Estudiante {
+public class EstudianteIV extends Estudiante implements Serializable{
 
     public String getEspecialidad() {
         return especialidad;

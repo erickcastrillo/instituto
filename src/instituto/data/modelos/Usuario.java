@@ -17,12 +17,14 @@
 
 package instituto.data.modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public class Usuario extends Persona {
+public class Usuario extends Persona implements Serializable{
 
     // Constructor que acepta los atributos de la clase padre y ejecuta el
     // constructor padre

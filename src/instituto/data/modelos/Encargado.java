@@ -17,13 +17,15 @@
 
 package instituto.data.modelos;
 
+import java.io.Serializable;
+
 /**
  * Clase usada para representar el usuario al que se le registro
  * para que pueda iniciar sesion (tutor)
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public class Encargado extends Usuario {
+public class Encargado extends Usuario implements Serializable {
 
     public Encargado() {
     }

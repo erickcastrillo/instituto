@@ -17,12 +17,14 @@
 
 package instituto.data.modelos;
 
+import java.io.Serializable;
+
 /**
  * Enum usado para definir y restringir los tipos de usuarios que se van a usar
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public enum TipoUsuario {
+public enum TipoUsuario implements Serializable{
     ADMINISTRACION,
     ADMINISTRADOR,
     ENCARGADO

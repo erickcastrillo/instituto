@@ -5,6 +5,7 @@
 package instituto.gui;
 
 import instituto.data.controladdores.Controlador;
+import instituto.data.modelos.Encargado;
 import static instituto.data.modelos.TipoUsuario.ADMINISTRACION;
 import static instituto.data.modelos.TipoUsuario.ENCARGADO;
 import instituto.data.modelos.Usuario;
@@ -21,8 +22,10 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
+        
         initComponents();
         setLocationRelativeTo(null);
+        Controlador.cargarData();
     }
 
     /**
@@ -41,8 +44,9 @@ public class Login extends javax.swing.JFrame {
         txtTelefono = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
+        btnCerrarApp = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -95,6 +99,15 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
 
+        btnCerrarApp.setText("Cerrar App");
+        btnCerrarApp.setName("btnCerrarApp"); // NOI18N
+        btnCerrarApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarAppActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCerrarApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -102,42 +115,53 @@ public class Login extends javax.swing.JFrame {
         String telefono = txtTelefono.getText();
         String clave = String.valueOf(txtClave.getText());
 
-        if (telefono.equalsIgnoreCase("admin") && clave.equalsIgnoreCase("admin")) 
-        {
+        if (telefono.equalsIgnoreCase("admin") 
+                && clave.equalsIgnoreCase("admin")) {
             Principal ventana = new Principal();
             ventana.setVisible(true);
             this.dispose();
-        }else 
+        } else 
+        {
+            Usuario usuario = Controlador.login(telefono, clave);
+            if (usuario != null) 
+            {
+                if (usuario.getTipoUsuario().equals(ENCARGADO)) 
                 {
-                    Usuario usuario = Controlador.login(telefono, clave);
-                    if (usuario.getTipoUsuario().equals(ENCARGADO)) {
-                    JOptionPane.showMessageDialog(null, "Login exitoso!");
-                    EncargadoWindow ventana = new EncargadoWindow();
-                    ventana.setVisible(true);
-                    ventana.txtNombreEncargado.setText(usuario.getNombre());
-                    ventana.txtApellidoEncargado.setText(usuario.getPrimerApellido());
-                    ventana.txtSegundoApellidoEncargado.setText(usuario.getSegundoApellido());
-                    ventana.txtCedulaEncargado.setText(usuario.getIdentificacion());
-                    ventana.txtCelularEncargado.setText(usuario.getTelefono());
-                    ventana.txtClave.setText(usuario.getClave());
-                    ventana.lblHijos.setVisible(false);
-                    ventana.lblSeleccionarHijo.setVisible(false);
-                    ventana.btnAgregarEstudiante.setVisible(false);
-                    ventana.btnAsociar.setVisible(false);
-                    ventana.btnGuardarCambiosEncargado.setVisible(false);
-                    ventana.chxAcceso.setVisible(false);
-                    ventana.btnGuardarEncargado.setVisible(false);
+                    Encargado encargado = (Encargado) usuario;
+                    if(encargado.getAcceso())
+                    {
+                        JOptionPane.showMessageDialog(null, "Login exitoso!");
+                        EncargadoWindow ventana = new EncargadoWindow();
+                        ventana.setVisible(true);
+                        ventana.txtNombreEncargado.setText(usuario.getNombre());
+                        ventana.txtApellidoEncargado.setText(usuario.getPrimerApellido());
+                        ventana.txtSegundoApellidoEncargado.setText(usuario.getSegundoApellido());
+                        ventana.txtCedulaEncargado.setText(usuario.getIdentificacion());
+                        ventana.txtCelularEncargado.setText(usuario.getTelefono());
+                        ventana.txtClave.setText(usuario.getClave());
+                        ventana.lblHijos.setVisible(false);
+                        ventana.lblSeleccionarHijo.setVisible(false);
+                        ventana.btnAgregarEstudiante.setVisible(false);
+                        ventana.btnAsociar.setVisible(false);
+                        ventana.btnGuardarCambiosEncargado.setVisible(false);
+                        ventana.chxAcceso.setVisible(false);
+                        ventana.btnGuardarEncargado.setVisible(false);
+
+                        ventana.txtNombreEncargado.setEnabled(false);
+                        ventana.txtApellidoEncargado.setEnabled(false);
+                        ventana.txtSegundoApellidoEncargado.setEnabled(false);
+                        ventana.txtCedulaEncargado.setEnabled(false);
+                        ventana.txtCelularEncargado.setEnabled(false);
+                        ventana.txtClave.setEnabled(false);
+                        ventana.txtCorreoEncargado.setEnabled(false);
+                        ventana.txtDireccionEncargado.setEnabled(false);
+                    }else 
+                    {
+                       JOptionPane.showMessageDialog(null, "No tiene acceso"); 
+                    }
                     
-                    ventana.txtNombreEncargado.setEnabled(false);
-                    ventana.txtApellidoEncargado.setEnabled(false);
-                    ventana.txtSegundoApellidoEncargado.setEnabled(false);
-                    ventana.txtCedulaEncargado.setEnabled(false);
-                    ventana.txtCelularEncargado.setEnabled(false);
-                    ventana.txtClave.setEnabled(false);
-                    ventana.txtCorreoEncargado.setEnabled(false);
-                    ventana.txtDireccionEncargado.setEnabled(false);
-                    
-                }else if (usuario.getTipoUsuario().equals(ADMINISTRACION))
+
+                } else if (usuario.getTipoUsuario().equals(ADMINISTRACION)) 
                 {
                     JOptionPane.showMessageDialog(null, "Login exitoso!");
                     AdministrativoWindow ventana = new AdministrativoWindow();
@@ -156,12 +180,14 @@ public class Login extends javax.swing.JFrame {
                     ventana.txtClaveAdministrativo.setEnabled(false);
                     ventana.txtCedulaAdministrativo.setEnabled(false);
                     ventana.btnGuardar.setVisible(false);
-                    ventana.btnGuardarCambiosAdministrativo.setVisible(false);               
-                }else 
+                    ventana.btnGuardarCambiosAdministrativo.setVisible(false);
+                } else 
                 {
                     JOptionPane.showMessageDialog(null, "Telefono o clave incorrectos", "Error al validar credenciales", JOptionPane.ERROR_MESSAGE);
                 }
-                }
+            }
+        }
+
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void txtClaveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClaveFocusGained
@@ -175,7 +201,7 @@ public class Login extends javax.swing.JFrame {
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoActionPerformed
-
+    
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         EncargadoWindow ventana = new EncargadoWindow();
         ventana.setVisible(true);
@@ -184,7 +210,17 @@ public class Login extends javax.swing.JFrame {
         ventana.btnBorrar.setVisible(false);
         ventana.btnActualizar.setVisible(false);
         ventana.tblHijos.setVisible(false);
+        ventana.lblHijos.setVisible(false);
+        ventana.lblSeleccionarHijo.setVisible(false);
+        ventana.btnAsociar.setVisible(false);
+        ventana.btnGuardarCambiosEncargado.setVisible(false);
+        
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnCerrarAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarAppActionPerformed
+        Controlador.guardarData();
+        dispose();
+    }//GEN-LAST:event_btnCerrarAppActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,6 +258,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarApp;
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JButton btnRecuperarContrasena;
     private javax.swing.JButton btnRegistrar;

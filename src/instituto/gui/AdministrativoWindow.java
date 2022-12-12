@@ -229,8 +229,15 @@ public class AdministrativoWindow extends javax.swing.JFrame {
         usuario.setTelefono(txtTelefonoAdministrativo.getText());
         usuario.setTipoUsuario(TipoUsuario.ADMINISTRACION);
         Boolean guardado = Controlador.crearUsuario(usuario);
-        JOptionPane.showMessageDialog(null, "Administrativo guardado con éxito");
-        dispose();
+        if (guardado)
+        {
+            JOptionPane.showMessageDialog(null, "Administrativo guardado con éxito");
+            dispose();
+        }else 
+        {
+            JOptionPane.showMessageDialog(null, "Error al guardar");
+        }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtCedulaAdministrativoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaAdministrativoKeyPressed
@@ -290,15 +297,16 @@ public class AdministrativoWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarCambiosAdministrativoActionPerformed
 
     private void btnEliminarAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAdministrativoActionPerformed
-        /*Usuario Usuario = Controlador.obtenerUsuario(usuarioid);
-        Boolean borrado = Controlador.borrarUsuario(usuarioid);
+        Usuario usuario = Controlador.obtenerUsuario(usuarioid);
+        Boolean borrado = Controlador.borrarUsuario(usuario);
         if (borrado) {
             JOptionPane.showMessageDialog(null, "Encargado borrado con éxito");
             dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Error al borrar encargado",
                     "Atención", JOptionPane.ERROR_MESSAGE);
-        }*/
+        }
+        dispose();
     }//GEN-LAST:event_btnEliminarAdministrativoActionPerformed
 
     /**

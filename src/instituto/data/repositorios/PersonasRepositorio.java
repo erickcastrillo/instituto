@@ -18,6 +18,7 @@
 package instituto.data.repositorios;
 
 import instituto.data.modelos.*;
+import java.io.Serializable;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -28,7 +29,7 @@ import java.util.stream.Collectors;
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public class PersonasRepositorio implements CRUD {
+public class PersonasRepositorio implements CRUD, Serializable{
 
     // Creating a new ArrayList of Personas.
     private ArrayList<Persona> listaPersonas = new ArrayList<>();
@@ -237,6 +238,17 @@ public class PersonasRepositorio implements CRUD {
             }
         }
         return encargados;
+    }
+    public ArrayList<Usuario> listarAdministrativos(){
+        ArrayList<Usuario> administrativos = new ArrayList<>();
+        for(Persona persona : this.listaPersonas){
+            if(persona instanceof Usuario usuario){
+                if(usuario.getTipoUsuario().equals(TipoUsuario.ADMINISTRACION)){
+                    administrativos.add(usuario);
+                }
+            }
+        }
+        return administrativos;
     }
     
     public Usuario login(String telefono, String clave){

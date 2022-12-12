@@ -17,6 +17,7 @@
 
 package instituto.data.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -24,7 +25,7 @@ import java.util.Date;
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public class Estudiante extends Persona {
+public class Estudiante extends Persona implements Serializable{
 
     public String getFechaNacimiento() {
         return fechaNacimiento;

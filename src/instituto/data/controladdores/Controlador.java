@@ -195,6 +195,10 @@ public class Controlador {
     public static ArrayList<Usuario> listarUsuarios() {
         return repositorio.listarUsuarios();
     }
+    public static ArrayList<Usuario> listarAdministrativos()
+    {
+        return repositorio.listarAdministrativos();
+    }
 
     /**
      * Regresa una instancia de la clase Usuario usando el, id proporcionando.
