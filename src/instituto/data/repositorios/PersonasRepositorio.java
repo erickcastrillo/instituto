@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
  * @author Erick Castrillo Arroyo <ecastrillo@edu.upolitecnica.cr>
  * 603630082EC
  */
-public class PersonasRepositorio implements CRUD, Serializable{
+public class PersonasRepositorio implements Serializable{
 
     // Creating a new ArrayList of Personas.
     private ArrayList<Persona> listaPersonas = new ArrayList<>();
@@ -39,7 +39,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
      * @param filtro Used to determine what kind of class to return
      * @return ArrayList
      */
-    @Override
+    
     public ArrayList<Persona> listar(String filtro) {
         return switch (filtro) {
             case "Encargado" -> (ArrayList<Persona>) listaPersonas.stream()
@@ -58,7 +58,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
         };
     }
 
-    @Override
+    
     public ArrayList<Encargado> listarEncargados() {
         ArrayList<Encargado> encargados = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
@@ -69,7 +69,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
         return encargados;
     }
 
-    @Override
+    
     public ArrayList<Estudiante> listarEstudiantes() {
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
@@ -79,7 +79,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
         }
         return estudiantes;
     }
-    @Override
+    
     public List<Estudiante> filtrarEstudiantesSeccion(String Seccion){
         return this.listaPersonas
                 .stream()
@@ -89,7 +89,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
     }
     
     
-    @Override
+    
     public List<Estudiante> filtrarEstudiantesNivel(String Nivel){
         return this.listaPersonas
                 .stream()
@@ -116,7 +116,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
                 .collect(Collectors.toList());
     }
 
-    @Override
+    
     public List<EstudianteIV> listarEstudiantesIV() {
         List<EstudianteIV> estudiantesIV = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
@@ -127,7 +127,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
         return estudiantesIV;
     }
 
-    @Override
+    
     public ArrayList<Usuario> listarUsuarios() {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         for(Persona persona : this.listaPersonas){
@@ -143,7 +143,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
      * @param persona Persona class to add
      * @return Boolean
      */
-    @Override
+    
     public Boolean agregar(Persona persona) {
         Persona p = this.listaPersonas.stream()
                 .filter(x -> Objects.equals(x.getIdentificacion(), persona.getIdentificacion()))
@@ -162,7 +162,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
      * @param nombre nombre of the Persona to return
      * @return Persona
      */
-    @Override
+    
     public Persona obtenerPorNombre(String nombre) {
         return this.listaPersonas.stream()
                 .filter(persona -> Objects.equals(persona.getNombre(), nombre))
@@ -175,7 +175,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
      * @param id id of the Persona to return
      * @return Persona
      */
-    @Override
+    
     public Persona obtenerPorId(String id) {
         return this.listaPersonas.stream()
                 .filter(persona -> Objects.equals(persona.getId(), id))
@@ -188,7 +188,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
      * @param persona Persona class
      * @return Boolean
      */
-    @Override
+    
     public Boolean actualizar(Persona persona) {
         Persona p = this.obtenerPorId(persona.getId());
         int index = this.listaPersonas.indexOf(p);
@@ -205,7 +205,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
      * @param persona Persona class
      * @return Boolean
      */
-    @Override
+    
     public Boolean borrar(Persona persona) {
         return this.listaPersonas.removeIf(p -> Objects.equals(persona.getId(), p.getId()));
     }
@@ -266,7 +266,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
     /**
      * @return
      */
-    @Override
+    
     public Boolean cargarDatos() {
         Object datos = Serializador.deserializar("database.dat");
         if(datos != null){
@@ -280,7 +280,7 @@ public class PersonasRepositorio implements CRUD, Serializable{
     /**
      * @return
      */
-    @Override
+    
     public Boolean guardarDatos() {
         return Serializador.serializar(this.listaPersonas, "database.dat");
     }

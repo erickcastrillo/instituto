@@ -25,7 +25,6 @@ public class Login extends javax.swing.JFrame {
         
         initComponents();
         setLocationRelativeTo(null);
-        Controlador.cargarData();
     }
 
     /**
@@ -114,7 +113,7 @@ public class Login extends javax.swing.JFrame {
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         String telefono = txtTelefono.getText();
         String clave = String.valueOf(txtClave.getText());
-
+        Controlador.cargarData();
         if (telefono.equalsIgnoreCase("admin") 
                 && clave.equalsIgnoreCase("admin")) {
             Principal ventana = new Principal();

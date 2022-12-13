@@ -48,7 +48,6 @@ public class Serializador {
             salida.close();
             return true;
         } catch(NoSuchElementException | IOException e){
-            e.printStackTrace();
             return false;
         }
     }

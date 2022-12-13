@@ -247,10 +247,7 @@ public class Controlador {
      * @return true si la data se cargo o false si no.
      */
     public static Boolean cargarData() {
-        PersonasRepositorio repo = (PersonasRepositorio) Serializador.deserializar(
-                "PersonasRepositorio.dat"
-        );
-        return repo == null;   
+        return repositorio.cargarDatos();
 
     }
     
@@ -273,11 +270,7 @@ public class Controlador {
      * @return true si se guardo el objeto y false si no.
      */
     public static Boolean guardarData() {
-        try {
-            return Serializador.serializar(repositorio, "PersonasRepositorio.dat");
-        } catch(NoSuchElementException e){
-            return false;
-        }
+        return repositorio.guardarDatos();
     }
     
     /**
