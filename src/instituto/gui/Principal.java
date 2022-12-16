@@ -866,6 +866,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnPendientesActionPerformed
 
     private void btnSalirAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirAdminActionPerformed
+        Controlador.guardarData();
         dispose();
         Login ventana = new Login();
         ventana.setVisible(true);

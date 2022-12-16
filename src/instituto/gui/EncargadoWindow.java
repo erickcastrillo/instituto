@@ -375,6 +375,7 @@ public class EncargadoWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_chxAccesoActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        Controlador.guardarData();
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -452,7 +453,6 @@ public class EncargadoWindow extends javax.swing.JFrame {
         Boolean guardado = Controlador.updateEncargado(encargado);
         if (guardado) {
             JOptionPane.showMessageDialog(null, "Encargado actualizado");
-            dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Error al actualizar encargado",
                     "Atención", JOptionPane.ERROR_MESSAGE);

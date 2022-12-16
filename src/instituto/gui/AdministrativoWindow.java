@@ -259,6 +259,7 @@ public class AdministrativoWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPrimerApellidoAdministrativoKeyPressed
 
     private void btnSalirAdministrativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirAdministrativoActionPerformed
+        Controlador.guardarData();
         dispose();
     }//GEN-LAST:event_btnSalirAdministrativoActionPerformed
 

@@ -9,6 +9,7 @@ import instituto.data.modelos.Encargado;
 import static instituto.data.modelos.TipoUsuario.ADMINISTRACION;
 import static instituto.data.modelos.TipoUsuario.ENCARGADO;
 import instituto.data.modelos.Usuario;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle;
 
@@ -123,74 +124,80 @@ public class Login extends javax.swing.JFrame {
         } 
         else 
         {
-            Usuario usuario = Controlador.login(telefono, clave);
-            if (telefono.equalsIgnoreCase(usuario.getTelefono())
-                    && clave.equalsIgnoreCase(usuario.getClave())) 
+            ArrayList<Usuario> listadeusuario = Controlador.listarUsuarios();
+            for (Usuario usuario : listadeusuario)
             {
-                if (usuario != null) 
+                if (telefono.equalsIgnoreCase(usuario.getTelefono())
+                        && clave.equalsIgnoreCase(usuario.getClave())) 
                 {
-                    if (usuario.getTipoUsuario().equals(ENCARGADO)) 
+                    if (usuario != null) 
                     {
-                        Encargado encargado = (Encargado) usuario;
-                        if (encargado.getAcceso()) 
+                        if (usuario.getTipoUsuario().equals(ENCARGADO)) 
+                        {
+                            Encargado encargado = (Encargado) usuario;
+                            if (encargado.getAcceso()) 
+                            {
+                                JOptionPane.showMessageDialog(null, "Login exitoso!");
+                                EncargadoWindow ventana = new EncargadoWindow();
+                                ventana.encargadoID = encargado.getId();
+                                ventana.setVisible(true);
+                                ventana.txtNombreEncargado.setText(usuario.getNombre());
+                                ventana.txtApellidoEncargado.setText(usuario.getPrimerApellido());
+                                ventana.txtSegundoApellidoEncargado.setText(usuario.getSegundoApellido());
+                                ventana.txtCedulaEncargado.setText(usuario.getIdentificacion());
+                                ventana.txtCelularEncargado.setText(usuario.getTelefono());
+                                ventana.txtClave.setText(usuario.getClave());
+                                ventana.lblHijos.setVisible(false);
+                                ventana.lblSeleccionarHijo.setVisible(false);
+                                ventana.btnAgregarEstudiante.setVisible(false);
+                                ventana.btnAsociar.setVisible(false);
+                                ventana.btnGuardarCambiosEncargado.setVisible(false);
+                                ventana.btnGuardarEncargado.setVisible(false);
+                                ventana.chxAcceso.setSelected(encargado.getAcceso());
+                                ventana.chxAcceso.setVisible(false);
+                                ventana.txtNombreEncargado.setEnabled(false);
+                                ventana.txtApellidoEncargado.setEnabled(false);
+                                ventana.txtSegundoApellidoEncargado.setEnabled(false);
+                                ventana.txtCedulaEncargado.setEnabled(false);
+                                ventana.txtCelularEncargado.setEnabled(false);
+                                ventana.txtClave.setEnabled(false);
+                                ventana.txtCorreoEncargado.setEnabled(false);
+                                ventana.txtDireccionEncargado.setEnabled(false);
+                            } else 
+                            {
+                                JOptionPane.showMessageDialog(null, "No tiene acceso");
+                            }
+
+                        } else if (usuario.getTipoUsuario().equals(ADMINISTRACION)) 
                         {
                             JOptionPane.showMessageDialog(null, "Login exitoso!");
-                            EncargadoWindow ventana = new EncargadoWindow();
+                            AdministrativoWindow ventana = new AdministrativoWindow();
+                            ventana.usuarioid = usuario.getId();
                             ventana.setVisible(true);
-                            ventana.txtNombreEncargado.setText(usuario.getNombre());
-                            ventana.txtApellidoEncargado.setText(usuario.getPrimerApellido());
-                            ventana.txtSegundoApellidoEncargado.setText(usuario.getSegundoApellido());
-                            ventana.txtCedulaEncargado.setText(usuario.getIdentificacion());
-                            ventana.txtCelularEncargado.setText(usuario.getTelefono());
-                            ventana.txtClave.setText(usuario.getClave());
-                            ventana.lblHijos.setVisible(false);
-                            ventana.lblSeleccionarHijo.setVisible(false);
-                            ventana.btnAgregarEstudiante.setVisible(false);
-                            ventana.btnAsociar.setVisible(false);
-                            ventana.btnGuardarCambiosEncargado.setVisible(false);
-                            ventana.chxAcceso.setVisible(false);
-                            ventana.btnGuardarEncargado.setVisible(false);
-
-                            ventana.txtNombreEncargado.setEnabled(false);
-                            ventana.txtApellidoEncargado.setEnabled(false);
-                            ventana.txtSegundoApellidoEncargado.setEnabled(false);
-                            ventana.txtCedulaEncargado.setEnabled(false);
-                            ventana.txtCelularEncargado.setEnabled(false);
-                            ventana.txtClave.setEnabled(false);
-                            ventana.txtCorreoEncargado.setEnabled(false);
-                            ventana.txtDireccionEncargado.setEnabled(false);
+                            ventana.txtNombreAdministrativo.setText(usuario.getNombre());
+                            ventana.txtPrimerApellidoAdministrativo.setText(usuario.getPrimerApellido());
+                            ventana.txtSegundoApellidoAdministrativo.setText(usuario.getSegundoApellido());
+                            ventana.txtCedulaAdministrativo.setText(usuario.getIdentificacion());
+                            ventana.txtTelefonoAdministrativo.setText(usuario.getTelefono());
+                            ventana.txtClaveAdministrativo.setText(usuario.getClave());
+                            ventana.btnGuardar.setVisible(false);
+                            ventana.txtNombreAdministrativo.setEnabled(false);
+                            ventana.txtPrimerApellidoAdministrativo.setEnabled(false);
+                            ventana.txtSegundoApellidoAdministrativo.setEnabled(false);
+                            ventana.txtTelefonoAdministrativo.setEnabled(false);
+                            ventana.txtClaveAdministrativo.setEnabled(false);
+                            ventana.txtCedulaAdministrativo.setEnabled(false);
+                            ventana.btnGuardar.setVisible(false);
+                            ventana.btnGuardarCambiosAdministrativo.setVisible(false);
                         } else 
                         {
-                            JOptionPane.showMessageDialog(null, "No tiene acceso");
+                            JOptionPane.showMessageDialog(null, "Telefono o clave incorrectos", "Error al validar credenciales", JOptionPane.ERROR_MESSAGE);
                         }
-
-                    } else if (usuario.getTipoUsuario().equals(ADMINISTRACION)) 
-                    {
-                        JOptionPane.showMessageDialog(null, "Login exitoso!");
-                        AdministrativoWindow ventana = new AdministrativoWindow();
-                        ventana.setVisible(true);
-                        ventana.txtNombreAdministrativo.setText(usuario.getNombre());
-                        ventana.txtPrimerApellidoAdministrativo.setText(usuario.getPrimerApellido());
-                        ventana.txtSegundoApellidoAdministrativo.setText(usuario.getSegundoApellido());
-                        ventana.txtCedulaAdministrativo.setText(usuario.getIdentificacion());
-                        ventana.txtTelefonoAdministrativo.setText(usuario.getTelefono());
-                        ventana.txtClaveAdministrativo.setText(usuario.getClave());
-                        ventana.btnGuardar.setVisible(false);
-                        ventana.txtNombreAdministrativo.setEnabled(false);
-                        ventana.txtPrimerApellidoAdministrativo.setEnabled(false);
-                        ventana.txtSegundoApellidoAdministrativo.setEnabled(false);
-                        ventana.txtTelefonoAdministrativo.setEnabled(false);
-                        ventana.txtClaveAdministrativo.setEnabled(false);
-                        ventana.txtCedulaAdministrativo.setEnabled(false);
-                        ventana.btnGuardar.setVisible(false);
-                        ventana.btnGuardarCambiosAdministrativo.setVisible(false);
-                    } else 
-                    {
-                        JOptionPane.showMessageDialog(null, "Telefono o clave incorrectos", "Error al validar credenciales", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
         }
+            
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void txtClaveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClaveFocusGained
